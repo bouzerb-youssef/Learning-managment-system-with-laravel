@@ -28,7 +28,8 @@
             </ul>
 
             <div class="card-body">
-
+            <form  wire:submit.prevent='store'   action="">
+                    {{ csrf_field() }}
                 <ul class="uk-switcher uk-margin" id="course-edit-tab" style="touch-action: pan-y pinch-zoom;">
 
                     <li >
@@ -231,7 +232,8 @@
 
                     </li>
 
-                </ul>
+                </ul> 
+            </form>
 
             </div>
             

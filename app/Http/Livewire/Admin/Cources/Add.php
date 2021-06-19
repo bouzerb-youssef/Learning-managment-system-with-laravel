@@ -98,7 +98,7 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
        "title"=> $this->title,
        "short_description"=>$this->short_description,
         "desc"=>$this->desc,
-       "thumbnail"=>$this->title,
+       "thumbnail"=>$name,
        "category_id"=> $this->category_id,
       ]); 
         $names = $this->name; 

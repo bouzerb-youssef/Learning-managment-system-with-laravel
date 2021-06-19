@@ -117,10 +117,10 @@ class CourceController extends Controller
                $request->validate([
                   'title' => 'required',
                   'short_description' => 'required',
-                  'description' => 'required', 
-                  'level' => 'required', 
+                  'desc' => 'required', 
+                  
                   'thumbnail' => 'required', 
-                  'detail' => 'required', 
+                  
                   'category_id' => 'required',
               ]);
               Storage::disk("cources")->delete($cource->thumbnail);
@@ -129,8 +129,9 @@ class CourceController extends Controller
               $thumbnail = $request['thumbnail'];
        
               $img   = ImageManagerStatic::make($request->thumbnail)->resize(367,190)->encode('jpg');
+              $name  =$request->thumbnail->getClientOriginalName();
              
-              $name  = Str::random() .'cource'.'jpg';
+           
               Storage::disk('cources')->put($name, $img);
 
             $update = Cource::findorfail($id)->update([
@@ -138,10 +139,10 @@ class CourceController extends Controller
            
               "title"=> request('title'),
               "short_description"=>request('short_description'),
-              "description"=>request('description'),
-              "level"=>request('level'),
+              "desc"=>request('desc'),
+             
               "thumbnail"=> $name,
-              "detail"=> request('detail'),
+         
               "category_id"=> request('category_id'),
 
               ]);

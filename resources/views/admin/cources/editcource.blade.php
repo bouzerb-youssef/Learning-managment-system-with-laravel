@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> اختر صنف </h5>
-                                    <select name="student_group_id" class="uk-select">
+                                    <select name="category_id" class="uk-select">
                                         @if (isset($categories) && $categories->count()>0)
                                         @foreach ($categories as $category)
                                         <option  value="{{$category->id}}" >{{$category->title}}</option>
@@ -61,32 +61,9 @@
 
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> التعريف </h5>
-                                    <textarea  name="description" class="mytextarea"  placeholder="الملاحضات"   class="form-control"> {{$cource->description}}</textarea>
+                                    <textarea  name="desc" class="mytextarea"  placeholder="الملاحضات"   class="form-control"> {{$cource->desc}}</textarea>
                                 </div>
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> اختر صنف </h5>
-                                    <select name="category_id" class="uk-select">
-                                        @if (isset($categories) && $categories->count()>0)
-                                        @foreach ($categories as $category)
-                                        <option  value="{{$category->id}}" >{{$category->title}}</option>
-
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> اختر مستوي </h5>
-                                    <select name="level" class="uk-select">
-                                        <option value="مبتدا"  >مبتدا</option>
-                                        <option value="متوسط"   >متوسط</option>
-                                        <option value="متقدم"   >متقدم</option>
-                                        
-                                    </select>
-                                </div>
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> التفاصيل </h5>
-                                    <textarea  name="detail" class="mytextarea"  placeholder="الملاحضات"   class="form-control"> {{$cource->detail}}</textarea>
-                                </div>
+                            
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2">الصورة </h5>
                                     <div class="uk-margin"> 
