@@ -11,7 +11,7 @@ class StudentAttachment extends Model
     use HasFactory;
     protected $fillable = [
         
-        'name',
+        'genre',
         'file',
         'user_id' 
     ];

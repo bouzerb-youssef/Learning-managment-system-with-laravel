@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="uk-child-width-1-3@m uk-grid" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom-small; target: > div ; delay: 200">
+    <div class="uk-child-width-1-4@m uk-grid" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom-small; target: > div ; delay: 200">
         @foreach ($cources as $cource)
         <div class="uk-first-column uk-scrollspy-inview uk-animation-slide-bottom-small" style="">
             <a href="#">

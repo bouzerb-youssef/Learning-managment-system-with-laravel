@@ -15,9 +15,13 @@ class CreateStudentAttachmentsTable extends Migration
     {
         Schema::create('student_attachments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('file');
+
+            $table->string('genre')->nullable();
+
+            $table->string('file')->nullable();
+
             $table->unsignedInteger('user_id')->nullable();
+            
             //$table->foreign('user_id')->references('id')->on('users')
 
        //  ->onDelete('cascade'); 

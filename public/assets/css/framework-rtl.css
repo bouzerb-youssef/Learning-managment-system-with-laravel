@@ -11141,7 +11141,7 @@ iframe.uk-cover {
 .uk-offcanvas-bar.uk-light .uk-nav-default > li > a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
-.uk-light .uk-nav-default > li.uk-active > a,
+/* .uk-light .uk-nav-default > li.uk-active > a,
 .uk-section-primary:not(.uk-preserve-color) .uk-nav-default > li.uk-active > a,
 .uk-section-secondary:not(.uk-preserve-color) .uk-nav-default > li.uk-active > a,
 .uk-tile-primary:not(.uk-preserve-color) .uk-nav-default > li.uk-active > a,
@@ -11153,7 +11153,7 @@ iframe.uk-cover {
 .uk-overlay-primary .uk-nav-default > li.uk-active > a,
 .uk-offcanvas-bar.uk-light .uk-nav-default > li.uk-active > a {
   color: #fff;
-}
+} */
 .uk-light .uk-nav-default .uk-nav-header,
 .uk-section-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-header,
 .uk-section-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-header,

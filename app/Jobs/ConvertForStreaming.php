@@ -37,7 +37,7 @@ class ConvertForStreaming implements ShouldQueue
      */
     public function handle()
     {
-         $destination = '/'.$this->video->title .'/'.$this->video->title .'.m3u8';
+         $destination = '/'.$this->video->name .'/'.$this->video->name .'.m3u8';
         $low = (new X264('aac'))->setKiloBitrate(500);
         $high = (new X264('aac'))->setKiloBitrate(1000);
     
@@ -54,11 +54,11 @@ class ConvertForStreaming implements ShouldQueue
             ->toDisk('lessons')
             ->save($destination);
 
-      // $seconds = $media->getDurationInSeconds(); 
+     //  $seconds = $media->getDurationInSeconds(); 
  
            $this->video->update([
                 'file_prossesed' => $this->video->title .'.m3u8',
-               // 'duration' => $this->formatDuration($seconds),
+                //'duration' => $this->formatDuration($seconds),
  
     
             ]);

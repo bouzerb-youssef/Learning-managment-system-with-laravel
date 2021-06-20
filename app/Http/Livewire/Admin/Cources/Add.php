@@ -40,6 +40,70 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
     public $j = 0;
     public $inputs2 = [];
     public $k = 0;
+    public $currentPage = 1;
+
+    public $pages = [
+        1 => [
+            'heading' => 'معلومات التلميد',
+            
+        ],
+        2 => [
+            'heading' => 'الوثائق',
+           
+        ],
+        3 => [
+            'heading' => 'الانتهاء',
+          
+        ],
+        4 => [
+            'heading' => 'الانتهاء',
+          
+        ],
+        5 => [
+            'heading' => 'الانتهاء',
+          
+        ],
+    ];
+  
+
+    private $validationRules = [
+        1 => [
+            'title' => ['required', 'min:3'],
+            'short_description' => ['required', 'min:3'],
+            'desc' => ['required'],
+            'thumbnail' => ['required'],
+            "category_id"=> ['required'],
+        ],
+        2 => [
+            'materialname' => ['required', 'string', 'min:8'],
+            'material' => ['required'],
+            'cource_id' => ['required'],
+        ],
+        3 => [
+            'detail' => ['required', 'string', 'min:8'],
+        ],
+          
+       4 => [
+        'name' => ['required', 'min:3'],
+        'video' => ['required'],
+        
+    ],
+           
+    ];
+
+
+    public function goToNextPage()
+    {
+        //$this->validate($this->validationRules[$this->currentPage]);
+        $this->currentPage++;
+    }
+
+    public function goToPreviousPage()
+    {
+        $this->currentPage--;
+    }
+
+
 
     public function add2($k)
     {
@@ -67,7 +131,10 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
 
 
 
-
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
+    }
 
     public function add($i)
     {
@@ -80,14 +147,18 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
     {
         unset($this->inputs[$i]);
     }
-  public function  mount($categories){
+    public function  mount($categories){
 
-     $this->categories = $categories;
- } 
+        $this->categories = $categories;
+    } 
+
  public function store()
      {
     DB::beginTransaction();
      try { 
+        $rules = collect($this->validationRules)->collapse()->toArray();
+
+        $this->validate($rules);
     
      $thumbnail=$this->thumbnail;
      $img   = ImageManagerStatic::make($this->thumbnail)->resize(367,190)->encode('jpg');
@@ -116,8 +187,8 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
                 'cource_id' => $createdCource->id,
         
             ]);
-          // CreateThumbnailFromVideo::dispatch($this->lesson);
-         //  ConvertForStreaming::dispatch($this->lesson);
+          CreateThumbnailFromVideo::dispatch($this->lesson);
+          ConvertForStreaming::dispatch($this->lesson);
 
     }
     $materialnames = $this->materialname; 

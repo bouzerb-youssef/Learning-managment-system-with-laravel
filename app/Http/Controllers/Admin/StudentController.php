@@ -20,23 +20,16 @@ class StudentController extends Controller
             $users = User::with('enrolls')->paginate(10);
         return view('admin.students.studentlist',compact("users"));
     }
-
     public function students(){
         $students= User::with("group")->where("role","0")->get();
- 
         return view('admin.student.students',compact('students'));
     }
     public function addstudent(){
+        $groups = Group::get();
 
-        $studentgroups = Group::get();
-       
-     
-
-    return view('admin.student.addstudent',compact('studentgroups'));
+    return view('admin.student.addstudent',compact('groups'));
     }
-
     public function storestudent(Request $request)
-
     {
     $request->validate([
         'name' => 'required|unique:users',
@@ -57,12 +50,10 @@ class StudentController extends Controller
     ]);
    
     try {
-
         $img   = ImageManagerStatic::make($request->photo)/* ->resize(367,190) */->encode('jpg');
         
         $name  = Str::random() .'photo-student'.'jpg';
         Storage::disk('student')->put($name, $img); 
-    
         $createdstudent = User::create([
             'name' => request('name'),
             'email' =>  request('email'),
@@ -70,8 +61,7 @@ class StudentController extends Controller
             'age' =>  request('age'),
             'phone' =>  request('phone'),
             'sex' =>  request('sex'),
-            "cin"=> request('cin'),
-            
+            "cin"=> request('cin'), 
             'familySituation' => request('familySituation'),
             'childrenNmb' =>  request('childrenNmb'),
             'educationLevel' =>  request('educationLevel'),
@@ -81,19 +71,14 @@ class StudentController extends Controller
             'group_id' => request('group_id'),
         ]);
     
-        $createdstudent->save();
-        
-        
+        $createdstudent->save();   
         toastr()->success('.لقد تم الاضافة  بنجاح');
-        return redirect()->route('admin.students');
-       
+        return redirect()->route('admin.students'); 
     }
   
     catch (\Exception $e){
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
-
-   
     }
     public function removestudent($id){
 

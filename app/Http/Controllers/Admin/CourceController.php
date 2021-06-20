@@ -50,7 +50,8 @@ class CourceController extends Controller
 
      public function remove($id){
 
-      $cource = Cource::with('courceQuestions','options',)->find($id);
+      $cource = Cource::with('courceQuestions','options','lessons','materials')->find($id);
+     // dd( $cource);
       
         if($cource){
          
@@ -66,29 +67,27 @@ class CourceController extends Controller
               Storage::disk("options")->delete($option->image);
               $option->delete();
 
-            }
-                
-              }
-          Storage::disk("cources")->delete($cource->thumbnail);
-          
-          $cource->delete();  
-        }
-/* delete lessson */
-        $lessons =Lesson::where("section_id",null)->get();
-        if( $lessons){
-        foreach( $lessons as $lesson){
-          File::deleteDirectory(storage_path('app/public/lessons/'.$lesson->title));
+            }}
+            /* delete lessson */
+      foreach( $cource->lessons as $lesson){
+        if( $lesson){
+          File::deleteDirectory(storage_path('app/public/lessons/'.$lesson->name));
           $lesson->delete();
         }}
 /* delete materials */
 
-        $materials =Material::where("section_id",null)->get();
-        if( $materials){
-        foreach( $materials as $material){
+      foreach( $cource->materials as $material){
+        if( $material){
+       
           
           File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
           $material->delete();
         }}
+          Storage::disk("cources")->delete($cource->thumbnail);
+          
+          $cource->delete();  
+        }
+
 /* delete questions and options */
       
        
