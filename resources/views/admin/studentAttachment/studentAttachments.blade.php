@@ -62,7 +62,7 @@
                         @foreach ($student->studentAttachments as $studentAttachment)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td><a href=''>{{$studentAttachment->name}}</a></td>
+                            <td><a href=''>{{$studentAttachment->genre}}</a></td>
                             <td>{{$studentAttachment->file}}</td>
                             <td class="text-right">
                                 <!-- Actions -->
