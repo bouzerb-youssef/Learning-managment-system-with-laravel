@@ -6,15 +6,18 @@ use Livewire\Component;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Group;
+use App\Models\StudentAttachment;
+
 use Livewire\WithFileUploads;
 
 class Add extends Component
 {
-
+    public $createAccountError;
     use WithFileUploads;
     public $currentPage = 1;
 
@@ -36,7 +39,7 @@ class Add extends Component
 
     public function goToNextPage()
     {
-        //$this->validate($this->validationRules[$this->currentPage]);
+        $this->validate($this->validationRules[$this->currentPage]);
         $this->currentPage++;
     }
 
@@ -56,6 +59,28 @@ class Add extends Component
     public $genre,$file,$user_id;
 
     public $groups;
+    private $validationRules = [
+        1 => [
+            'name' => 'required|unique:users',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'age' => 'required',
+            'phone' => 'required',
+            'sex' => 'required',
+            'cin' => 'required',
+            'familySituation' => 'required',
+            'childrenNmb' => 'required',
+            'educationLevel' => 'required',
+            'address' => 'required',
+            'photo' => 'required', 
+            'group_id' => 'required',
+        ],
+        2 => [
+            'genre' => ['required'],
+            'file' => ['required'],
+          
+        ],   
+    ];
 
     public function add($i)
     {
@@ -81,33 +106,20 @@ class Add extends Component
 
     public function storestudent()
     {
-/*     $request->validate([
-        'name' => 'required|unique:users',
-        'email' => 'required|unique:users',
-        'password' => 'required',
-        'age' => 'required',
-        'phone' => 'required',
-        'sex' => 'required',
-        'cin' => 'required',
-        'familySituation' => 'required',
-        'childrenNmb' => 'required',
-        'educationLevel' => 'required',
-        'address' => 'required',
-        'photo' => 'required', 
-        'group_id' => 'required',
-    ]); */
+        DB::beginTransaction();
+    
    
     try {
-       // $img   = ImageManagerStatic::make($this->photo)/* ->resize(367,190) */->encode('jpg');
+       $img   = ImageManagerStatic::make($this->photo)/* ->resize(367,190) */->encode('jpg');
         
-        //$name  = Str::random() .'photo-student'.'jpg';
-    /*     $name  =$this->photo->getClientOriginalName().$this->name;
-        dd( $name);
+       // $name  = Str::random() .'photo-student'.'jpg';
+       $name  =$this->photo->getClientOriginalName().$this->name;
+       
         Storage::disk('student')->put($name, $img); 
         $createdstudent = User::create([
             'name' => $this->name,
             'email' =>  $this->email,
-            'password' =>  Hash::$this->password,
+            'password' =>  Hash::make($this->password),
             'age' => $this->age,
             'phone' => $this->phone,
             'sex' =>  $this->sex,
@@ -120,34 +132,37 @@ class Add extends Component
             "photo"=> $name,
             'group_id' =>$this->group_id,
         ]);
-     */
+     
        
         /* save studentattachmnet */
         $genres = $this->genre; 
-     
-        $files = $this->file;
- 
+    
+        $files= $this->file;
+        
    
-        for($i = 1; $i < count( $genres)+1; $i++){
+        for($i = 0; $i < count( $genres); $i++){
           
            //dd( $materials);
-      $this->name ="ujhuihyui";
-           $name =$files[$i]->getClientOriginalName();
-           dd( $name.":<:student:>:".$this->name);
+      
+           $name =$files[$i]->getClientOriginalName()."1111".$this->name;
+           
            $materialpath=$files[$i];
            $storematerial=Storage::disk('materials')->put( $name,  $materialpath);
-        Material::create([
-                'genre' =>$materialnames[$i],
+        StudentAttachment::create([
+                'genre' =>$genres[$i],
                 'file' => $name,
                 'user_id' =>$createdstudent ->id,
             ]);
    
     }
+    DB::commit();
         toastr()->success('.لقد تم الاضافة  بنجاح');
         return redirect()->route('admin.students'); 
     }
   
     catch (\Exception $e){
+        DB::rollback();
+        $this->createAccountError= $e->getMessage();
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
     }

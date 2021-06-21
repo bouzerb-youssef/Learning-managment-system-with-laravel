@@ -28,10 +28,10 @@ class CourceController extends Controller
    }
 
    public function show($id){
-      $cource=Cource::with("sections","whatinthecoures")->find($id);
+        $cource=Cource::with("lessons","whatinthecoures")->find($id);
   //dd( $cource);
-     $user=User::with('enrolls')->find(\Auth::user()->id); 
-  $cources=Cource::take(4)->get();
+        $user=User::with('enrolls')->find(\Auth::user()->id); 
+        $cources=Cource::take(4)->get();
       /*  $is_enroll = Enroll::whereHas('enrolls',function($q){
             $q->where('user_id'==\Auth::user()->id);
 
@@ -60,10 +60,11 @@ class CourceController extends Controller
    public function episode($id){
     
       $lesson=Lesson::Find($id);
-      $episode=Lesson::with("section")->find($id);
+      $episode=Lesson::find($id);
       
-     $cource_id = $episode->section->cource->id;
-     $cource=Cource::with("sections")->find($cource_id); 
+     $cource_id = $episode->cource_id;
+ 
+     $cource=Cource::with("lessons")->find($cource_id); 
 
   //dd($lesson);
   

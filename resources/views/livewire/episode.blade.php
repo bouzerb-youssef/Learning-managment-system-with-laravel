@@ -12,14 +12,14 @@
                              class="video-js video-js vjs-fluid vjs-default-skin vjs-theme-forest"  
                             controls
                            preload="auto" 
-                            poster="{{asset('storage/lessons/'.$lesson->title .'/'.$lesson->thumbnail_image)}} "
+                            poster="{{asset('storage/lessons/'.$lesson->name .'/'.$lesson->thumbnail_image)}} "
                             data-setup='{}'
                             
                              >
                         
                                
-                                    <source src="{{asset('storage/lessons/'.$lesson->title .'/'.$lesson->file_prossesed)}}"  type='application/x-mpegURL' >
-                                    <source src="{{asset('storage/lessons/'.$lesson->title .'/'.$lesson->file_prossesed)}}"  type='application/x-mpegURL' >
+                                    <source src="{{asset('storage/lessons/'.$lesson->name .'/'.$lesson->file_prossesed)}}"  type='application/x-mpegURL' >
+                                    <source src="{{asset('storage/lessons/'.$lesson->name .'/'.$lesson->file_prossesed)}}"  type='application/x-mpegURL' >
                             
                                 <p class="vjs-no-js">
                                     To view this video please enable JavaScript, and consider upgrading to a

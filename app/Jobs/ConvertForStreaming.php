@@ -57,7 +57,7 @@ class ConvertForStreaming implements ShouldQueue
      //  $seconds = $media->getDurationInSeconds(); 
  
            $this->video->update([
-                'file_prossesed' => $this->video->title .'.m3u8',
+                'file_prossesed' => $this->video->name .'.m3u8',
                 //'duration' => $this->formatDuration($seconds),
  
     

@@ -24,8 +24,8 @@ class Add extends Component
 
     use WithFileUploads;
   
-
-public $title,$short_description,$desc,$thumbnail,$category_id;
+public $createAccountError;
+public $title,$short_description,$desc,$thumbnail,$category_id= [];
  public $cource_id,$section,$description;
  public $vedio,$name,$detail;
  public $materialname,$material;
@@ -75,17 +75,17 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
             "category_id"=> ['required'],
         ],
         2 => [
-            'materialname' => ['required', 'string', 'min:8'],
+            'materialname' => ['required'],
             'material' => ['required'],
-            'cource_id' => ['required'],
+          
         ],
         3 => [
-            'detail' => ['required', 'string', 'min:8'],
+            'detail' => ['required'],
         ],
           
        4 => [
-        'name' => ['required', 'min:3'],
-        'video' => ['required'],
+        'name' => ['required'],
+        'vedio' => ['required'],
         
     ],
            
@@ -94,7 +94,7 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
 
     public function goToNextPage()
     {
-        //$this->validate($this->validationRules[$this->currentPage]);
+        $this->validate($this->validationRules[$this->currentPage]);
         $this->currentPage++;
     }
 
@@ -151,6 +151,11 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
 
         $this->categories = $categories;
     } 
+    public function categoryID($id)
+    {
+         $category= Category::where('id', '=',$id)->get();
+        return  $category->id ;
+    }
 
  public function store()
      {
@@ -159,27 +164,27 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
         $rules = collect($this->validationRules)->collapse()->toArray();
 
         $this->validate($rules);
-    
+  
      $thumbnail=$this->thumbnail;
      $img   = ImageManagerStatic::make($this->thumbnail)->resize(367,190)->encode('jpg');
     $name  =$this->thumbnail->getClientOriginalName();
+    
      Storage::disk('cources')->put($name, $img);
-
-      $createdCource = Cource::create([
+$category_id=$this->category_id;      
+$createdCource = Cource::create([
        "title"=> $this->title,
        "short_description"=>$this->short_description,
         "desc"=>$this->desc,
        "thumbnail"=>$name,
-       "category_id"=> $this->category_id,
+       "category_id"=> $category_id[0],
       ]); 
         $names = $this->name; 
         $vedios = $this->vedio;
-       
-        for($lesson = 1; $lesson < count( $names)+1; $lesson++){
+ 
+        for($lesson = 0; $lesson < count( $names); $lesson++){
             $vedioname=$vedios[$lesson]->getClientOriginalName();
            // Storage::disk('lessons-temp')->put(   $vedios[$lesson]);
            $path = $vedios[$lesson]->store('public/lessons-temp');
-
             $this->lesson= Lesson::create([
                 'name' =>$names[$lesson],
                 // 'duration' => $this->duration,
@@ -192,10 +197,11 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
 
     }
     $materialnames = $this->materialname; 
-     
+  
+
      $materials = $this->material;
- 
-     for($mati = 1; $mati < count( $materials)+1; $mati++){
+    
+     for($mati = 0; $mati < count( $materials); $mati++){
        
         //dd( $materials);
    
@@ -209,6 +215,7 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
          ]);
 
  }
+ 
    foreach ($this->detail as $key => $value) {
     whatinthecoure::create([
         'detail' => $this->detail[$key],
@@ -225,7 +232,7 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
         Storage::disk("cources")->delete($this->thumbnail->getClientOriginalName());
 /* delete vedio lesson */
         $vedios = $this->vedio;
-        for($lesson = 1; $lesson < count( $vedios)+1; $lesson++){
+        for($lesson =0; $lesson < count( $vedios); $lesson++){
     //File::deleteDirectory(storage_path('app/public/lessons-temp/'.$vedios[$lesson]->getClientOriginalName()));
         $path =$vedios[$lesson]->store('public/lessons-temp');
          Storage::disk("lessons-temp")->delete(explode('/lessons-temp', $path)[1]);
@@ -233,21 +240,22 @@ public $title,$short_description,$desc,$thumbnail,$category_id;
     
 /*delet material  */
         $materials = $this->material;
-        for($mati = 1; $mati < count( $materials)+1; $mati++){
+        for($mati = 0; $mati < count( $materials); $mati++){
             $name =$materials[$mati]->getClientOriginalName();
                 File::deleteDirectory(storage_path('app/public/materials/'.$name));
         }
         /* roollback */
 
        DB::rollback();
-
+   
+       $this->createAccountError= $e->getMessage();
          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
      }  
 }
     public function render()
     {
-     $categories= Category::all();
-        return view('livewire.admin.cources.add',[
-            'categories' => Category::all(),]);
+     //$categories= Category::all();
+        return view('livewire.admin.cources.add');
     }
 }

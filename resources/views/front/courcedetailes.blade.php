@@ -89,22 +89,16 @@
 
                         <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
 
-                            @foreach ($cource->sections as $section)
-                            <li  @if ($loop->first) class="uk-open" @endif >
-                                <a class="uk-accordion-title" href="#"> {{$section->section}} </a>
-                                <div class="uk-accordion-content" aria-hidden="false">
-
-                                    <!-- course-video-list -->
-                                
+                          
                                     <ul class="course-curriculum-list">
                                     
-                                    @foreach ($section->lessons as $lesson) 
+                                    @foreach ($cource->lessons as $lesson) 
                                     <li>
                                         @if ($is_enroll->count())
-                                        <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->title}} </a>
+                                        <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->name}} </a>
                                         @else
                                        
-                                        <a  uk-toggle="target: #modal-example"  href="#modal-example">{{$lesson->title}} </a>
+                                        <a  uk-toggle="target: #modal-example"  href="#modal-example">{{$lesson->name}} </a>
                                         @endif
                                       
                                         <span> {{$lesson->duration}} دقيقة</span></li>
@@ -113,9 +107,8 @@
                                     </ul>
 
                                 
-                                </div>
-                            </li>
-                            @endforeach 
+                         
+                          
 
                         </ul>
 
