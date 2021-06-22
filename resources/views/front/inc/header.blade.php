@@ -31,7 +31,7 @@
 
             <!--  Right Side Content   -->
      @auth
-            <ul>
+           {{--  <ul>
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                     <li>
                         <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
@@ -39,7 +39,7 @@
                         </a>
                     </li>
                 @endforeach
-            </ul>
+            </ul> --}}
 
             <div class="uk-navbar-right">
 
@@ -136,7 +136,7 @@
                         <!-- User Name / Avatar -->
                         <a href="">
 
-                            <div class="dropdown-user-details">
+                            <div  {{-- style='padding-bottom:60px;' --}} class=" dropdown-user-details ">
                                 <div class="dropdown-user-avatar">
                                     @if ($user->profile_photo_path)
                                     <img src="{{$user->imagePath}}"></span>

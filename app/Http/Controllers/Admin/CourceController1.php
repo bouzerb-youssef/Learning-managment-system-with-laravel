@@ -171,12 +171,11 @@ class CourceController extends Controller
          $request->validate([
              'title' => 'required',
              'short_description' => 'required',
-             'description' => 'required',
+             'desc' => 'required',
             
-             'level' => 'required', 
+           
            'thumbnail' => 'required', 
-           'thumbnail' => 'required', 
-           'detail' => 'required', 
+         
              'category_id' => 'required',
            
            

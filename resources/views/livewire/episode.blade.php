@@ -2,14 +2,13 @@
      
                  @if (isset($lesson)&& $lesson->count()>0)
                   
-                        
+               <div class='container'    >      
                    <video 
                         wire:ignore
-                        width="500"
-                        height="auto"
+                      
                             playsinline="playsinline"
                             id="player"
-                             class="video-js video-js vjs-fluid vjs-default-skin vjs-theme-forest"  
+                             class="video-js video-js  vjs-fluid vjs-theme-forest"  
                             controls
                            preload="auto" 
                             poster="{{asset('storage/lessons/'.$lesson->name .'/'.$lesson->thumbnail_image)}} "
@@ -30,7 +29,7 @@
                                 </p>
                         </video> 
                       
-               
+                </div>  
                               
                         @endif
             

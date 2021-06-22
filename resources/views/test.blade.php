@@ -5,12 +5,16 @@
  --}} <div class="page-content">
 
 
-    <div class="home-hero" data-src="{{$content->heroImagePath}}" uk-img="" style="background-image: url(&quot;file:///C:/Users/pc/Desktop/main/assets/images/home-hero.png&quot;);">
+    <div class="home-hero" data-src="../assets/images/amal-home.png"   uk-img="" style="background-image: url(&quot;file:///C:/Users/pc/Desktop/main/assets/images/home-hero.png&quot;);">
+   
         <div class="uk-width-1-1">
             <div class="page-content-inner uk-position-z-index">
-                <h1>{{$content->title1}}</h1>
-                <h4 class="my-lg-4"> {{$content->description1}} </h4>
-                <a href="#" class="button grey">{{$content->button1}}</a>
+             <h1>عندما قامت مطبعة مجهولة برص مجموعة من الأحرف <br>  الطبخ و المزيد </h1>
+             <h4 class="my-lg-4">أا . يوت انيم أد مينيم فينايم,كيواس نوستريد
+ 
+                 <br> نكايديديونتيوت لابوري ات دولار ماجنا أليكيو
+             </h4>
+                <a href="#" class="btn btn-default">تسجل الان</a>
             </div>
         </div>
     </div>
@@ -165,23 +169,23 @@
                                 <h4><a href="{{route("cources.show",$cource->id)}}">{{$cource->title}}</a></h4>
                                 <p> {!!$cource->short_description!!} </p>
                                 <div class="course-card-footer">
-                                    @if (isset($cource->sections)&& $cource->sections->count()>0)
+                                    @if (isset($cource->lessons)&& $cource->lessons->count()>0)
                                     @php
-                                        foreach ($cource->Sections as $section ) {
+                                       
                                          /*    if (isset($cource->sections)&& $cource->sections->count()>0){ */
-                                                $countlesson= $section->lessons->count();
-                                                $countlessontime= $section->lessons->sum('duration');
+                                                $countlesson= $cource->lessons->count();
+                                                /* $countlessontime= $cource->lessons->sum('duration'); */
 
                                         /*     }
                                             $countlesson=0;
                                             $countlessontime=0; */
-                                        }
+                                        
                                     @endphp
                                     <h5> <i class="icon-feather-film"></i> {{$countlesson}} دروس </h5>
-                                    <h5> <i class="icon-feather-clock"></i> {{ $countlessontime}} دقيقة </h5>
+                                   {{--  <h5> <i class="icon-feather-clock"></i> {{ $countlessontime}} دقيقة </h5> --}}
                                     @else
                                     <h5> <i class="icon-feather-film"></i> ليس هناك فصول بعد </h5>
-                                    <h5> <i class="icon-feather-clock"></i> ليس هناك فصول بعد </h5>
+                                {{--     <h5> <i class="icon-feather-clock"></i> ليس هناك فصول بعد </h5> --}}
                                     
                                      @endif
                                 </div>
@@ -220,8 +224,8 @@
 
                 <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-3@s uk-grid" style="transform: translate3d(1.52588e-05px, 0px, 0px);">
                     @foreach ($category->cources as $cource)
-                        @foreach ($cource->sections as $section)
-                            @foreach ($section->lessons as $lesson)
+                       
+                            @foreach ($cource->lessons as $lesson)
                                 <li tabindex="-1" class="uk-active">
                                 
 
@@ -230,7 +234,7 @@
                                             <div class="course-card-thumbnail ">
 
                                                 <span class="item-tag">{{$cource->title}}</span>
-                                                <span class="duration">{{$lesson->duration}} دقيقة</span>
+                                                {{-- <span class="duration">{{$lesson->duration}} دقيقة</span> --}}
                                                 @if (!$lesson->thumbnail_image==null)
                                                     <img src="{{asset('storage/lessons/'.$lesson->title .'/'.$lesson->thumbnail_image)}}">
                                                     @else
@@ -245,7 +249,7 @@
                                     </a>
                                 </li> 
                             @endforeach
-                        @endforeach
+                       
                         
                     @endforeach
                     

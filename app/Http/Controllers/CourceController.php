@@ -31,7 +31,7 @@ class CourceController extends Controller
         $cource=Cource::with("lessons","whatinthecoures")->find($id);
   //dd( $cource);
         $user=User::with('enrolls')->find(\Auth::user()->id); 
-        $cources=Cource::take(4)->get();
+        $cources=Cource::inRandomOrder()->take(3)->get();
       /*  $is_enroll = Enroll::whereHas('enrolls',function($q){
             $q->where('user_id'==\Auth::user()->id);
 

@@ -82,6 +82,9 @@ class QuizController extends Controller
             'question' => 'required',
             'audio' => 'required',
             'cource_id' => 'required',
+            'option' => 'required',
+            'points' => 'required',
+            'image' => 'required',
         ]);
 
        $name =request('audio')->getClientOriginalName();
@@ -99,7 +102,28 @@ class QuizController extends Controller
           "cource_id"=> request('cource_id'),
           ]);
 
-          $createdquestion->save();
+     
+          $options = $request->input('option', []);
+          $pointss = $request->input('points', []);
+          $images = $request->input('image', []);
+       
+          for($i = 0; $i < count( $options); $i++){
+            $image = $request['image']; 
+  
+            $img   = ImageManagerStatic::make($images[$i])->resize(100,100)->encode('jpg');
+           
+            $name  = Str::random() .'options'. $options[$i] .'jpg';
+            Storage::disk('options')->put($name, $img);
+           $createdoption = Option::create([
+    
+             "option"=> $options[$i] ,
+             "points"=> $pointss[$i] ,
+             "image"=>$name   ,
+             "question_id"=>  $createdquestion->id,
+   
+             ]);
+         }
+
         
         
           toastr()->success('.لقد تم الاضافة  بنجاح');

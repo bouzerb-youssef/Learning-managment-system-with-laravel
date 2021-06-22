@@ -11,12 +11,13 @@
 
                 <div class="uk-width-1-2@m uk-first-column">
                    
-                        
+   
                         @if (!$cource->thumbnail==null)
                         <img src="{{$cource->imagePath}}" alt="">
                         @else
                         <img src="../assets/images/course/2.png">                       
                         @endif
+
                    
 
                 </div>
@@ -68,7 +69,7 @@
                 <ul class="uk-child-width-expand mb-0 uk-tab" uk-switcher="connect: #course-intro-tab ;animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium" uk-tab="">
                     <li class=""><a href="#" aria-expanded="false">الكورسات</a></li>
                     <li class=""><a href="#" aria-expanded="false">الوصف</a></li>
-                    <li class=""><a href="#" aria-expanded="false">الفهرس</a></li>
+                  
                     <li class=""><a href="#" aria-expanded="false">الادوات</a></li>
                     <li class=""><a href="#" aria-expanded="false">التعليقات</a></li>
                 </ul>
@@ -94,12 +95,12 @@
                                     
                                     @foreach ($cource->lessons as $lesson) 
                                     <li>
-                                        @if ($is_enroll->count())
-                                        <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->name}} </a>
-                                        @else
+{{--                                         @if ($is_enroll->count())
+ --}}                                        <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->name}} </a>
+                                      {{--   @else --}}
                                        
-                                        <a  uk-toggle="target: #modal-example"  href="#modal-example">{{$lesson->name}} </a>
-                                        @endif
+{{--                                         <a  uk-toggle="target: #modal-example"  href="#modal-example">{{$lesson->name}} </a>
+ --}}                                       {{--  @endif --}}
                                       
                                         <span> {{$lesson->duration}} دقيقة</span></li>
                                     
@@ -119,41 +120,43 @@
                     <li class="course-description-content uk-active  " style="">
 
                         <h4> الوصف </h4>
-                        <p>{!!$cource->description!!} </p>
+                        <p>{!!$cource->desc!!} </p>
 
 
                         <h4> ماذا ستتعلم من الكورس :</h4>
                         <div class="uk-child-width-1-2@s uk-grid" uk-grid="">
                             <div class="uk-first-column">
                                 <ul class="list-2">
-                                   {!!$cource->detail!!}
+                                    @if ($cource->whatinthecoures && $cource->whatinthecoures->count()>0)
+                                    @foreach ($cource->whatinthecoures as $detail)
+                                  
+                                    <li>{{$detail->detail}}</li>
+                                    @endforeach
+                                        
+                                    @endif
+                                  
                                 </ul>
                             </div>
-                   
+                         {{--    <div>
+                                <ul class="list-2">
+                                    @if ($cource->whatinthecoures && $cource->whatinthecoures->count()>0)
+                                    @foreach ($cource->whatinthecoures as $detail)
+                                    @if($element == 1)
+                                    <li>{{$detail->detail}}</li>
+                                  
+                                    @endforeach
+                                        
+                                    @endif
+                                </ul>
+                            </div> --}}
                         </div>
+                       
 
 
                         
 
                     </li>
                 
-                    <li class="course-description-content" style="">
-
-                        <h4 class="my-4">تفاصيل الفصول</h4>
-  
-                        <ul class="course-faq uk-accordion" uk-accordion="">
-                            @foreach ($cource->sections as $section)
-                            <li @if ($loop->first) class="uk-open" @endif>
-                                <a class="uk-accordion-title" href="#"> {{$section->section}} </a>
-                                <div class="uk-accordion-content" aria-hidden="true" hidden="">
-                                    <p> {{$section->description}} </p>
-                                </div>
-                            </li>
-                            @endforeach
-           
-                        </ul>
-  
-                    </li>
 
                    
          
@@ -163,19 +166,19 @@
                         <h4 class="my-4">مرفقات الفصول</h4>
   
                         <ul class="course-faq uk-accordion" uk-accordion="">
-                            @foreach ($cource->sections as $section)
+                           
                                
-                                <li @if ($loop->first) class="uk-open" @endif>
-                                    <a class="uk-accordion-title" href="#"> {{$section->section}} </a>
-                                    @foreach ($section->materials as $material)
+                                <li >
+                                   
+                                    @foreach ($cource->materials as $material)
                                     <div class="uk-accordion-content" aria-hidden="true" hidden="">
                                     
-                                        <p>{{$material->title}}<a href="{{$material->pdfPath}}"> <br><i class="uil-external-link-alt "></i> </a></p>
+                                        <p>{{$material->materialname}}<a href="{{$material->pdfPath}}"> <br><i class="uil-external-link-alt "></i> </a></p>
                                     </div>
                                     @endforeach
                                 </li>
                              
-                            @endforeach
+                         
                         </ul>
   
                     </li>
@@ -199,20 +202,23 @@
                 <div class="uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
                     @foreach ($cources as $cource)
                     <div class="uk-first-column">
-                        <a href="course-intro.html">
+                        <a href="{{route("cources.show",$cource->id)}}">
                             <div class="course-card">
                                 <div class="course-card-thumbnail ">
                                             @if (!$cource->thumbnail==null)
                                             <img src="{{$cource->imagePath}}" alt="">
                                             @else
-                                            <img src="../assets/images/course/2.png">                       
+                                            <img src="../assets/images/course/2.png" >                       
                                             @endif
                                     <span class="play-button-trigger"></span>
                                 </div>
                                 <div class="course-card-body">
                                     <div class="course-card-info">
                                         <div>
-                                            <span class="catagroy">Angular</span>
+                                            @if ($cource->category)
+                                            <span class="catagroy"> الصنف :{{$cource->category->title}}</span>
+                                            @endif
+                                         
                                         </div>
                                         <div>
                                             <i class="icon-feather-bookmark icon-small"></i>
@@ -221,19 +227,19 @@
                                     <h4>{{$cource->title}}</h4>
                                     <p>{!!$cource->short_description!!}</p>
                                     <div class="course-card-footer">
-                                        @if (isset($cource->sections)&& $cource->sections->count()>0)
+                                        @if (isset($cource->lessons)&& $cource->lessons->count()>0)
                                         @php
-                                            foreach ($cource->Sections as $section ) {
+                                            
                                            
-                                                    $countlesson= $section->lessons->count();
-                                                    $countlessontime= $section->lessons->sum('duration');
-                                            }
+                                                    $countlesson= $cource->lessons->count();
+                                                   /*  $countlessontime= $section->lessons->sum('duration'); */
+                                           
                                         @endphp
                                         <h5> <i class="icon-feather-film"></i> {{$countlesson}} دروس </h5>
-                                        <h5> <i class="icon-feather-clock"></i> {{ $countlessontime}} دقيقة </h5>
-                                        @else
+                                      {{--   <h5> <i class="icon-feather-clock"></i> {{ $countlessontime}} دقيقة </h5>
+                                        @else --}}
                                         <h5> <i class="icon-feather-film"></i> ليس هناك فصول بعد </h5>
-                                        <h5> <i class="icon-feather-clock"></i> ليس هناك فصول بعد </h5>
+                                        
                                         
                                          @endif
                                     </div>
@@ -269,7 +275,7 @@
     </div> 
 </div>
  
-   
+
 
 
 

@@ -25,7 +25,7 @@
     ================================================== -->
     <link rel="stylesheet" href="{{ asset('assets/css/icons.css') }}">
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-    <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet"> --}}
+    <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet"> 
 {{--     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
  --}}   {{--  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/demo.css" /> --}}
 
@@ -42,13 +42,123 @@
 
     
 
+    <div id="wrapper">
 
+        <div class="course-layouts course-sidebar-collapse">
+
+            <div class="course-content bg-dark">
+
+                <div class="course-header">
+                    
+                    <a href="#" class="btn-back" uk-toggle="target: .course-layouts; cls: course-sidebar-collapse">
+                        <i class="icon-feather-chevron-left"></i>
+                    </a>
+
+                    <h4 class="text-white"> Build Responsive Websites </h4>
+
+                    <div>
+                        <a href="#" aria-expanded="false">
+                            <i class="icon-feather-help-circle btns"></i> </a>
+                        <div uk-drop="pos: bottom-right;mode : click" class="uk-drop">
+                            <div class="uk-card-default p-4">
+                                <h4> Elementum tellus id mauris faucibuss soluta nobis </h4>
+                                <p class="mt-2 mb-0">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                                    diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+                                    volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+                                    suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum
+                                    soluta nobis eleifend option congue nihil imperdiet</p>
+                            </div>
+                        </div>
+
+                        <a hred="#" aria-expanded="false" class="">
+                            <i class="icon-feather-more-vertical btns"></i>
+                        </a>
+                        <div class="dropdown-option-nav uk-dropdown uk-dropdown-bottom-left" uk-dropdown="pos: bottom-right ;mode : click" style="left: 105.516px; top: 47px;">
+                            <ul>
+
+                                <li><a href="#">
+                                        <i class="icon-feather-bookmark"></i>
+                                        Add To Bookmarks</a></li>
+                                <li><a href="#">
+                                        <i class="icon-feather-share-2"></i>
+                                        Share With Friend </a></li>
+
+                                <li>
+                                    <a href="#" id="night-mode" class="btn-night-mode">
+                                        <i class="icon-line-awesome-lightbulb-o"></i> Night mode
+                                        <label class="btn-night-mode-switch">
+                                            <div class="uk-switch-button"></div>
+                                        </label>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div {{--  class="course-content-inner" --}}  >
+                    @livewire('episode', ['lesson' => $lesson])
+                </div>
+
+            </div>
+
+            <!-- course sidebar -->
+
+            <div class="course-sidebar">
+                <div class="course-sidebar-title">
+                    <h3> قائمة الدروس</h3>
+                </div>
+                <div class="course-sidebar-container" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="left: 0px; bottom: 0px;"><div class="simplebar-content" style="padding: 0px; height: 100%; overflow: hidden;">
+
+                    <ul   class="course-video-list highlight-watched">
+                        @php
+                          $authid=\Auth::user()->id;
+                       @endphp 
+  
+                          @foreach ($cource->lessons as $lesson) 
+                              <li  
+                                  @foreach ($lesson->users as $user)
+                                
+                                      @if( $user->pivot->lesson_id==$lesson->id   &&  $user->pivot->user_id==$authid    )
+                                       class="watched" 
+                                      
+                                          
+                                      @else
+                                      class=""   
+                                      @endif
+
+                                  @endforeach 
+                                  > 
+                                 
+                                 
+                                  <a href="{{route("cources.lessons.vedio",$lesson->id)}}"  @if ($loop->last) class="uk-open" @endif aria-expanded="false">{{$lesson->name}} {{--  <span> {{$lesson->duration}} دقيقة </span> --}} </a> 
+                              </li>
+                             
+  
+                                     
+                             
+                          @endforeach 
+                         
+                      </ul>
+
+                </div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 868px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 25px; transform: translate3d(-25px, 0px, 0px); visibility: hidden;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 522px; transform: translate3d(0px, 0px, 0px); visibility: hidden;"></div></div></div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
  
- @livewire('episodedetails', [
+{{--  @livewire('episodedetails', [
     'cource' => $cource, 
     'lesson'=>$lesson,
  
-])
+]) --}}
     
 
 

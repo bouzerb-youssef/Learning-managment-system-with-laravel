@@ -17,7 +17,7 @@ class DashboardFrontController extends Controller
    
     public function index(){
 
-        $cources=Cource::take(4)->get();
+        $cources=Cource::inRandomOrder()->take(4)->get();
         $content=Content::find(1);
       //  $categories = Category::with("cources")->get();
        // dd($content);

@@ -1,15 +1,16 @@
 <div>
-    <div id="wrapper">
+
+ 
 
         <div class="course-layouts">
     
-            <div class="course-content bg-dark" >
+            <div  class="course-content bg-dark" >
     
               
 
-                   
+               
                    @livewire('episode', ['lesson' => $lesson])
-
+               
                 
     
             </div>
@@ -23,7 +24,7 @@
     
                  
                             <!-- course-video-list -->
-                            <ul  class="course-video-list highlight-watched">
+                            <ul   class="course-video-list highlight-watched">
                               @php
                                 $authid=\Auth::user()->id;
                              @endphp 
@@ -44,7 +45,7 @@
                                         > 
                                        
                                        
-                                        <a href="{{route("cources.lessons.vedio",$lesson->id)}}"  @if ($loop->last) class="uk-open" @endif aria-expanded="false">{{$lesson->title}}  <span> {{$lesson->duration}} دقيقة </span> </a> 
+                                        <a href="{{route("cources.lessons.vedio",$lesson->id)}}"  @if ($loop->last) class="uk-open" @endif aria-expanded="false">{{$lesson->name}}  <span> {{$lesson->duration}} دقيقة </span> </a> 
                                     </li>
                                    
         

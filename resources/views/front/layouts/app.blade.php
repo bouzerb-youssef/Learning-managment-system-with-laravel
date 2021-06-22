@@ -33,7 +33,7 @@
 
     @livewireStyles
   @yield('styles')
-  @stack('styles')
+
 </head>
 
 <body>

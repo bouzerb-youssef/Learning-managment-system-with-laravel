@@ -1508,10 +1508,10 @@ fieldset {
 }
 /* arrow indicator */
 .admin-panel .dropdown-user-details::before {
-  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+/*   transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-family: "Feather-Icons";
   content: "\e92e"; 
-  right:0;position:absolute;
+  right:0;position:absolute; */
 }
 .admin-panel .dropdown-user-details.uk-open::before {
   transform: rotate(180deg);
