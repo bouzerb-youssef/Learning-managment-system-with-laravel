@@ -9,6 +9,7 @@ use App\Models\Lesson;
 use App\Models\User;
 use App\Models\Enroll;
 use App\Models\content;
+use App\Models\Teacher;
 class DashboardFrontController extends Controller
 {
 
@@ -45,15 +46,16 @@ class DashboardFrontController extends Controller
       
     // dd($enrolles);
 
-      $users =User::take(5)->get();
-
-      $cources =Cource::all();
-
+      $lastusers =User::where('role', 0)->latest()->take(4)->get();
+      $users =User::where('role', 0)->get();
+      $teachers=Teacher::get();
+      $cources =Cource::latest()->take(4)->get();
+//dd( $lastusers);
       $courcecount=$cources->count();
 
       //dd(  $enrolles);
 
-      return view('admin.dashboard',compact('cources',"courcecount","users"));
+      return view('admin.dashboard',compact('cources',"courcecount","lastusers","users","teachers"));
     
   }
     

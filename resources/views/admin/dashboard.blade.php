@@ -64,6 +64,27 @@
                                  </div>
                                </div>
                            </li>
+                           <li tabindex="-1">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="uk-flex-middle uk-grid" uk-grid="">
+                                        <div class="uk-width-auto uk-first-column">
+                                            <h5 class="mb-2"> مجموع الاساتذة </h5>
+                                            <h1> {{$teachers->count()}} </h1>
+                                            
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <img  width="197" height="192" src="../assets/images/demos/admin1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer d-flex justify-content-between py-2">
+                                    <p class="mb-0">عدد الاساتذة:{{$teachers->count()}}</p>
+                              </div>
+                            </div>
+                        </li>
                        </ul>
 
 
@@ -144,14 +165,14 @@
 
                        <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s pb-3 uk-grid" style="transform: translate3d(-3.05176e-05px, 0px, 0px);">
 
-                        @foreach ($cources as $cource)
+                        @foreach ($teachers as $teacher)
                             <li tabindex="-1" >
                                 <div class="card">
 
                                         <div class="card-body text-center">
                                             <div class="avatar-parent-child">
-                                                @if (!$cource->thumbnail==null)
-                                                <img  alt="Image placeholder" src="{{$cource->imagePath}}" alt="" class="avatar  rounded-circle avatar-lg">
+                                                @if (!$teacher->photo==null)
+                                                <img  alt="Image placeholder" src="{{$teacher->imagePath}}" alt="" class="avatar  rounded-circle avatar-lg">
                                                 @else
                                                 <img alt="Image placeholder" src="../assets/images/avatars/avatar-2.jpg" class="avatar  rounded-circle avatar-lg">
 
@@ -159,20 +180,20 @@
                                                
                                                 <span class="avatar-child avatar-badge bg-success"></span>
                                             </div>
-                                            <h5 class="h6 mt-4 mb-0"> {{$cource->title}} </h5>
+                                            <h5 class="h6 mt-4 mb-0"> {{$teacher->name}} </h5>
                 
                                             <div class="d-flex justify-content-between px-4">
-                                                <a href="{{route('admin.editcource',$cource->id)}}" class="btn btn-icon btn-hover btn-circle" uk-tooltip="تعديل" title="" aria-expanded="false">
+                                                <a href="{{-- {{route('admin.editcource',$cource->id)}} --}}" class="btn btn-icon btn-hover btn-circle" uk-tooltip="تعديل" title="" aria-expanded="false">
                                                     <i class="uil-edit-alt"></i> </a>
                                              
-                                                <a href="{{route('admin.remove',$cource->id)}}"  class="button delete-confirm" class="btn btn-icon btn-hover btn-circle" uk-tooltip="مسح" title="" aria-expanded="false">
+                                                <a href="{{-- {{route('admin.remove',$cource->id)}} --}}"  class="button delete-confirm" class="btn btn-icon btn-hover btn-circle" uk-tooltip="مسح" title="" aria-expanded="false">
                                                     <i class="uil-trash-alt"></i> </a>
                                             </div>
                                         </div>
                                         <div class="card-footer text-center py-2">
                 
-                                            <a href="#" class="text-muted uk-text-small">{{$cource->enrolls->count()}} مسجل و مسجلة </a>
-                
+                                           {{--  <a href="#" class="text-muted uk-text-small">{{$cource->enrolls->count()}} مسجل و مسجلة </a>
+                 --}}
                                         </div>
                 
                                     </div>
@@ -205,9 +226,9 @@
 
 
                    <div class="p-3">
-                <br><br>
+               
                        <h5> اخر المسجلين</h5>
-                         @foreach ($users as $user)
+                         @foreach ($lastusers as $user)
     
 
                        <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
@@ -220,18 +241,12 @@
                            </div>
                        </div>
 
-                         @endforeach
-
-                     
-                         <br><br>
-                        
+                         @endforeach 
                        <a href="/admin/student">
                            <p class="uk-heading-line uk-text-center mt-2 uk-text-small"><span> رؤية المزيد
                                </span>
                            </p>
                        </a>
-
-
                        <h5> أخر الكورسات</h5>
                        @foreach ($cources as $cource) 
                        <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
@@ -248,10 +263,6 @@
 
                         </div>
                         @endforeach 
-                 
-
-
-                        <br><br>
                        <a href="#">
                            <p class="uk-heading-line uk-text-center mt-2 uk-text-small"><span>رؤية المزيد
                                </span>
@@ -265,7 +276,7 @@
            </div>
        </div>
 
-
+    </div>
 
 
 
@@ -273,8 +284,8 @@
 
 
    </div>
+</div>  </div>
 
-</div>
 @endsection
 @section('scripts')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
