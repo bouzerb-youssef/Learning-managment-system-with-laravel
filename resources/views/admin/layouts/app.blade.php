@@ -58,6 +58,7 @@
         @include('admin.inc.sidebar')
         @include('admin.inc.header')
         @yield('content')
+       <br><br><br><br><br>
         @include('admin.inc.footer')
         
 

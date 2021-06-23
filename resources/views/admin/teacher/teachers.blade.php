@@ -18,8 +18,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#">التلاميذ </a></li>
-                    <li>لائحة التلاميذ</li>
+                    <li><a href="#">الأساثذة </a></li>
+                    <li>لائحة الأساثذة</li>
                 </ul>
             </nav>
         </div>
@@ -27,11 +27,11 @@
 
 
         <div class="d-flex justify-content-between mb-3">
-            <h3>عدد التلاميذ: {{$students->count()}} </h3>
+            <h3>عدد الأساثذة: {{$teachers->count()}} </h3>
     
             <div>
-                <a href="{{route('admin.addstudent')}}" class="btn btn-default">
-                    <i class="uil-plus"> </i> اضافة تلميذ جديد
+                <a href="{{route('admin.addteacher')}}" class="btn btn-default">
+                    <i class="uil-plus"> </i> اضافة استاذ جديد
                 </a>
             </div>
         </div>
@@ -39,15 +39,15 @@
             <!-- Card header -->
             <div class="card-header actions-toolbar border-0">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="d-inline-block mb-0">التلاميذ</h4>
+                    <h4 class="d-inline-block mb-0">الأساثذة</h4>
                     <div class="d-flex">
                        
                         <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="Search product" title="" aria-expanded="false">
                             <i class="uil-search"></i>
                         </a>
                         <div class="uk-drop" uk-drop="mode: click; pos: right-center; offset: 0">
-                            <form class="uk-search uk-search-navbar uk-width-1-1" action='{{route("search.student")}}'>
-                                <input class="uk-search-input shadow-0 uk-form-small"  name='searchstudent' type="search" placeholder="البحث..." autofocus="">
+                            <form class="uk-search uk-search-navbar uk-width-1-1" {{-- action='{{route("search.teacher")}}' --}}>
+                                <input class="uk-search-input shadow-0 uk-form-small"  name='searchteacher' type="search" placeholder="البحث..." autofocus="">
                             </form>
                         </div>
 
@@ -63,16 +63,7 @@
                         </div>
 
 
-                        <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="More" title="" aria-expanded="false">
-                            <i class="uil-ellipsis-h"></i>
-                        </a>
-                        <div uk-dropdown="pos: bottom-right ; mode: click ;animation: uk-animation-scale-up" class="uk-dropdown">
-                            <ul class="uk-nav uk-dropdown-nav">
-                                <li><a href="#"> Refresh </a></li>
-                                <li><a href="#">Manage</a></li>
-                                <li><a href="#">Setting</a></li>
-                            </ul>
-                        </div>
+                   
 
 
                     </div>
@@ -93,16 +84,16 @@
                         </tr>
                     </thead>
                     <tbody class="list">
-                    @if(isset($students ) && $students->count()>0 )
-                    @foreach ($students as $student)
+                    @if(isset($teachers ) && $teachers->count()>0 )
+                    @foreach ($teachers as $teacher)
                         <tr>
                             <th scope="row">
                                 <div class="media align-items-center">
                                     <div>
                                         <div class="avatar-parent-child" style="width: max-content">
                                           
-                                            @if (!$student->photo==null)
-                                            <img src="{{$student->imagePath}}" alt="" class="avatar  rounded-circle">
+                                            @if (!$teacher->photo==null)
+                                            <img src="{{$teacher->imagePath}}" alt="" class="avatar  rounded-circle">
                                             @else
                                             <img alt="Image placeholder" src="../assets/images/avatars/avatar-2.jpg" class="avatar  rounded-circle">
                                             @endif
@@ -110,31 +101,31 @@
                                         </div>
                                     </div>
                                     <div class="media-body mr-4">
-                                        <a href="{{route("admin.showstudent",$student->id)}}" class="name h6 mb-0 text-sm">{{$student->name}}</a>
+                                        <a href="{{route("admin.showteacher",$teacher->id)}}" class="name h6 mb-0 text-sm">{{$teacher->name}}</a>
                                       
                                     </div>
                                 </div>
                             </th>
-                            <td>{{$student->phone}}</td>
-                            <td> {{$student->sex}} </td>
-                            <td> {{$student->cin}} </td>
-                            <td>{{$student->group->title}}</td>
-                            @if(isset($student->group ) && $student->group->count()>0 ) 
-                            <td>{{$student->group->formation->title}} </td>  
+                            <td>{{$teacher->phone}}</td>
+                            <td> {{$teacher->sex}} </td>
+                            <td> {{$teacher->cin}} </td>
+                            <td>{{$teacher->group->title}}</td>
+                            @if(isset($teacher->group ) && $teacher->group->count()>0 ) 
+                            <td>{{$teacher->group->formation->title}} </td>  
                             @else
                             <td>لا يوجد </td>  
                             @endif 
                         
                             <td class="text-right">
                                 <!-- Actions -->
-                                        <a href=" {{route("admin.student.remove",$student->id)}} " class="btn btn-icon btn-hover btn-lg btn-circle delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح التلميد" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.teacher.remove",$teacher->id)}} " class="btn btn-icon btn-hover btn-lg btn-circle delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح التلميد" title="" aria-expanded="false">
                                             <i class="uil-trash-alt text-danger" ></i> 
                                         </a>
                     
-                                        <a href=" {{route("admin.editstudent",$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل المعلومات" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.editteacher",$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل المعلومات" title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>    
-                                        <a href="{{route('admin.studentAttachments',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
+                                        <a href="{{route('admin.teacherAttachments',$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
                                                 <i class="icon-material-outline-attach-file"></i> 
                                         </a> 
                             </td>

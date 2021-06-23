@@ -1,24 +1,62 @@
-<br><br><br><br><br>
 <div class="footer">
-            <div class="container">
-                @php
-                    use App\Models\footercontent;
-                    $footercontent =footercontent::find(1);
-                @endphp
-                <div class="uk-grid-collapse uk-grid" uk-grid="">
-                    <div class="uk-width-expand@s uk-first-column">
-                        <p>© 2021<strong> {{$footercontent->title}}</strong> {{$footercontent->description}}</p>
-                    </div>
-                    <div class="uk-width-auto@s">
-                        <nav class="footer-nav-icon">
-                            <ul>
-                                <li><a href="{{$footercontent->facebook}}"><i class="icon-brand-facebook"> </i></a></li>
-                                <li><a href="{{$footercontent->instagram}}"><i class="icon-brand-instagram"></i></a></li>
-                                <li><a href="{{$footercontent->youtube}}"><i class="icon-brand-youtube"></i></a></li>
-                                <li><a href="{{$footercontent->twitter}}"><i class="icon-brand-twitter"></i></a></li>
-                            </ul>
-                        </nav>
-                    </div>
+    <div class="container">
+        <div uk-grid>
+            <div class="uk-width-1-3@m">
+                <a href="home.html" class="uk-logo">
+                    <!-- logo icon -->
+                    <i class="uil-graduation-hat"> </i>
+                    Courseplus
+                </a>
+                <p class="footer-description"> Launch your site in style with Courseplus, Create rich layouts A
+                    unique and beautiful collection of UI elements that are all flexible and modular.</p>
+            </div>
+            <div class="uk-width-expand@s uk-width-1-2">
+                <div class="footer-links pl-lg-8">
+                    <h5>Explore </h5>
+                    <ul>
+                        <li><a href="course-card.html"> Courses </a></li>
+                        <li><a href="course-path.html"> Track </a></li>
+                        <li><a href="blog-card.html"> Blog </a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="uk-width-expand@s uk-width-1-2">
+                <div class="footer-links pl-lg-8">
+                    <h5> Account </h5>
+                    <ul>
+                        <li><a href="profile-1.html"> Profile </a></li>
+                        <li><a href="#"> Settings </a></li>
+                        <li><a href="#"> Projects </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uk-width-expand@s uk-width-1-2">
+                <div class="footer-links pl-lg-8">
+                    <h5> Resources</h5>
+                    <ul>
+                        <li><a href="#"> Contact </a></li>
+                        <li><a href="page-Privacy.html"> Privacy Policy </a></li>
+                        <li><a href="page-term.html"> Terms of Use </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="uk-grid-collapse uk-grid" uk-grid="">
+            <div class="uk-width-expand@s uk-first-column">
+                <p {{-- style='padding-right:20px;' --}} > © 2021 <strong {{-- style='padding-left:20px;' --}}>    امال سونتر</strong >جميع الحقوق محفوضة.</p>
+            </div>
+            <div class="uk-width-auto@s">
+                <nav class="footer-nav-icon">
+                    <ul>
+                        <li><a href="#"><i class="icon-brand-facebook"> </i></a></li>
+                        <li><a href="#"><i class="icon-brand-instagram"></i></a></li>
+                        <li><a href="#"><i class="icon-brand-youtube"></i></a></li>
+                        <li><a href="#"><i class="icon-brand-twitter"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
 </div>
+

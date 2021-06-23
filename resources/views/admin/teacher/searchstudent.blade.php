@@ -51,7 +51,7 @@
                             </form>
                         </div>
 
-                        <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="filter" title="" aria-expanded="false">
+                    {{--     <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="filter" title="" aria-expanded="false">
                             <i class="uil-filter"></i>
                         </a>
                         <div uk-dropdown="pos: bottom-right ; mode: click ;animation: uk-animation-scale-up" class="uk-dropdown">
@@ -60,19 +60,10 @@
                                 <li><a href="#">From A-Z</a></li>
                                 <li><a href="#">From Z-A</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
 
 
-                        <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="More" title="" aria-expanded="false">
-                            <i class="uil-ellipsis-h"></i>
-                        </a>
-                        <div uk-dropdown="pos: bottom-right ; mode: click ;animation: uk-animation-scale-up" class="uk-dropdown">
-                            <ul class="uk-nav uk-dropdown-nav">
-                                <li><a href="#"> Refresh </a></li>
-                                <li><a href="#">Manage</a></li>
-                                <li><a href="#">Setting</a></li>
-                            </ul>
-                        </div>
+                   
 
 
                     </div>

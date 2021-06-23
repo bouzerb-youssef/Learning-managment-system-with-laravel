@@ -48,14 +48,18 @@
                                                       
                                                         <div class="uk-grid-margin uk-first-column" wire:ignore>
                                                             <h5 class="uk-text-bold mb-2"> اختر صنف </h5>
-                                                            <select   name='category_id' wire:model.lazy="category_id"  class="uk-select" multiple>
+                                                      
+                                                            <select wire:model.lazy="category_id" class="uk-select">    
+                                                                <option value="">--اختر صنف--</option>
                                                                 @if (isset($categories) && $categories->count()>0)
                                                                 @foreach ($categories as $category)
                                                                 <option value="{{$category->id}}" >{{$category->id}}::{{$category->title}}</option>
-                        
+                            
                                                                 @endforeach
                                                                 @endif
                                                             </select>
+                                                            
+                    
                                                             @error('category_id')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                         </div>
@@ -107,14 +111,14 @@
                                                                                 <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
                                                                                     <div class="uk-first-column">
                                                                                         <h5 class="uk-text-bold mb-2">اسم المرفق</h5>
-                                                                                        <input type="text"  class="uk-input"   wire:model.lazy="materialname.0" placeholder="الاسم الكامل">
+                                                                                        <input type="text"  class="uk-input"   wire:model="materialname.0" placeholder="الاسم الكامل">
                                                                                         @error('materialname.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                     </div>
                                                                                     <div class="uk-grid-margin uk-first-column">
                                                                                         <h5 class="uk-text-bold mb-2">المرفق </h5>
                                                                                        
-                                                                                                <input type='file' style='height:58px;border:0px;'  class="inputfile" wire:model.lazy="material.0"> 
+                                                                                                <input type='file' style='height:58px;border:0px;'  class="inputfile" wire:model="material.0"> 
                                                                                                 @error('material.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                     </div>

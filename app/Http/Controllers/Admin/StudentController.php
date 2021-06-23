@@ -183,5 +183,14 @@ class StudentController extends Controller
             
         
         }
+        public function searchstudent(){
+            $search_text = $_GET['searchstudent'];
+            $students = User::where('name','like','%'. $search_text.'%')->with('group')->where("role","0")->get();
+            return view('admin.student.searchstudent',compact('students'));
+
+
+
+
+        }
 
 }

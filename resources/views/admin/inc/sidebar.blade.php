@@ -24,7 +24,7 @@
                         </ul>
                     </li> 
                     <li><a href="{{route("admin.index")}}"><i class="uil-youtube-alt"></i> <span> {{trans('sidebar.cources')}}</span></a> </li>
-                    <li><a href="{{route("admin.student")}}"><i class="uil-users-alt"></i> <span> {{trans('sidebar.students')}}</span></a> </li>
+                    <li><a href="{{route("admin.teacher")}}"><i class="uil-users-alt"></i> <span> الأساثذة</span></a> </li>                    
                     <li><a href="{{route("admin.students")}}"><i class="uil-youtube-alt"></i> <span> {{trans('sidebar.student')}}</span></a> </li>
 
 {{--                     <li><a href="{{route("admin.question.add")}}"><i class="uil-users-alt"></i> <span> {{trans('sidebar.quizs')}}</span></a> </li>

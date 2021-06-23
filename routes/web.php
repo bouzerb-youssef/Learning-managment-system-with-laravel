@@ -151,10 +151,15 @@ Route::group(
                 Route::get('/books/remove/{id}', [App\Http\Controllers\Admin\BookController::class, 'remove'])->name('admin.book.remove');
         
                 /* students */
-                Route::get('/student', [App\Http\Controllers\Admin\StudentController::class, 'index'])->name('admin.student');
+          /*       Route::get('/student', [App\Http\Controllers\Admin\StudentController::class, 'index'])->name('admin.student');
                 Route::get('/addstudent', [App\Http\Controllers\Admin\StudentController::class, 'addstudent'])->name('admin.addstudent');
         
                 Route::get('/showstudent/{id}', [App\Http\Controllers\Admin\StudentController::class, 'showstudent'])->name('admin.showstudent');
+
+            */
+               
+     
+
                 /* quiz admin */
                 /* question */
                // Route::post('/cources/addquestion', [App\Http\Controllers\Admin\QuetionController::class, 'addquestion'])->name('admin.addquestion');
@@ -245,7 +250,7 @@ Route::group(
                 Route::post('/updatestudentgroup/update/{id}', [App\Http\Controllers\Admin\StudentgroupController::class, 'updatestudentgroup'])->name('admin.studentgroup.update');
                 Route::get('/studentgroup/remove/{id}', [App\Http\Controllers\Admin\StudentgroupController::class, 'removestudentgroup'])->name('admin.studentgroup.remove');
 
-                /* student  */
+ /* student  */
                 Route::get('/students', [App\Http\Controllers\Admin\studentController::class, 'students'])->name('admin.students');
 
                 Route::get('/addstudent', [App\Http\Controllers\Admin\StudentController::class, 'addstudent'])->name('admin.addstudent');
@@ -255,6 +260,18 @@ Route::group(
 
                 Route::post('/updatestudent/update/{id}', [App\Http\Controllers\Admin\StudentController::class, 'updatestudent'])->name('admin.student.update');
                 Route::get('/student/remove/{id}', [App\Http\Controllers\Admin\StudentController::class, 'removestudent'])->name('admin.student.remove');
+                Route::get('/searchstudent', [App\Http\Controllers\Admin\StudentController::class, 'searchstudent'])->name('search.student');
+
+/* teacher  */
+                 Route::get('/teachers', [App\Http\Controllers\Admin\TeacherController::class, 'teachers'])->name('admin.teacher');
+
+                 Route::get('/addteacher', [App\Http\Controllers\Admin\TeacherController::class, 'addteacher'])->name('admin.addteacher');
+                 Route::post('/addteacher/store', [App\Http\Controllers\Admin\TeacherController::class, 'storeteacher'])->name('admin.teacher.store');
+                 Route::get('/editteacher/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'editteacher'])->name('admin.editteacher');
+                 Route::get('/showteacher/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'showteacher'])->name('admin.showteacher');
+ 
+                 Route::post('/updateteacher/update/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'updateteacher'])->name('admin.teacher.update');
+                 Route::get('/teacher/remove/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'removeteacher'])->name('admin.teacher.remove');
 
                 /* studentattachment  */
                 Route::get('/studentattachments/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'studentAttachments'])->name('admin.studentAttachments');

@@ -114,7 +114,14 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
  
     public function remove2($k)
     {
-        unset($this->inputs2[$k]);
+
+      //  $materials = $this->material[$k];
+        unset(  $this->materialnames[$k]);
+        unset(  $this->material[$k]);
+
+        array_splice($this->inputs2,$k,1);
+
+        //unset($this->inputs2[$k]);
     }
 
     public function add1($j)
@@ -126,7 +133,9 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
  
     public function remove1($j)
     {
-        unset($this->inputs1[$j]);
+        unset(  $this->vedio[$j]);
+        unset(  $this->names[$j]);
+        array_splice($this->inputs1,$j,1);
     }
 
 
@@ -146,7 +155,9 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
  
     public function remove($i)
     {
-        unset($this->inputs[$i]);
+        unset(  $this->detail[$i]);
+        array_splice($this->inputs,$i,1);
+        //unseat($this->inputs[$i]);
     }
     public function  mount($categories){
 
@@ -160,10 +171,10 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
 
  public function store()
      {
-       $materials = $this->material;
-       $this->detail;
-        dd( $this->detail);
-       
+/*         $materialnames = $this->materialname; 
+   
+        $materials = $this->material;
+   dd(  $materials); */    
     DB::beginTransaction();
      try { 
         $rules = collect($this->validationRules)->collapse()->toArray();
@@ -186,19 +197,19 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
         $names = $this->name; 
         $vedios = $this->vedio;
  
-        for($lesson = 0; $lesson < count( $names); $lesson++){
-            if($vedios[$lesson]&&  $names[$lesson] ){
-            $vedioname=$vedios[$lesson]->getClientOriginalName();
+       
+            foreach($vedios as $key=>$vedio){ 
+            $vedioname=$vedio->getClientOriginalName();
            // Storage::disk('lessons-temp')->put(   $vedios[$lesson]);
-           $path = $vedios[$lesson]->store('public/lessons-temp');
+           $path = $vedio->store('public/lessons-temp');
             $this->lesson= Lesson::create([
-                'name' =>$names[$lesson],
+                'name' =>$names[$key],
                 // 'duration' => $this->duration,
                 'video' => explode('/lessons-temp', $path)[1],
                 'cource_id' => $createdCource->id,
         
             ]);
-        }
+       
           CreateThumbnailFromVideo::dispatch($this->lesson);
           ConvertForStreaming::dispatch($this->lesson);
 
@@ -208,24 +219,20 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
     $materials = $this->material;
    
     
-     for($mati = 0; $mati < count( $materials); $mati++){
-         if($materials[$mati]&&  $materialnames[$mati] ){
-             
-        $name =$materials[$mati]->getClientOriginalName();
-        $materialpath=$materials[$mati];
-        $storematerial=Storage::disk('materials')->put( $name,  $materialpath);
-            Material::create([
-                    'materialname' =>$materialnames[$mati],
-                    'material' => $name,
-                    'cource_id' => $createdCource->id,
-                ]);
+     //for($mati = 0; $mati < count( $materials); $mati++){
+         foreach($materials as $key=>$material){
+            $name =$material->getClientOriginalName();
+            $materialpath=$material;
+            $storematerial=Storage::disk('materials')->put( $name,  $materialpath);
+                Material::create([
+                        'materialname' =>$materialnames[$key],
+                        'material' => $name,
+                        'cource_id' => $createdCource->id,
+                    ]);
+    
 
          }
-       
-      
-   
 
- }
  
    foreach ($this->detail as $key => $value) {
     whatinthecoure::create([
@@ -243,20 +250,20 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
         Storage::disk("cources")->delete($this->thumbnail->getClientOriginalName());
 /* delete vedio lesson */
         $vedios = $this->vedio;
-        for($lesson =0; $lesson < count( $vedios); $lesson++){
+        foreach($vedios as $key=>$vedio){
            
     //File::deleteDirectory(storage_path('app/public/lessons-temp/'.$vedios[$lesson]->getClientOriginalName()));
-        $path =$vedios[$lesson]->store('public/lessons-temp');
+        $path =$vedio->store('public/lessons-temp');
          Storage::disk("lessons-temp")->delete(explode('/lessons-temp', $path)[1]);
         } 
     
 /*delet material  */
         $materials = $this->material;
-        for($mati = 0; $mati < count( $materials); $mati++){
-            if($materials[$mati] ){
-            $name =$materials[$mati]->getClientOriginalName();
+        foreach($materials as $key=>$material){
+         
+            $name =$material->getClientOriginalName();
                 File::deleteDirectory(storage_path('app/public/materials/'.$name));
-        }  }
+         }
         /* roollback */
 
        DB::rollback();
