@@ -8,8 +8,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> الأساتذة </a></li>
-                    <li> اضافة الأساتذة</li>
+                    <li><a href="#"> Setting </a></li>
+                    <li>Account Setting</li>
                 </ul>
             </nav>
         </div>
@@ -30,14 +30,14 @@
 
                 <div class="card rounded">
                     <div class="p-3">
-                        <h5 class="mb-0"> تسجيل الأستاذ</h5>
+                        <h5 class="mb-0">  تعديل معلومات الاستاذ</h5>
                     </div>
                     <hr class="m-0">
-                    <form  action="{{route("admin.teacher.store")}}" method="POST" enctype="multipart/form-data" class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
+                    <form  action="{{route("admin.teacher.update",$teacher->id)}}" method="POST" enctype="multipart/form-data" class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
                                     {{ csrf_field() }}
                                     <div class="uk-first-column">
                                         <h5 class="uk-text-bold mb-2"> الاسم الكامل</h5>
-                                        <input type="text" class="uk-input" name="name" placeholder="الاسم الكامل">
+                                        <input type="text" class="uk-input" name="name" value="{{$teacher->name}}" placeholder="الاسم الكامل">
                                     </div> 
                                   
                                 <div class="uk-grid-margin uk-first-column">
@@ -52,7 +52,7 @@
                               
                                 <div class="uk-grid-margin">
                                     <h5 class="uk-text-bold mb-2"> رقم الهاتف </h5>
-                                    <input type="text" class="uk-input"  name="phone" placeholder="رقم الهاتف">
+                                    <input type="text" class="uk-input" value="{{$teacher->phone}}" name="phone" placeholder="رقم الهاتف">
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2">الصورة الشخصية</h5>
@@ -90,11 +90,11 @@
                                
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> العنوان</h5>
-                                    <textarea  name="address" placeholder="العنوان" {{-- class="mytextarea"  --}} class="form-control"></textarea>
+                                    <textarea  name="address" placeholder="العنوان" {{-- class="mytextarea"  --}} class="form-control">{{$teacher->address}}</textarea>
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> الملاحضات</h5>
-                                    <textarea  name="nots" {{-- class="mytextarea" --}}  placeholder="الملاحضات"   class="form-control"></textarea>
+                                    <textarea  name="nots"  {{-- class="mytextarea" --}}  placeholder="الملاحضات"   class="form-control">{{$teacher->nots}}</textarea>
                                 </div>
                              
                               

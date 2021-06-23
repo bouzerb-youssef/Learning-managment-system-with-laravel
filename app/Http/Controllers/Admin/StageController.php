@@ -13,10 +13,10 @@ class StageController extends Controller
         //dd($users);
             return view('admin.stages.stages',compact("stages"));
         }
-    public function addstage(){
-    $users = User::all();
-    //dd($users);
-        return view('admin.stages.addstage',compact('users'));
+    public function addstage($id){
+    $student = User::findorfail($id);
+    
+        return view('admin.stages.addstage',compact('student'));
     }
     public function storestage(Request $request){
         $request->validate([
@@ -79,7 +79,7 @@ class StageController extends Controller
             "genre"=> request('genre'),
            ]);
 
-       return redirect()->route('admin.stages')->with('message','لقد قمت التعديل بنجاح');
+       return redirect()->route('admin.students')->with('message','لقد قمت التعديل بنجاح');
       
    }
    public function showstage($id){

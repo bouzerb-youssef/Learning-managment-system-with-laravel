@@ -33,7 +33,7 @@
                 <div class="card rounded">
                     <div class="p-3">
                         <h5 class="mb-0"> اضافة فصل</h5>
-                    </div>
+                    </div>hg
                     <hr class="m-0">
                      <form  action="{{route("admin.section.store")}}" method="POST"  >
                                     {{ csrf_field() }}

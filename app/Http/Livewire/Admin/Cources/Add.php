@@ -116,7 +116,7 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
     {
 
       //  $materials = $this->material[$k];
-        unset(  $this->materialnames[$k]);
+        unset(  $this->materialname[$k]);
         unset(  $this->material[$k]);
 
         array_splice($this->inputs2,$k,1);
@@ -134,7 +134,7 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
     public function remove1($j)
     {
         unset(  $this->vedio[$j]);
-        unset(  $this->names[$j]);
+        unset(  $this->name[$j]);
         array_splice($this->inputs1,$j,1);
     }
 

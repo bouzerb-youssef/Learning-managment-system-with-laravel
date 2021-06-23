@@ -19,7 +19,7 @@ class CreateTeachersTable extends Migration
             $table->string('name')->nullable();
 
             $table->string('phone')->nullable();
-            
+
             $table->string('sex')->nullable();
 
             $table->string('address')->nullable();
@@ -31,6 +31,7 @@ class CreateTeachersTable extends Migration
             $table->unsignedInteger('center_id')->nullable();
 
             $table->unsignedInteger('group_id')->nullable();
+            $table->timestamps();
 
         });
     }

@@ -185,8 +185,8 @@ Route::group(
         
                 Route::get('/stages', [App\Http\Controllers\Admin\StageController::class, 'stages'])->name('admin.stages');
         
-                Route::get('/addstage', [App\Http\Controllers\Admin\StageController::class, 'addstage'])->name('admin.addstage');
-                Route::post('/addstage/store', [App\Http\Controllers\Admin\StageController::class, 'storestage'])->name('admin.addstage.store');
+                Route::get('/addstage/{id}', [App\Http\Controllers\Admin\StageController::class, 'addstage'])->name('admin.stage.add');
+                Route::post('/addstage/store', [App\Http\Controllers\Admin\StageController::class, 'storestage'])->name('admin.stage.store');
                 Route::get('/editstage/{id}', [App\Http\Controllers\Admin\StageController::class, 'editstage'])->name('admin.editstage');
                 Route::post('/updatestage/update/{id}', [App\Http\Controllers\Admin\StageController::class, 'updatestage'])->name('admin.stage.update');
                 Route::get('/stage/remove/{id}', [App\Http\Controllers\Admin\StageController::class, 'remove'])->name('admin.stage.remove');

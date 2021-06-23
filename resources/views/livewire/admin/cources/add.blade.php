@@ -95,9 +95,6 @@
                                                      
                                                         
                                                     </div>
-                                                   
-                                                           
-
                                                     {{-- ############################################################################## --}}
                                                     @elseif ($currentPage === 2)
                                                     <br>
@@ -112,14 +109,14 @@
                                                                                     <div class="uk-first-column">
                                                                                         <h5 class="uk-text-bold mb-2">اسم المرفق</h5>
                                                                                         <input type="text"  class="uk-input"   wire:model="materialname.0" placeholder="الاسم الكامل">
-                                                                                        @error('materialname.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                        @error('materialname')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                     </div>
                                                                                     <div class="uk-grid-margin uk-first-column">
                                                                                         <h5 class="uk-text-bold mb-2">المرفق </h5>
                                                                                        
                                                                                                 <input type='file' style='height:58px;border:0px;'  class="inputfile" wire:model="material.0"> 
-                                                                                                @error('material.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                                @error('material')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                     </div>
                                                                                 </div>
@@ -141,14 +138,14 @@
                                                                                         <div class="uk-first-column">
                                                                                             <h5 class="uk-text-bold mb-2">اسم المرفق</h5>
                                                                                             <input type="text" class="uk-input"  wire:model.lazy="materialname.{{ $value2 }}" placeholder="الاسم الكامل">
-                                                                                            @error('materialname.{{ $value2 }}')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                            @error('materialname')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                         </div>
                                                                                         <div class="uk-grid-margin uk-first-column">
                                                                                             <h5 class="uk-text-bold mb-2">المرفق </h5>
                                                                                            
                                                                                                     <input type='file' style='height:58px;border:0px;'     wire:model.lazy="material.{{ $value2 }}"> 
-                                                                                                    @error('material.{{ $value2 }}')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                                    @error('material')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                         </div>
                                                                                     </div>
@@ -184,7 +181,7 @@
                                                                 </div>
                                                                     <div class="col-md-2">          <div class="col-md-2">  </div>
                                                                     </div></div>  
-                                                                    @error('detail.0') <span class="text-danger error">{{ $message }}</span>@enderror 
+                                                                    @error('detail') <span class="text-danger error">{{ $message }}</span>@enderror 
                                                                    
                                                                         
                                                                 @foreach($inputs as $key => $value)
@@ -193,7 +190,7 @@
                                                                     <div class="col-md-2">          <div class="col-md-2">  <a   uk-tooltip="حدف " wire:click.prevent="remove({{$key}})" aria-expanded="false">
                                                                         <i class="uil-trash-alt text-danger"  ></i> </a></div>
                                                                     </div></div>  
-                                                                    @error('detail.{{$value}}')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                    @error('detail')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
                                                                 @endforeach
                                                             
                             
@@ -226,14 +223,14 @@
                                                                                             <div class="uk-first-column">
                                                                                                 <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
                                                                                                 <input type="text" class="uk-input" wire:model.lazy='name.0' placeholder="اسم الدرس">
-                                                                                                @error('detail.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                                @error('name')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                             </div>
                                                                                             <div class="uk-grid-margin uk-first-column">
                                                                                                 <h5 class="uk-text-bold mb-2">الفيديو </h5>
                                                                                         
                                                                                                         <input type='file' style='height:58px;border:0px;'  wire:model.lazy='vedio.0'> 
-                                                                                                        @error('detail.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                                        @error('vedio')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                         
                                                                                             </div>
@@ -260,14 +257,14 @@
                                                                                         <div class="uk-first-column">
                                                                                             <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
                                                                                             <input type="text" class="uk-input" wire:model.lazy='name.{{ $value1 }}' placeholder="اسم الدرس">
-                                                                                            @error('name.{{ $value1 }}')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                            @error('name')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                         </div>
                                                                                         <div class="uk-grid-margin uk-first-column">
                                                                                             <h5 class="uk-text-bold mb-2">الفيديو </h5>
                                                                                        
                                                                                                     <input type='file' style='height:58px;border:0px;'  wire:model.lazy='vedio.{{ $value1 }}'> 
-                                                                                                    @error('vedio.{{ $value1 }}')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                                                                    @error('vedio')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                                                                     
                                                                                         </div>
@@ -314,16 +311,17 @@
                                                                     @if ($currentPage === 1)
                                                                         <div></div>
                                                                     @else
-                                                                        <button wire:click="goToPreviousPage" type="button" class="btn-danger btn-lg"  >
+                                                                        <button wire:click="goToPreviousPage" type="button" class="btn btn-outline-warning"  >
                                                                             الرجوع
                                                                         </button>
                                                                     @endif
                                                                     @if ($currentPage === count($pages))
-                                                                        <button type="submit"   class='btn-dark btn-lg'   >
+                                                                        <button type="submit"   class='btn btn-outline-dark'   >
                                                                             حفظ
                                                                         </button>
                                                                     @else
-                                                                        <button wire:click="goToNextPage" type="button" class="btn-success btn-lg" >
+                                                               
+                                                                        <button wire:click="goToNextPage" type="button" class="btn btn-outline-success" >
                                                                             التالي
                                                                         </button>
                                                                     @endif

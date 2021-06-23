@@ -59,6 +59,12 @@ return [
             'url' => env('APP_URL').'/storage/student',
             'visibility' => 'public',
         ],
+        'teacher' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/teacher'),
+            'url' => env('APP_URL').'/storage/teacher',
+            'visibility' => 'public',
+        ],
         'studentAttachement' => [
             'driver' => 'local',
             'root' => storage_path('app/public/studentAttachement'),

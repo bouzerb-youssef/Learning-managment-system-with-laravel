@@ -3,14 +3,8 @@
 @section('content')
 <br><br>
 
-@if(session()->has('message'))
-<div class="container">
-    <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
-        <p> {{ session()->get('message') }}</p> 
-    </div> 
-</div>
-    
-@endif
+
+
 <div class="page-content">
     <div class="page-content-inner">
 
@@ -24,7 +18,24 @@
             </nav>
         </div>
 
-
+        @if(session()->has('message'))
+        <div class="container">
+            <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
+                <p> {{ session()->get('message') }}</p> 
+            </div> 
+        </div>
+            
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong></strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
         <div class="d-flex justify-content-between mb-3">
             <h3>عدد الأساثذة: {{$teachers->count()}} </h3>
@@ -74,12 +85,15 @@
                 <table class="table align-items-center">
                     <thead>
                         <tr>
+                           
                             <th scope="col">الاسم</th>
                             <th scope="col">الهاتف</th>
                             <th scope="col">الجنس </th>
-                            <th scope="col">رقم البطاقة </th>
+                           
                             <th scope="col">الدورة</th>
                             <th scope="col"> المجموعة</th>
+                            <th scope="col"> المعهد</th>
+                           
                             <th scope="col"> العمليات</th>
                         </tr>
                     </thead>
@@ -108,12 +122,16 @@
                             </th>
                             <td>{{$teacher->phone}}</td>
                             <td> {{$teacher->sex}} </td>
-                            <td> {{$teacher->cin}} </td>
-                            <td>{{$teacher->group->title}}</td>
                             @if(isset($teacher->group ) && $teacher->group->count()>0 ) 
                             <td>{{$teacher->group->formation->title}} </td>  
                             @else
                             <td>لا يوجد </td>  
+                            @endif 
+                            <td>{{$teacher->group->title}}</td>
+                           
+                            @if(isset($teacher->center ) && $teacher->center->count()>0 ) 
+                            <td>{{$teacher->center->centre}} </td>  
+                        
                             @endif 
                         
                             <td class="text-right">
@@ -125,9 +143,9 @@
                                         <a href=" {{route("admin.editteacher",$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل المعلومات" title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>    
-                                        <a href="{{route('admin.teacherAttachments',$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
+                                       {{--  <a href="{{route('admin.teacherAttachments',$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
                                                 <i class="icon-material-outline-attach-file"></i> 
-                                        </a> 
+                                        </a>  --}} 
                             </td>
                         </tr>
                         @endforeach

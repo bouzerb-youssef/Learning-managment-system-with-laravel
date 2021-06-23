@@ -11,6 +11,16 @@
 </div>
     
 @endif
+@if ($errors->any())
+<div class="alert alert-danger">
+    <strong></strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="page-content">
     <div class="page-content-inner">
 
@@ -137,6 +147,10 @@
                                         <a href="{{route('admin.studentAttachments',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
                                                 <i class="icon-material-outline-attach-file"></i> 
                                         </a> 
+                                        <a href="{{route('admin.stage.add',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="عمل أو تدريب" title="" aria-expanded="false">
+                                            <i class=" icon-line-awesome-inbox"></i> 
+                                    </a> 
+                                       
                             </td>
                         </tr>
                         @endforeach

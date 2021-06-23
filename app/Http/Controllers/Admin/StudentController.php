@@ -50,10 +50,9 @@ class StudentController extends Controller
     ]);
    
     try {
-        $img   = ImageManagerStatic::make($request->photo)/* ->resize(367,190) */->encode('jpg');
-        
+     
         $name  = Str::random() .'photo-student'.'jpg';
-        Storage::disk('student')->put($name, $img); 
+      
         $createdstudent = User::create([
             'name' => request('name'),
             'email' =>  request('email'),
@@ -71,7 +70,9 @@ class StudentController extends Controller
             'group_id' => request('group_id'),
         ]);
     
-        $createdstudent->save();   
+        $img   = ImageManagerStatic::make($request->photo)/* ->resize(367,190) */->encode('jpg');
+        Storage::disk('student')->put($name, $img); 
+
         toastr()->success('.لقد تم الاضافة  بنجاح');
         return redirect()->route('admin.students'); 
     }
@@ -88,7 +89,7 @@ class StudentController extends Controller
      try {  
 
          $student = User::with('studentAttachments')->Find($id);    
-    dd($student);
+ 
         $studentAttachment = StudentAttachment::with('student')->Find($id);
 
         //  dd($studentAttachment->student->name);
@@ -147,12 +148,13 @@ class StudentController extends Controller
             'childrenNmb' => 'required',
             'educationLevel' => 'required',
             'address' => 'required',
-                             'photo' => 'required', 
+             'photo' => 'required', 
 
            
             'group_id' => 'required',
         ]);
         try {  
+
             $updatestudent = User::findorfail($id)->update([
              
     
@@ -172,6 +174,10 @@ class StudentController extends Controller
 
                 'group_id' => request('group_id'),
                 ]);
+              /*   $teacher= Student::findorfail($id);
+                Storage::disk("teacher")->delete($teacher->photo);
+ */
+
                 toastr()->success('.لقد تم التعديل  بنجاح');
             return redirect()->route('admin.students');
         }
