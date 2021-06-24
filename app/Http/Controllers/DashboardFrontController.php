@@ -10,6 +10,9 @@ use App\Models\User;
 use App\Models\Enroll;
 use App\Models\content;
 use App\Models\Teacher;
+use App\Models\Centre;
+use App\Models\Formation;
+use App\Models\Group;
 class DashboardFrontController extends Controller
 {
 
@@ -52,10 +55,13 @@ class DashboardFrontController extends Controller
       $cources =Cource::latest()->take(4)->get();
 //dd( $lastusers);
       $courcecount=$cources->count();
+      $centres=Centre::all();
+      $formations=Formation::all();
+      $groups=Group::all();
 
       //dd(  $enrolles);
 
-      return view('admin.dashboard',compact('cources',"courcecount","lastusers","users","teachers"));
+      return view('admin.dashboard',compact('cources',"courcecount","lastusers","users","teachers","centres","formations","groups"));
     
   }
     

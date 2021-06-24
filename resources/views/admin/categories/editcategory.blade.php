@@ -61,11 +61,15 @@
                                         <input type="text" name="title" class="form-control" id="course_title"  name="title"  placeholder=""  required="">
                                     </div>
                                 </div>
-
-                                <div class="form-group row mb-3">
-                                    <button type="submit" class="btn btn-default">حفظ</button>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h3>  </h3>
+                            
+                                    <div class="form-group row mb-3">
+                                        <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                                    </div>
+                                    
                                 </div>
-                                
+                               
                       
 
                             </div>

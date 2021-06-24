@@ -8,8 +8,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> Setting </a></li>
-                    <li>Account Setting</li>
+                    <li><a href="#"> الدورات </a></li>
+                    <li>تعديل الدورة</li>
                 </ul>
             </nav>
         </div>
@@ -53,8 +53,9 @@
                         <h5 class="mb-0"> انشاء دورة</h5>
                     </div>
                     <hr class="m-0">
-                    <form action="{{route("admin.formation.update",$formation->id)}}"  class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" method="POST">
+                    <form action="{{route("admin.formation.update",$formation->id)}}"  method="POST">
                         {{ csrf_field() }}
+                        <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" >
                                 <div class="uk-grid-margin">
                                     <h5 class="uk-text-bold mb-2"> الاسم</h5>
                                     <input type="text" class="uk-input" value="{{$formation->title}}" name="title" placeholder="الاسم ">
@@ -79,20 +80,31 @@
                                         @endforeach
                                         @endif
                                     </select>
-                                </div>  
+                                </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> الوصف </h5>
                                     <textarea  name="description"   class="form-control">{{$formation->description}}</textarea>
                                 </div>
-
                                 <div class="uk-grid-margin uk-first-column">
-                                   <br><br>
-
-                                    <button  type="submit" class="btn btn-default">حفظ البيانات</button>
+                                    <h5 class="uk-text-bold mb-2"> </h5>
+                                   
                                 </div>
+                                <div class="uk-grid-margin uk-first-column">
+                                    <h5 class="uk-text-bold mb-2"> </h5>
+                                   
+                                </div>
+                                <div class="d-flex justify-content-between ">
+        
+                                    <h3>  </h3>
+                            
+                                    <div >
+                                        <button  type="submit" class="btn btn-outline-dark">تعديل </button>
+                                    </div>  
+                                </div>
+                        
                         </div>
+                      
                     </form>
-                
                 </div>
                 
             </div>

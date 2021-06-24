@@ -28,7 +28,7 @@
         <h3>عدد الدورات: {{$formations->count()}} </h3>
 
         <div>
-            <a href="{{route('admin.addformation')}}" class="btn btn-default">
+            <a href="{{route('admin.addformation')}}" class="btn btn-outline-dark">
                 <i class="uil-plus"> </i> اضافة دورة جديد
             </a>
         </div>
@@ -81,7 +81,7 @@
                             <td class="text-right">
                                 <!-- Actions -->
                                
-                                        <a href=" {{route("admin.formation.remove",$formation->id)}} " class="button delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح السؤال" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.formation.remove",$formation->id)}} "  class="btn  delete-confirm btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح السؤال" title="" aria-expanded="false">
                                             <i class="uil-trash-alt text-danger" ></i> 
                                         </a>
                     
@@ -110,7 +110,7 @@
                         swal({
                             title: 'هل انت متأكد؟',
                             text: 'هذا الشئ سيمحي من قاعدة البيانات نهائيا.',
-                            icon: 'warning',
+                            //icon: 'warning',
                             buttons: ["تراجع", "نعم"],
                         }).then(function(value) {
                             if (value) {

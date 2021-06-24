@@ -17,18 +17,18 @@
         <nav id="breadcrumbs" class="mb-3">
             <ul>
                 <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                <li><a href="#"> الاصناف </a></li>
-                <li>لائحة الاسئلة</li>
+                <li><a href="#"> السنوات الدراسية </a></li>
+                <li>لائحة السنوات</li>
             </ul>
         </nav>
     </div>
-
+<br>
 
     <div class="d-flex justify-content-between mb-3">
-        <h3> عدد السنوات الدراسية : {{$years->count()}} </h3>
+        <h5> عدد السنوات الدراسية : {{$years->count()}} </h5>
 
         <div>
-            <a  href="{{route('admin.addyear')}}"  uk-toggle="target: #modal-close-default" class="btn btn-default">
+            <a  href="{{route('admin.addyear')}}"  uk-toggle="target: #modal-close-default" class="btn btn-outline-dark">
                 <i class="uil-plus"> </i> اضافة سنة دراسية جديد
             </a>
      
@@ -84,11 +84,11 @@
                             <td class="text-right">
                                 <!-- Actions -->
                                
-                                        <a href=" {{route("admin.year.remove",$year->id)}} " class="button delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح السؤال" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.year.remove",$year->id)}} "  class="btn btn-icon btn-hover btn-lg btn-circle"  class="delete-confirm" uk-tooltip="حذف" title="" aria-expanded="false">
                                             <i class="uil-trash-alt text-danger" ></i> 
                                         </a>
                     
-                                        <a href=" {{route("admin.edityear",$year->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل السؤال" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.edityear",$year->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل " title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>     
                             </td>
@@ -108,10 +108,8 @@
 <div id="modal-close-default" uk-modal> 
     <div class="uk-modal-dialog uk-modal-body"> 
         <button class="uk-modal-close-default" type="button" uk-close></button> 
-        <div class="card-body">
-                <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                    <li class="uk-active"><a href="#" aria-expanded="true">  اضافة سنة دراسية</a></li>
-                </ul>
+      
+             
                 <div class="card-body">
     
                     <ul class="uk-switcher uk-margin" id="course-edit-tab" style="touch-action: pan-y pinch-zoom;">
@@ -124,11 +122,19 @@
                                     <form action="{{route("admin.year.store")}}" method="POST">
                                             {{ csrf_field() }}
                                         <div class="uk-grid-margin uk-first-column">
-                                         <h5 class="uk-text-bold mb-2"> السنة الدراسية</h5>
+                                         <h5 class="uk-text-bold mb-2">  السنة الدراسية :</h5>
                                             <input type="text"  class="uk-input" name="year" placeholder="السنة الدراسية">
                                         </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h3>  </h3>
+                                    
+                                            <div>
+                                                <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                                    
+                                            </div>
+                                        </div
                                         <div class="uk-grid-margin uk-first-column">
-                                            <button type="submit" class="btn btn-default">حفظ</button>
+                                           
                                         </div>
                                     </form>
                                 </div>
@@ -138,7 +144,7 @@
                         </li> 
                     </ul>
                 </div>
-        </div>
+        
 
     </div> 
 </div> <!-- This is a button toggling the modal with the outside close button --> 

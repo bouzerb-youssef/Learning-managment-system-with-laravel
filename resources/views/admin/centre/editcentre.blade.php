@@ -2,34 +2,32 @@
 @section('content')
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong></strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<br><br><br>
     <div class="page-content-inner">
 
         <div class="d-flex">
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> centres </a></li>
-                    <li>Create New centres</li>
+                    <li><a href="#"> المعاهد </a></li>
+                    <li>اضافة معهد جديد</li>
                 </ul>
             </nav>
         </div>
 
-
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong></strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
         <div class="card">
-            <div class="card-header border-bottom-0 py-4">
-                <h5> centres Manager </h5>
-            </div>
+           
 
 
             <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
@@ -54,7 +52,15 @@
                                     <label class="col-md-3 col-form-label" for="course_title"> المعهد<span class="required"> *</span></label>
                                     <div class="col-md-9">
                                         <input type="text" name="centre" class="form-control" id="course_title" value="{{$centre->centre}}"  name="title"  placeholder="" >
-                                        <button type="submit" class="btn btn-default" >تعديل</button>
+                                        <div class="d-flex justify-content-between mb-3">
+
+                                            <h3>  </h3>
+                                    
+                                            <div>
+                                                <button type="submit" class="btn btn-outline-dark">تعديل</button>
+                                    
+                                            </div>
+                                        </div
                                     </div>
                                 </div>
                            

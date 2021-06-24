@@ -75,7 +75,11 @@
                             <td>{{$i++}}</td>
                             <td>{{$studentgroup->title}}</td>
                             <td>{!!$studentgroup->description!!}</td>
+                            @if(isset($studentgroup->centre ) && $studentgroup->centre->count()>0 )
                             <td>{{$studentgroup->centre->centre}}</td>
+                            @else
+                            <td>لم تحدد الدورة</td>
+                            @endif
                             <td>{{$studentgroup->formation->title}}</td>
                             <td class="text-right">
                                 <!-- Actions -->

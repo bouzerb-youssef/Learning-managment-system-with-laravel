@@ -25,7 +25,7 @@
     <div class="d-flex justify-content-between mb-3">
         <h3> عدد المعاهد : {{$centres->count()}} </h3>
         <div>
-            <a href="{{route('admin.addcentre')}}" class="btn btn-default" uk-toggle="target: #modal-close-default">
+            <a href="{{route('admin.addcentre')}}" class="btn btn-outline-dark" uk-toggle="target: #modal-close-default">
                 <i class="uil-plus"> </i> اضافة معهد جديد
             </a>
         </div>
@@ -47,6 +47,7 @@
                         <th scope="col"></th>
                         <th scope="col">##</th>
                         <th scope="col"> المعهد </th>
+                        <th scope="col"> العمليات </th>
                    
                     </tr>
                 </thead>
@@ -69,11 +70,11 @@
                             <td class="text-right">
                                 <!-- Actions -->
                                
-                                        <a href=" {{route("admin.centre.remove",$centre->id)}} " class="button delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح السؤال" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.centre.remove",$centre->id)}} " class="btn  delete-confirm btn-icon btn-hover btn-lg btn-circle"  class="delete-confirm" uk-tooltip="حذف " title="" aria-expanded="false">
                                             <i class="uil-trash-alt text-danger" ></i> 
                                         </a>
                     
-                                        <a href=" {{route("admin.editcentre",$centre->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل السؤال" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.editcentre",$centre->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل " title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>     
                             </td>
@@ -92,10 +93,8 @@
 <div id="modal-close-default" uk-modal> 
     <div class="uk-modal-dialog uk-modal-body"> 
         <button class="uk-modal-close-default" type="button" uk-close></button> 
-        <div class="card-body">
-                <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                    <li class="uk-active"><a href="#" aria-expanded="true">  اضافة سنة دراسية</a></li>
-                </ul>
+        
+               
                 <div class="card-body">
     
                     <ul class="uk-switcher uk-margin" id="course-edit-tab" style="touch-action: pan-y pinch-zoom;">
@@ -108,12 +107,18 @@
                                     <form action="{{route("admin.centre.store")}}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="uk-grid-margin uk-first-column">
-                                         <h5 class="uk-text-bold mb-2">المعهد</h5>
+                                         <h5 class="uk-text-bold mb-2"> المعهد : </h5>
                                          <input type="text"  class="uk-input"  name="centre"  placeholder="المعهد">
                                         </div>
-                                        <div class="uk-grid-margin uk-first-column">
-                                            <button type="submit" class="btn btn-default">حفظ</button>
-                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+
+                                            <h3>  </h3>
+                                    
+                                            <div>
+                                                <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                                    
+                                            </div>
+                                        </div
                                     </form>
                                 </div>
                             </div>
@@ -122,7 +127,7 @@
                         </li> 
                     </ul>
                 </div>
-        </div>
+       
 
     </div> 
 </div>

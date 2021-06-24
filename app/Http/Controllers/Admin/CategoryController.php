@@ -64,28 +64,29 @@ class CategoryController extends Controller
           
           $cource->delete();  
         }
-/* delete lessson */
-        $lessons =Lesson::where("section_id",null)->get();
-        if( $lessons){
-        foreach( $lessons as $lesson){
-          File::deleteDirectory(storage_path('app/public/lessons/'.$lesson->title));
-          $lesson->delete();
-        }}
-/* delete materials */
+      /* delete lessson */
+        foreach( $cource->lessons as $lesson){
+              if( $lesson){
+              
+                File::deleteDirectory(storage_path('app/public/lessons/'.$lesson->title));
+                $lesson->delete();
+              }
+            }
+      /* delete materials */
 
-        $materials =Material::where("section_id",null)->get();
-        if( $materials){
-        foreach( $materials as $material){
+      foreach( $cource->materials as $material){
+        if( $material){
+            
+                
+                File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
+                $material->delete();
+            }
+              
           
-          File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
-          $material->delete();
-        }}
-        
-     
-      }
-      $category->delete();
-    }
-        
+            }
+            $category->delete();
+          
+          }
         
         toastr()->error('.لقد تم المسح بنجاح');
 
@@ -93,6 +94,9 @@ class CategoryController extends Controller
   
       
   }
+}
+
+
 
   public function editcategory($id){
     $category = Category::findorfail($id);

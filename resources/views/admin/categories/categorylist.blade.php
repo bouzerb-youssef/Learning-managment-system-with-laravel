@@ -27,7 +27,7 @@
         <h3> عدد الاصناف :{{$categories->count()}} </h3>
 
         <div>
-            <a href="{{route('admin.addcategory')}}" class="btn btn-default">
+            <a href="{{route('admin.addcategory')}}" class="btn btn-outline-dark">
                 <i class="uil-plus"> </i> اضافة صنف جديد
             </a>
         </div>
@@ -81,11 +81,11 @@
                         <td class="text-right">
                             <!-- Actions -->
                            
-                                    <a href="{{route("admin.category.remove",$category->id)}}" class="button delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle" wire:click='remove({{$category->id}})' uk-tooltip="مسح الفصل" title="" aria-expanded="false">
+                                    <a href="{{route("admin.category.remove",$category->id)}}"  class="btn  delete-confirm btn-icon btn-hover btn-lg btn-circle"   wire:click='remove({{$category->id}})' uk-tooltip="حذف " title="" aria-expanded="false">
                                         <i class="uil-trash-alt text-danger" ></i> 
                                     </a>
                 
-                                    <a href="{{route("admin.editcategory",$category->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="اضافة الدروس" title="" aria-expanded="false">
+                                    <a href="{{route("admin.editcategory",$category->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل" title="" aria-expanded="false">
                                         <i class="uil-pen "></i> 
                                     </a>   
                         </td>
@@ -111,7 +111,7 @@
                         swal({
                             title: 'هل انت متأكد؟',
                             text: 'هذا الشئ سيمحي من قاعدة البيانات نهائيا.',
-                            icon: 'warning',
+                            //icon: 'warning',
                             buttons: ["تراجع", "نعم"],
                         }).then(function(value) {
                             if (value) {
