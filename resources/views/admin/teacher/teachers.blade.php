@@ -41,7 +41,7 @@
             <h3>عدد الأساثذة: {{$teachers->count()}} </h3>
     
             <div>
-                <a href="{{route('admin.addteacher')}}" class="btn btn-default">
+                <a href="{{route('admin.addteacher')}}" class="btn btn-outline-dark">
                     <i class="uil-plus"> </i> اضافة استاذ جديد
                 </a>
             </div>
@@ -136,11 +136,11 @@
                         
                             <td class="text-right">
                                 <!-- Actions -->
-                                        <a href=" {{route("admin.teacher.remove",$teacher->id)}} " class="btn btn-icon btn-hover btn-lg btn-circle delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح التلميد" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.teacher.remove",$teacher->id)}} " class="btn  delete-confirm btn-icon btn-hover btn-lg btn-circle " class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip=" حذف" title="" aria-expanded="false">
                                             <i class="uil-trash-alt text-danger" ></i> 
                                         </a>
                     
-                                        <a href=" {{route("admin.editteacher",$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل المعلومات" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.editteacher",$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل " title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>    
                                        {{--  <a href="{{route('admin.teacherAttachments',$teacher->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
@@ -174,7 +174,7 @@
                         swal({
                             title: 'هل انت متأكد؟',
                             text: 'هذا الشئ سيمحي من قاعدة البيانات نهائيا.',
-                            icon: 'warning',
+                          //  icon: 'warning',
                             buttons: ["تراجع", "نعم"],
                         }).then(function(value) {
                             if (value) {

@@ -10,11 +10,20 @@
 </div>
     
 @endif 
+<br> <br> <br>
     <div class="page-content-inner">
-
+        <div class="d-flex">
+            <nav id="breadcrumbs" class="mb-3">
+                <ul>
+                    <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
+                    <li><a href="#"> الاصناف </a></li>
+                    <li>لائحة الاصناف</li>
+                </ul>
+            </nav>
+        </div>
     
 
-   <br> <br> <br>
+  
 
         <div class="card">
            
@@ -52,11 +61,7 @@
                                                     </div>
                                                 </div>
                                         </form>
-                                    
-                                       
-
                                 </li>
-                 
                     </li> 
                 </ul>
 

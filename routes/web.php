@@ -131,7 +131,7 @@ Route::group(
 
 
                 /* ################################################categories################################################################################################ */
-                Route::get('/categories', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.categories')->middleware('admin');
+                Route::get('/categories/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.categories')->middleware('admin');
                 Route::get('/category/remove/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'remove'])->name('admin.category.remove');
         
                 Route::get('/category/addcategory', [App\Http\Controllers\Admin\CategoryController::class, 'addcategory'])->name('admin.addcategory');

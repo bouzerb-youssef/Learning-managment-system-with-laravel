@@ -28,7 +28,7 @@
                                             <div class="uk-width-auto uk-first-column">
                                                 <h5 class="mb-2"> مجموع التلاميد</h5>
                                                 @if($users)
-                                                <h1>{{$users->count()}} </h1>
+                                                    <h1>{{$users->count()}} </h1>
                                                @endif
                                             </div>
                                             <div class="uk-width-expand">
@@ -45,13 +45,13 @@
                             </li>
                         
                             <li >
-
+                            
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="uk-flex-middle uk-grid" uk-grid="">
                                             <div class="uk-width-auto uk-first-column">
                                                 <h5 class="mb-2"> مجموع الاساتذة </h5>
-                                                <h1> {{$teachers->count()}} </h1>
+                                                    <h1> {{$teachers->count()}} </h1>
                                                 
                                             </div>
                                             <div class="uk-width-expand">

@@ -8,8 +8,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> Setting </a></li>
-                    <li>Account Setting</li>
+                    <li><a href="#"> التلاميذ </a></li>
+                    <li>تعديل معلومات التلميذ</li>
                 </ul>
             </nav>
         </div>
@@ -131,10 +131,17 @@
                                         @endif
                                     </select>
                                 </div>  
-                            <div class="uk-flex uk-flex-right p-4">
+                                <div class="uk-grid-margin uk-first-column">
+                                    <h5 class="uk-text-bold mb-2"> </h5>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+
+                                    <h3>  </h3>
                             
-                                <button  type="submit" class="btn btn-default">حفظ البيانات</button>
-                            </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                            
+                                    </div>
                         </div>
                      </form>
                

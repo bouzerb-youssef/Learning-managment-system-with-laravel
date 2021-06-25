@@ -8,16 +8,16 @@
     <nav id="breadcrumbs" class="mb-3">
         <ul>
             <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-            <li> Courses </li>
+            <li> الكورسات </li>
 
         </ul>
     </nav>
 
     <div class="d-flex justify-content-between mb-3">
-        <h3>  عدد الكورسات :{{$cources->count()}} </h3>
+        <h4>  عدد الكورسات :{{$cources->count()}} </h4>
 
         <div>
-            <a href="{{route('admin.addcource')}}" class="btn btn-default">
+            <a href="{{route('admin.addcource')}}" class="btn btn-outline-dark">
                 <i class="uil-plus"> </i> اضافة كورس جديد
             </a>
         </div>

@@ -4,8 +4,8 @@
 <div class="page-content">
 
 
-    <div class="home-hero" data-src="../assets/images/amal-home.png"   uk-img="" style="background-image: url(&quot;file:///C:/Users/pc/Desktop/main/assets/images/home-hero.png&quot;);">
-   
+    <div class="home-hero" data-src="../assets/images/amal-home.png"   uk-img="" >
+   <br><br>
        <div class="uk-width-1-1">
            <div class="page-content-inner uk-position-z-index">
             <h1>عندما قامت مطبعة مجهولة برص مجموعة من الأحرف <br>  الطبخ و المزيد </h1>

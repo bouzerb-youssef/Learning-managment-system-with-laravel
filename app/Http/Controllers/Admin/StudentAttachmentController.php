@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\StudentAttachment;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -35,7 +36,7 @@ class StudentAttachmentController extends Controller
          'user_id' => 'required',
      ]);
      try {  
-        $name =request('file')->getClientOriginalName();
+        $name = Str::random().'-'.request('file')->getClientOriginalName();
 
         $studentAttachment =request('file');
      
@@ -49,7 +50,7 @@ class StudentAttachmentController extends Controller
           'user_id' =>  request('user_id'),
           ]);
           $student=User::findorfail(request('user_id'));
-          $storestudentAttachement=Storage::disk('studentAttachement')->put($student->name."/".$name, $studentAttachment);
+          $storestudentAttachement=Storage::disk('studentAttachement')->put($student->name, $studentAttachment);
           $createdstudentAttachment->save();
         
         

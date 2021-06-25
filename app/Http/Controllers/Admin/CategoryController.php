@@ -19,11 +19,10 @@ class CategoryController extends Controller
 
 
    
-    public function index(){
+    public function index($id){
       $categories = Category::get();
-         return view("admin.categories.categorylist",compact("categories"));
-        
-  
+      $category_id =$id /* Category::with('cources')->findorfail($id) */;
+         return view("admin.categories.categorylist",compact("categories","category_id"));
      }
     
 

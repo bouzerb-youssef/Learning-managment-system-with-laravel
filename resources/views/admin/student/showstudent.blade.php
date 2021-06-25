@@ -35,65 +35,30 @@
 
                    <div class="uk-card-default rounded mt-5">
                        <div class="uk-flex uk-flex-between uk-flex-middle py-3 px-4">
-                           <h5 class="mb-0"> Progress </h5>
-                               <a href="#"> more </a>
+                           <h5 class="mb-0"> الوثائق </h5>
+                               <a href="#"> اضافة وثيقة </a>
                        </div>
                        <hr class="m-0">
                        <div class="p-3">
-
+                        @foreach($student->studentattachments as $item)
                            <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
 
                                <div class="uk-width-auto uk-first-column">
-                                   <button type="button" class="btn btn-danger btn-icon-only">
+                                   <button type="button" class="btn btn-default btn-icon-only">
                                        <span class="d-flex justify-content-center">
-                                  <i class="icon-brand-angular icon-small"></i>
+                                 {{ $item->genre}}
                                        </span>
                                      </button>
                                </div>
                                <div class="uk-width-expand">
-                                   <h5 class="mb-2"> Angular </h5>
-                                   <div class="course-progressbar">
-                                       <div class="course-progressbar-filler" style="width:100%"></div>
-                                   </div>
+                                   <h5 class="mb-2"> {{ $item->file}} </h5>
+                                   
+                                    <a href="{{asset('storage/studentAttachement/'.$student->name .'/'.$item->file.'/'.$item->file)}}">تحميل</a>
+
                                </div>
 
                            </div>
-
-                           <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-
-                               <div class="uk-width-auto uk-first-column">
-                                   <button type="button" class="btn btn-warning btn-icon-only">
-                                       <span class="d-flex justify-content-center">
-                                           <i class="icon-brand-html5 icon-small"></i>
-                                       </span>
-                                     </button>
-                               </div>
-                               <div class="uk-width-expand">
-                                   <h5 class="mb-2"> html5 </h5>
-                                   <div class="course-progressbar">
-                                       <div class="course-progressbar-filler" style="width:35%"></div>
-                                   </div>
-                               </div>
-
-                           </div>
-
-                           <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-
-                               <div class="uk-width-auto uk-first-column">
-                                   <button type="button" class="btn btn-primary btn-icon-only">
-                                       <span class="d-flex justify-content-center">
-                                           <i class="icon-brand-css3-alt icon-small"></i>
-                                       </span>
-                                     </button>
-                               </div>
-                               <div class="uk-width-expand">
-                                   <h5 class="mb-2"> css3 </h5>
-                                   <div class="course-progressbar">
-                                       <div class="course-progressbar-filler" style="width:65%"></div>
-                                   </div>
-                               </div>
-
-                           </div>
+                           @endforeach
 
                        </div>
                    </div>

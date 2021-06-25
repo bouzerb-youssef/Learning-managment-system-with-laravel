@@ -76,6 +76,7 @@
                
                         @if($user->enrolls->count()>0)
                                 @foreach ($user->enrolls as $enroll)
+                                @if ($enroll->cource)
                                       <li class="notifications-not-read">
                                     <a href="course-intro.html">
                                         <span class="notification-image">
@@ -88,7 +89,7 @@
                                             <span class="notification-text">
                                             <span class="course-title">{{$enroll->cource->title}} &amp; {{$enroll->cource->title}}
                                             </span>
-                                          
+                                           
                                           
                                         </span>
 
@@ -118,6 +119,7 @@
                                     </a>
 
                                 </li>
+                                @endif 
                                 @endforeach
                                 @endif
                               

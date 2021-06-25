@@ -128,7 +128,7 @@
                                         <label class="uk-text-bold mb-2">اختر مجموعة</label>
 
                                         <select wire:model.lazy="group_id" class="uk-select">    
-                                            <option value="">--Please choose an option--</option>
+                                            <option value="">--أختر مجموعة--</option>
                                                 @if (isset($groups) && $groups->count()>0)
                                                 @foreach ($groups as $group)
                                                 <option value="{{$group->id}}">{{$group->title}} </option>
@@ -140,6 +140,10 @@
                                         @error('group_id')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
 
                                     </div>  
+                                    <div class="uk-grid-margin uk-first-column">
+                                        <h5 class="uk-text-bold mb-2"> </h5>
+                                       
+                                    </div>
                               {{-- ############################################################################## --}}
                               @elseif ($currentPage === 2)
                             {{-- <div uk-grid="" class="uk-grid"> --}}
@@ -173,7 +177,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>               
+                                            </div>
+                                                         
                                         @foreach($inputs as $key => $value)
                                         <div class="card rounded">
                                             <div class="row justify-content-center">
@@ -204,6 +209,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                              
                                         @endforeach
                                    
                                 </div>
@@ -228,24 +234,31 @@
                            </div>
                        {{--   </div> --}}
                                {{-- ############################################################################### --}}
+                             
+                                  
                                @endif
-                               <div class="flex items-center justify-between px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                @if ($currentPage === 1)
-                                    <div></div>
-                                @else
-                                    <button wire:click="goToPreviousPage" type="button" class="btn-warning"  >
-                                        الرجوع
-                                    </button>
-                                @endif
-                                @if ($currentPage === count($pages))
-                                    <button type="submit"   class='btn-dark'   >
-                                        حفظ
-                                    </button>
-                                @else
-                                    <button wire:click="goToNextPage" type="button" class="btn-success" >
-                                        التالي
-                                    </button>
-                                @endif
+                               <div class="d-flex justify-content-between mb-3 px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                   @if ($currentPage === 1)
+                                       <div></div>
+                                   @else
+                                       <button wire:click="goToPreviousPage" type="button" class="btn btn-outline-warning"  >
+                                           الرجوع
+                                       </button>
+                                   @endif
+                                   @if ($currentPage === count($pages))
+                                 
+                                
+                                       <button type="submit"   class='btn btn-outline-dark'   >
+                                           حفظ
+                                       </button>
+                                   @else
+                                   
+                                       <button wire:click="goToNextPage" type="button" class="btn btn-outline-success" >
+                                           التالي
+                                       </button>
+                               
+                               </div>
+                           @endif
                             </div>
                             </div>
                          </form>

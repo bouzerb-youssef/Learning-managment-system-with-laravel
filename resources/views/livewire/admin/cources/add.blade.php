@@ -14,7 +14,7 @@
     
             @if ($errors->any())
             <div class="alert alert-danger">
-                <strong></strong> There were some problems with your input.<br><br>
+                <strong></strong> <br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -68,24 +68,19 @@
                                                             <h5 class="uk-text-bold mb-2"> تعريف قصير</h5>
                                                             <textarea  wire:model.lazy="short_description" class="mytextarea"  placeholder="الملاحضات"   class="form-control"></textarea>
                                                             @error('short_description')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
                                                         </div>
                                                      
-                        
                                                         <div class="uk-grid-margin uk-first-column">
                                                             <h5 class="uk-text-bold mb-2"> التعريف </h5>
                                                             <textarea  wire:model.lazy="desc" class="mytextarea"  placeholder="الملاحضات"   class="form-control"></textarea>
-                                                            @error('desc')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
+                                                            @error('desc')<div class="uk-alert-danger" uk-alert> <p>{{ $message }} </p> </div> @enderror
                                                         </div>
                                                       
                                                         <div class="uk-grid-margin uk-first-column">
                                                             <h5 class="uk-text-bold mb-2">الصورة </h5>
-                                                             
-                                                                    <input type='file' style='height:58px;border:0px;'    class="inputfile" wire:model.lazy="thumbnail"> 
-                                                                    @error('thumbnail')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
-                                                                   
+                                                                    
+                                                                    <input id="files" type='file' style='height:58px;border:0px;' name='ikhan'    class="inputfile" wire:model.lazy="thumbnail"> 
+                                                                    @error('thumbnail')<div class="uk-alert-danger" uk-alert> <p>{{ $message }} </p> </div> @enderror
                                                         </div> 
                                                      
                                                         <div class="uk-grid-margin uk-first-column">
@@ -170,7 +165,7 @@
                                                     @elseif ($currentPage === 3)
                                                     {{-- ######################################################################################### --}}
                                                     <br>
-                                                    <div class="row justify-content-center">
+                                                    
                                                         <div class="col-xl-9">
                                                           
                                                                 <button   type='button'  class="btn btn-default mb-3"  wire:click.prevent="add({{$i}})" >    اضافة الاحتياجات </button>    
@@ -196,15 +191,15 @@
                             
                                                            
                                                         </div>
-                                                    </div>
+                                              
                                                   
                                                     @elseif ($currentPage === 4)
                                                     {{-- ######################################################################################### --}}
                                                     <br>
-                                                    <div class="row" >
+                                                  
 
                                                         <div class="col-xl-9 m-auto">
-                                                            <div > 
+                                                            
                                                                 <button   type='button'  class="btn btn-default mb-3"  wire:click.defer="add1({{$j}})" >    اضافة الدروس </button>
                                                                 
                                                                         <div class="card" x-data="{ isUploading: false, progress: 0 }"
@@ -214,32 +209,32 @@
                                                                         x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                         
                                                         
-                                                                        <div class="card-body">
-                                                                            <div class="progress my-4"  x-show="isUploading">
-                                                                                <div class="progress-bar" role="progressbar" :style="`width: ${progress}%`"></div>
+                                                                            <div class="card-body">
+                                                                                <div class="progress my-4"  x-show="isUploading">
+                                                                                    <div class="progress-bar" role="progressbar" :style="`width: ${progress}%`"></div>
+                                                                                </div>
+                                                                                            <div class="uk-child-width-1-2@s uk-grid-small p-1 uk-grid" uk-grid=""> 
+                                                                                            
+                                                                                                <div class="uk-first-column">
+                                                                                                    <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
+                                                                                                    <input type="text" class="uk-input" wire:model.lazy='name.0' placeholder="اسم الدرس">
+                                                                                                    @error('name')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+
+                                                                                                </div>
+                                                                                                <div class="uk-grid-margin uk-first-column">
+                                                                                                    <h5 class="uk-text-bold mb-2">الفيديو </h5>
+                                                                                            
+                                                                                                            <input type='file' style='height:58px;border:0px;'  wire:model.lazy='vedio.0'> 
+                                                                                                            @error('vedio')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+
+                                                                                            
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
                                                                             </div>
-                                                                                        <div class="uk-child-width-1-2@s uk-grid-small p-1 uk-grid" uk-grid=""> 
-                                                                                        
-                                                                                            <div class="uk-first-column">
-                                                                                                <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
-                                                                                                <input type="text" class="uk-input" wire:model.lazy='name.0' placeholder="اسم الدرس">
-                                                                                                @error('name')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
-                                                                                            </div>
-                                                                                            <div class="uk-grid-margin uk-first-column">
-                                                                                                <h5 class="uk-text-bold mb-2">الفيديو </h5>
-                                                                                        
-                                                                                                        <input type='file' style='height:58px;border:0px;'  wire:model.lazy='vedio.0'> 
-                                                                                                        @error('vedio')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
-                                                                                        
-                                                                                            </div>
-                                                                                             
-                                                                                        </div>
-                                                                        </div>
                                                                     </div>
                                                                     {{-- lesson 2 --}}
-                                                                </div>
+                                                              
                                                                     @foreach($inputs1 as $key1 => $value1)
                                                                     <div class="card" x-data="{ isUploading: false, progress: 0 }"
                                                                     x-on:livewire-upload-start="isUploading = true"
@@ -248,40 +243,43 @@
                                                                     x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                     
                                                     
-                                                                    <div class="card-body">
-                                                                        <div class="progress my-4"  x-show="isUploading">
-                                                                            <div class="progress-bar" role="progressbar" :style="`width: ${progress}%`"></div>
+                                                                        <div class="card-body">
+                                                                            <div class="progress my-4"  x-show="isUploading">
+                                                                                <div class="progress-bar" role="progressbar" :style="`width: ${progress}%`"></div>
+                                                                            </div>
+                                                                                        <div class="uk-child-width-1-2@s uk-grid-small p-1 uk-grid" uk-grid=""> 
+                                                                                        
+                                                                                            <div class="uk-first-column">
+                                                                                                <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
+                                                                                                <input type="text" class="uk-input" wire:model.lazy='name.{{ $value1 }}' placeholder="اسم الدرس">
+                                                                                                @error('name')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+
+                                                                                            </div>
+                                                                                            <div class="uk-grid-margin uk-first-column">
+                                                                                                <h5 class="uk-text-bold mb-2">الفيديو </h5>
+                                                                                        
+                                                                                                        <input type='file' style='height:58px;border:0px;'  wire:model.lazy='vedio.{{ $value1 }}'> 
+                                                                                                        @error('vedio')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+
+                                                                                        
+                                                                                            </div>
+                                                                                            <a   uk-tooltip="حدف " wire:click.defer="remove1({{$key1}})" aria-expanded="false">
+                                                                                                <i class="uil-trash-alt text-danger"  ></i> </a> 
+                                                                                        </div>
                                                                         </div>
-                                                                                    <div class="uk-child-width-1-2@s uk-grid-small p-1 uk-grid" uk-grid=""> 
-                                                                                     
-                                                                                        <div class="uk-first-column">
-                                                                                            <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
-                                                                                            <input type="text" class="uk-input" wire:model.lazy='name.{{ $value1 }}' placeholder="اسم الدرس">
-                                                                                            @error('name')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
-                                                                                        </div>
-                                                                                        <div class="uk-grid-margin uk-first-column">
-                                                                                            <h5 class="uk-text-bold mb-2">الفيديو </h5>
-                                                                                       
-                                                                                                    <input type='file' style='height:58px;border:0px;'  wire:model.lazy='vedio.{{ $value1 }}'> 
-                                                                                                    @error('vedio')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
-                                                                                    
-                                                                                        </div>
-                                                                                        <a   uk-tooltip="حدف " wire:click.defer="remove1({{$key1}})" aria-expanded="false">
-                                                                                            <i class="uil-trash-alt text-danger"  ></i> </a> 
-                                                                                    </div>
                                                                     </div>
-                                                                </div>
+                                                            
                                                 
                                                                                                 
                                                                                              
                                                                 @endforeach
-                                                            </div>  
+                                                            
+                                                        </div> 
+                                                  
                             
-                            
-                                                        </div>
-                                                    </div>
+                                                  
+                                                        
+                                                   
                                                    
                                                  
 
@@ -305,28 +303,29 @@
                                                         {{--   </div> --}}
                                                                 {{-- ############################################################################### --}}
                                                                    
-                                                                  </button>
+                                                                 
                                                                 @endif
-                                                                <div class="flex items-center justify-between px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                                                    @if ($currentPage === 1)
-                                                                        <div></div>
-                                                                    @else
-                                                                        <button wire:click="goToPreviousPage" type="button" class="btn btn-outline-warning"  >
-                                                                            الرجوع
-                                                                        </button>
-                                                                    @endif
-                                                                    @if ($currentPage === count($pages))
-                                                                        <button type="submit"   class='btn btn-outline-dark'   >
-                                                                            حفظ
-                                                                        </button>
-                                                                    @else
-                                                               
-                                                                        <button wire:click="goToNextPage" type="button" class="btn btn-outline-success" >
-                                                                            التالي
-                                                                        </button>
-                                                                    @endif
-                                                                </div>
-                                           
+                                                                    <div class="d-flex justify-content-between mb-3 px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                                                        @if ($currentPage === 1)
+                                                                            <div></div>
+                                                                        @else
+                                                                            <button wire:click="goToPreviousPage" type="button" class="btn btn-outline-warning"  >
+                                                                                الرجوع
+                                                                            </button>
+                                                                        @endif
+                                                                        @if ($currentPage === count($pages))
+                                                                      
+                                                                     
+                                                                            <button type="submit"   class='btn btn-outline-dark'   >
+                                                                                حفظ
+                                                                            </button>
+                                                                        @else
+                                                                            <button wire:click="goToNextPage" type="button" class="btn btn-outline-success" >
+                                                                                التالي
+                                                                            </button>
+                                                                    
+                                                                    </div>
+                                                                @endif
                         </form>
                    
                     </div>

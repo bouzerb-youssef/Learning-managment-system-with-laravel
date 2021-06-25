@@ -18,7 +18,7 @@
 
                 <!-- logo -->
                 <a href="dashboard.html" class="logo">
-                    <img src="../assets/images/logo-dark.svg" alt="">
+                    <img src="../assets/images/amal-small-logo.png" {{-- width="500" height="600" --}} alt=""> 
                     <span> أمل سونطر</span>
                 </a>
 

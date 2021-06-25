@@ -53,34 +53,65 @@
                         <h5 class="mb-0"> تعديل المجموعة</h5>
                     </div>
                     <hr class="m-0">
-                    <form action="{{route("admin.studentgroup.update",$studentgroup->id)}}"  class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" method="POST">
+                    <form action="{{route("admin.studentgroup.update",$studentgroup->id)}}"   method="POST">
                         {{ csrf_field() }}
-                                <div class="uk-grid-margin">
-                                    <h5 class="uk-text-bold mb-2"> الاسم</h5>
-                                    <input type="text" class="uk-input" value="{{$studentgroup->title}}" name="title" placeholder="الاسم ">
-                                </div>
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> اختر دورة </h5>
-                                    <select name="formation_id" class="uk-select">
-                                        @if (isset($formations) && $formations->count()>0)
-                                        @foreach ($formations as $formation)
-                                        <option value="{{$formation->id}}">{{$formation->title}} </option>
-                
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                </div>  
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> الوصف </h5>
-                                    <textarea  name="description"   class="form-control">{{$studentgroup->description}}</textarea>
-                                </div>
+                        <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
+                            <div class="uk-grid-margin">
+                                <h5 class="uk-text-bold mb-2"> الاسم</h5>
+                                <input type="text" class="uk-input" value="{{$studentgroup->title}}" name="title" placeholder="الاسم ">
+                            </div>
+                            <div class="uk-grid-margin uk-first-column">
+                                <h5 class="uk-text-bold mb-2"> اختر معهد </h5>
+                                <select name="centre_id" class="uk-select">
+                                    @if (isset($centres) && $centres->count()>0)
+                                    @foreach ($centres as $centre)
+                                    <option value="{{$centre->id}}">{{$centre->centre}}   </option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>  
+                            <div class="uk-grid-margin uk-first-column">
+                                <h5 class="uk-text-bold mb-2"> اختر دورة </h5>
+                                <select name="formation_id" class="uk-select">
+                                    @if (isset($formations) && $formations->count()>0)
+                                    @foreach ($formations as $formation)
+                                    <option value="{{$formation->id}}">{{$formation->title}} </option>
+            
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>  
+                            <div  class='container' class="uk-grid-margin uk-first-column" >
+                                <h5 class="uk-text-bold mb-2"> </h5>
+                               
+                                 </div>
+                    </div>
+                            <div  class='container' class="uk-grid-margin uk-first-column" >
+                                <h5 class="uk-text-bold mb-2"> تعريف </h5>
+                                <textarea  name="description"   class="mytextarea"   class="form-control">{{$studentgroup->description}}</textarea>
+                            </div> 
+                               <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
+                                <div  class='container' class="uk-grid-margin uk-first-column" >
+                                    <h5 class="uk-text-bold mb-2"> </h5>
+                                   
+                                     </div>
+                                <div class="d-flex justify-content-between mb-3">
 
-                                <div class="uk-grid-margin uk-first-column">
-                                   <br><br>
-
-                                    <button  type="submit" class="btn btn-default">حفظ البيانات</button>
-                                </div>
-                        </div>
+                                    <h3>  </h3>
+                            
+                                    <div>
+                                        <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                            
+                                    </div>
+                                </div 
+                                 
+                     </div>                         
+                                
+                  
+           
+            </div>
+                        {{-- ############################################################################# --}}
+                             
                     </form>
                 
                 </div>

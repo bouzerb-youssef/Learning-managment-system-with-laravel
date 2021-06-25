@@ -99,9 +99,18 @@
                              
                               
                            
-                            <div class="uk-flex uk-flex-right p-4">
-                            
-                                <button  type="submit" class="btn btn-default">حفظ البيانات</button>
+                                <div class="uk-grid-margin uk-first-column">
+                                    <h5 class="uk-text-bold mb-2"> </h5>
+                                    
+                                </div>
+                            <div class="d-flex justify-content-between mb-3  p-4">
+
+                                <h3>  </h3>
+                        
+                                <div>
+                                    <button type="submit" class="btn btn-outline-dark">حفظ البيانات</button>
+                        
+                                </div>
                             </div>
                         </div>
                      </form>

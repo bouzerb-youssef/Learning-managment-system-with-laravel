@@ -3,26 +3,12 @@
 @section('content')
 <br><br>
 
-@if(session()->has('message'))
-<div class="container">
-    <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
-        <p> {{ session()->get('message') }}</p> 
-    </div> 
-</div>
-    
-@endif
-@if ($errors->any())
-<div class="alert alert-danger">
-    <strong></strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+
+
 <div class="page-content">
-    <div class="page-content-inner">
+    <div class="page-content-inner pt-lg-0  pl-lg-0">
+
+
 
         <div class="d-flex">
             <nav id="breadcrumbs" class="mb-3">
@@ -40,11 +26,29 @@
             <h3>عدد التلاميذ: {{$students->count()}} </h3>
     
             <div>
-                <a href="{{route('admin.addstudent')}}" class="btn btn-default">
+                <a href="{{route('admin.addstudent')}}" class="btn btn-outline-dark">
                     <i class="uil-plus"> </i> اضافة تلميذ جديد
                 </a>
             </div>
         </div>
+        @if(session()->has('message'))
+<div class="container">
+    <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
+        <p> {{ session()->get('message') }}</p> 
+    </div> 
+</div>
+    
+@endif
+@if ($errors->any())
+<div class="alert alert-danger">
+    <strong></strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
         <div class="card">
             <!-- Card header -->
             <div class="card-header actions-toolbar border-0">

@@ -10,97 +10,95 @@
 </div>
     
 @endif
-<div class="page-content-inner">
+<div class="page-content">
+    <div class="page-content-inner">
 
-    <div class="d-flex">
-        <nav id="breadcrumbs" class="mb-3">
-            <ul>
-                <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                <li><a href="#"> الاصناف </a></li>
-                <li>لائحة الاصناف</li>
-            </ul>
-        </nav>
-    </div>
-
-
-    <div class="d-flex justify-content-between mb-3">
-        <h3> عدد الاصناف :{{$categories->count()}} </h3>
-
-        <div>
-            <a href="{{route('admin.addcategory')}}" class="btn btn-outline-dark">
-                <i class="uil-plus"> </i> اضافة صنف جديد
-            </a>
+        <div class="d-flex">
+            <nav id="breadcrumbs" class="mb-3">
+                <ul>
+                    <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
+                    <li><a href="#"> الاصناف </a></li>
+                    <li>لائحة الاصناف </li>
+                </ul>
+            </nav>
         </div>
-    </div>
 
-    <div class="card">
-        <!-- Card header -->
-        <div class="card-header actions-toolbar border-0">
-            <div class="d-flex justify-content-between align-items-center">
-                <h4 class="d-inline-block mb-0">الاصناف</h4>
-                <div class="d-flex">
 
-                  
+
+        <div uk-grid="" class="uk-grid">
+            <div class="uk-width-1-3@m uk-first-column">
+
+                <nav class="responsive-tab style-3 setting-menu card uk-sticky" uk-sticky="top:30 ; offset:100; media:@m ;bottom:true; animation: uk-animation-slide-top" style="">
+                    <h5 class="mb-0 p-3 uk-visible@m"> Catagries </h5>
+                    <hr class="m-0 uk-visible@m">
+                    <ul>
+                        @foreach ($categories as $category)
+                            <li class="uk-active">
+                                <a href="{{route("admin.categories",$category->id)}}"> <i class="uil-brush-alt "></i> {{$category->title}} 
+                                    <span class="badge badge-light mr-2 badge-sm"> {{$category->cources->count()}}</span> 
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </nav><div class="uk-sticky-placeholder" style="height: 734px; margin: 0px 0px 20px;" hidden=""></div>
+
+            </div>
+
+            <div class="uk-width-2-3@m">
+
+                <div class="card rounded">
+                    <div class="p-3 d-flex align-items-center justify-content-between">
+                        @php
+                        use App\Models\Category;
+                     $category=Category::findorfail($category_id);
+                     
+               @endphp
+                        <h5 class="mb-0"> الكورسات </h5> <span> {{$category->cources->count()}} كورس </span>
+                    </div>
+                    <hr class="m-0">
                 
+                        @foreach ($category->cources as $cource)
+                                <div class="uk-grid-small p-4 uk-grid" uk-grid="">
+                                    <div class="uk-width-1-3@m uk-first-column">
+                                        @if (!$cource->thumbnail==null)
+                                        <img src="{{$cource->imagePath}}" alt="" class="  rounded">
+                                        @else
+                                        <img src="../assets/images/course/2.png" class="  rounded" alt="">
+                                        @endif
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h5 class="mb-2"> {{$cource->title}} </h5>
+                                        <br>
+                                        <p class="uk-text-small mb-2"> {!!$cource->short_description!!}  </a>
+                                        </p>
+                                        <p class="mb-0 uk-text-small mt-3">
+                                            <span class="mr-3 bg-light p-2 mt-1"> {{$cource->enrolls->count()}} مسجل (ة)</span><span style='padding-left:80px;'> {{$cource->updated_at->diffForHumans()}} </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                    
 
 
                 </div>
+
+
+
+              {{--   <ul class="uk-pagination mt-5 uk-flex-center" uk-margin="">
+                    <li class="uk-active uk-first-column"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#"><span uk-pagination-next="" class="uk-icon uk-pagination-next"><svg width="7" height="12" viewBox="0 0 7 12" xmlns="http://www.w3.org/2000/svg" data-svg="pagination-next"><polyline fill="none" stroke="#000" stroke-width="1.2" points="6 1 1 6 6 11"></polyline></svg></span></a></li>
+                </ul> --}}
+
+
+
             </div>
+
+
         </div>
-        <!-- Table -->
-        <div class="table-responsive">
-            <table class="table align-items-center">
-                <thead>
-                    <tr>
-                        <th scope="col">##</th>
-                        <th scope="col">الاسم</th>
-                        <th scope="col">العمليات</th>
-                    </tr>
-                </thead>
-                <tbody class="list">
-                    @php
-                    $i=1
-                @endphp
-                    @foreach ($categories as  $category)
-                    <tr>
-                      
-                           
-                        <td>{{$i++}}</td>
-                        <th scope="row">
-                            <div class="media align-items-center">
-                                
-                                <div class="media-body mr-4">
-                                    <a href="#" class="name h6 mb-0 text-sm">{{$category->title}}
-
-                                    </a>
-                                   
-                                </div>
-                            </div>
-                        </th>
-                      
-                        <td class="text-right">
-                            <!-- Actions -->
-                           
-                                    <a href="{{route("admin.category.remove",$category->id)}}"  class="btn  delete-confirm btn-icon btn-hover btn-lg btn-circle"   wire:click='remove({{$category->id}})' uk-tooltip="حذف " title="" aria-expanded="false">
-                                        <i class="uil-trash-alt text-danger" ></i> 
-                                    </a>
-                
-                                    <a href="{{route("admin.editcategory",$category->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل" title="" aria-expanded="false">
-                                        <i class="uil-pen "></i> 
-                                    </a>   
-                        </td>
-                        
-                      
-                    </tr>  
-                    @endforeach 
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-
-<br><br><br>
+</div>
 @endsection
 @section('scripts')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

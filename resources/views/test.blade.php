@@ -53,11 +53,13 @@
                         <a href="course-lesson-1.html">
                             <div class="course-card-resume">
                                 <div class="course-card-resume-thumbnail">
+                                    @if ($enroll->cource)
                                     @if (!$enroll->cource->thumbnail==null)
                                     <img src="{{$enroll->cource->imagePath}}">
                                     @else
                                     <img src="../assets/images/course/2.png" alt="">
                                     @endif
+                                   
                                   
                                 </div>
                                 <div class="course-card-resume-body">
@@ -67,9 +69,11 @@
                                         <div class="course-progressbar-filler" style="width:65%"></div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </a>
                     </li>
+
                 @endforeach
                    
                   

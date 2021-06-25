@@ -11,7 +11,7 @@ class StudentgroupController extends Controller
 {
     public function studentgroups(){
         $studentgroups= Group::with("formation",'centre')->get();
-       // dd( $studentgroups);
+    //  dd( $studentgroups);
          return view('admin.studentgroup.studentgroups',compact('studentgroups'));
     }
     public function addstudentgroup(){
@@ -65,7 +65,8 @@ class StudentgroupController extends Controller
         
          $studentgroup = Group::findorfail($id);
          $formations = formation::get();
-            return view("admin.studentgroup.editstudentgroup",compact("studentgroup","formations"));
+         $centres = Centre::get();
+            return view("admin.studentgroup.editstudentgroup",compact("studentgroup","formations",'centres'));
            
      }
      

@@ -8,8 +8,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> Setting </a></li>
-                    <li>Account Setting</li>
+                    <li><a href="#"> الدورات </a></li>
+                    <li>انشاء دورة جديدة</li>
                 </ul>
             </nav>
         </div>
@@ -26,25 +26,7 @@
     @endif
 
         <div uk-grid="" class="uk-grid">
-          {{--   <div class="uk-width-1-4@m uk-flex-last@m uk-first-column">
-
-                <nav class="responsive-tab style-3 setting-menu card uk-sticky" uk-sticky="top:30 ; offset:100; media:@m ;bottom:true; animation: uk-animation-slide-top" style="">
-
-                    <ul>
-                        <li class="uk-active"><a href="#"> <i class="uil-cog"></i> General </a></li>
-                        <li><a href="#"> <i class="uil-user"></i> Profile </a></li>
-                        <li><a href="#"> <i class="uil-usd-circle"></i> Monetization</a></li>
-                        <li><a href="#"> <i class="uil-unlock-alt"></i> Password </a></li>
-                        <li><a href="#"> <i class="uil-dollar-alt"></i> Earning</a></li>
-                        <li><a href="#"> <i class="uil-scenery"></i> Avatar &amp; Cover</a></li>
-                        <li><a href="#"> <i class="uil-shield-check"></i> Security</a></li>
-                        <li><a href="#"> <i class="uil-bolt"></i> Membarship</a></li>
-                        <li><a href="#"> <i class="uil-history"></i> Manage Sessions</a></li>
-                        <li><a href="#"> <i class="uil-trash-alt"></i> Delete account</a></li>
-                    </ul>
-                </nav><div class="uk-sticky-placeholder" style="height: 522px; margin: 0px 0px 20px;" hidden=""></div>
-
-            </div> --}}
+       
 
             <div class="uk-width-2-4@m">
 
@@ -81,15 +63,33 @@
                                                 @endif
                                             </select>
                                         </div>  
-                                </div>  
-                                <div  class='container' class="uk-grid-margin uk-first-column" >
-                                <h5 class="uk-text-bold mb-2"> تعريف </h5>
-                                <textarea  name="description" class="mytextarea"  placeholder="الملاحضات"   class="form-control"></textarea>
-                                 </div>                            
-                                <div class="uk-flex-right .uk-child-width-1-5 p-2">
-                            
-                                <button  type="submit" class="btn btn-default">حفظ البيانات</button>
-                                 </div>
+                                        <div  class='container' class="uk-grid-margin uk-first-column" >
+                                            <h5 class="uk-text-bold mb-2"> </h5>
+                                           
+                                             </div>
+                                </div>
+                                        <div  class='container' class="uk-grid-margin uk-first-column" >
+                                            <h5 class="uk-text-bold mb-2"> تعريف </h5>
+                                            <textarea  name="description" class="mytextarea"  placeholder="الملاحضات"   class="form-control"></textarea>
+                                             </div> 
+                                           <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
+                                            <div  class='container' class="uk-grid-margin uk-first-column" >
+                                                <h5 class="uk-text-bold mb-2"> </h5>
+                                               
+                                                 </div>
+                                            <div class="d-flex justify-content-between mb-3">
+
+                                                <h3>  </h3>
+                                        
+                                                <div>
+                                                    <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                                        
+                                                </div>
+                                            </div 
+                                             
+                                 </div>                         
+                                            
+                              
                        
                         </div>
                    

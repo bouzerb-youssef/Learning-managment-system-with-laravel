@@ -20,15 +20,18 @@ class StudentController extends Controller
             $users = User::with('enrolls')->paginate(10);
         return view('admin.students.studentlist',compact("users"));
     }
+    
     public function students(){
         $students= User::with("group")->where("role","0")->get();
         return view('admin.student.students',compact('students'));
     }
+
     public function addstudent(){
         $groups = Group::get();
 
     return view('admin.student.addstudent',compact('groups'));
     }
+
     public function storestudent(Request $request)
     {
     $request->validate([
@@ -106,6 +109,7 @@ class StudentController extends Controller
          $student->delete();
          toastr()->success('.لقد تم المسح  بنجاح');
      return back()->with('message', '.لقد تم المسح بنجاح ');
+
     }
   
     catch (\Exception $e){
@@ -121,6 +125,7 @@ class StudentController extends Controller
         
         $student = User::findorfail($id);
         $studentgroups = Group::get();
+      
             return view("admin.student.editstudent",compact("student","studentgroups"));
         
     }

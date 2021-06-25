@@ -21,7 +21,7 @@ class HomeController extends Controller
         if ($role==1) {
             return view('admin.dashboard',compact("courcecount","cources","users","teachers","lastusers"));
         }else{
-            return view('front.accuille',compact("cources","content"));
+            return view('front.accuille',compact("cources"));
         }
     }
 }
