@@ -78,6 +78,8 @@ class QuizController extends Controller
     public function storequestion(Request $request)
    
     {
+       return "iuiu";
+     //   try {  
         $request->validate([
             'question' => 'required',
             'audio' => 'required',
@@ -87,17 +89,17 @@ class QuizController extends Controller
             'image' => 'required',
         ]);
 
-       $name =request('audio')->getClientOriginalName();
+
 
         $audio =request('audio');
      
-
+        $name = Str::random().'-'.request('audio')->getClientOriginalName();
        $storeaudio=Storage::disk('questions')->put($name, $audio);
         $createdquestion = Question::create([
 
           "question"=> request('question'),
 
-           "audio"  =>   $name ,
+           "audio"  =>    $storeaudio ,
 
           "cource_id"=> request('cource_id'),
           ]);
@@ -107,17 +109,18 @@ class QuizController extends Controller
           $pointss = $request->input('points', []);
           $images = $request->input('image', []);
        
-          for($i = 0; $i < count( $options); $i++){
+         // for($i = 0; $i < count( $options); $i++){
+              foreach($options as $key->option){
             $image = $request['image']; 
   
-            $img   = ImageManagerStatic::make($images[$i])->resize(100,100)->encode('jpg');
+            $img   = ImageManagerStatic::make($images[$key])->resize(100,100)->encode('jpg');
            
-            $name  = Str::random() .'options'. $options[$i] .'jpg';
+            $name  = Str::random() .'options'. $options[$key] .'jpg';
             Storage::disk('options')->put($name, $img);
            $createdoption = Option::create([
     
-             "option"=> $options[$i] ,
-             "points"=> $pointss[$i] ,
+             "option"=> $options[$key] ,
+             "points"=> $pointss[$key] ,
              "image"=>$name   ,
              "question_id"=>  $createdquestion->id,
    
@@ -128,6 +131,11 @@ class QuizController extends Controller
         
           toastr()->success('.لقد تم الاضافة  بنجاح');
         return redirect()->route('admin.showquestion',request('cource_id'));
+   // }
+   // catch (\Exception $e){
+    //    toastr()->error('هناك خطأ');
+     //   return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+   // }
     }
 
 

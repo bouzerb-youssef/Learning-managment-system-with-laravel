@@ -32,7 +32,7 @@ protected $rules = [
     'question' => 'required',
     'audio' => 'required',
     //'cource_id' => 'required',
-    'option' => 'required',
+    //'option' => 'required',
     'points' => 'required',
     'image' => 'required',
 ];
@@ -41,22 +41,21 @@ protected $rules = [
    
     {
      
-      DB::beginTransaction();
+    DB::beginTransaction();
    
    
-       try {
+      try {
      $this->validate();
-       $name =$this->audio->getClientOriginalName();
 
         $audio =$this->audio;
      
-
+        $name = Str::random().'-'.$this->audio->getClientOriginalName();
        $storeaudio=Storage::disk('questions')->put($name, $audio);
         $createdquestion = Question::create([
 
           "question"=>$this->question,
 
-           "audio"  =>   $name ,
+           "audio"  =>    $storeaudio ,
 
           "cource_id"=>$this->cource->id,
           ]);
@@ -65,35 +64,37 @@ protected $rules = [
           $options = $this->option;
           $pointss =$this->points;
           $images =$this->image;
-       
-          for($i = 0; $i < count( $options); $i++){
+      // dd( $images);
+          for($i = 0; $i < count($pointss); $i++){
             $image = $images[$i]; 
   
             $img   = ImageManagerStatic::make($images[$i])->resize(100,100)->encode('jpg');
            
-            $name  = Str::random() .'options'. $options[$i] .'jpg';
+            $name  = Str::random() .'options'. ($i) .'jpg';
             Storage::disk('options')->put($name, $img);
            $createdoption = Option::create([
     
-             "option"=> $options[$i] ,
+             "option"=> $i ,
              "points"=> $pointss[$i] ,
              "image"=>$name   ,
              "question_id"=>  $createdquestion->id,
    
              ]);
-         }
+}
      
-        
+    //    
        DB::commit();
           toastr()->success('.لقد تم الاضافة  بنجاح');
         return redirect()->route('admin.showquestion',$this->cource->id);
     }
    catch (\Exception $e){
         DB::rollback();
-        $this->createAccountError= $e->getMessage();
+       $this->createAccountError= $e->getMessage();
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
-    }
+  }
+   
+  
 
 
 

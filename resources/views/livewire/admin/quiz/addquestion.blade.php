@@ -64,9 +64,8 @@
                                             <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
                                             
                                                 <div class="uk-first-column">
-                                                    <h5 class="uk-text-bold mb-2"> الخيار الاول</h5>
-                                                    <input type="text" wire:model.lazy="option.0" class="form-control" id="course_title"    placeholder="" >
-                                                    @error('option.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                    <div style='padding-right:150px;'> <button  class="uk-uk-button uk-button-default" type="button"  tabindex="-1"> الخيار 1</button> </div>
+                                                    
 
                                                     <h5 class="uk-text-bold mb-2">نوع الجواب </h5>
                                                     <select wire:model.lazy="points.0" class="uk-select">    
@@ -91,9 +90,8 @@
                                                 </div>
                                               <div class="uk-grid-margin uk-first-column">
                                                     <div class="uk-first-column">
-                                                        <h5 class="uk-text-bold mb-2"> الخيار الثاني</h5>
-                                                        <input type="text" wire:model.lazy="option.1" class="form-control" id="course_title"    placeholder="" >
-                                                        @error('option.1')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                        <div style='padding-right:150px;'> <button  class="uk-uk-button uk-button-default" type="button"  tabindex="-1"> الخيار 2</button> </div>
+                                                       
 
                                                         <h5 class="uk-text-bold mb-2">نوع الجواب </h5>
                                                         <select wire:model.lazy="points.1" class="uk-select">    
@@ -123,9 +121,8 @@
                                         <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
                                             
                                             <div class="uk-first-column">
-                                                <h5 class="uk-text-bold mb-2"> الخيار الثالث</h5>
-                                                <input type="text" wire:model.lazy="option.2" class="form-control" id="course_title"    placeholder="" >
-                                                @error('option.2')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                <div style='padding-right:150px;'> <button  class="uk-uk-button uk-button-default" type="button"  tabindex="-1"> الخيار 3</button> </div>
+                                                
 
                                                 <h5 class="uk-text-bold mb-2">نوع الجواب </h5>
                                                 <select wire:model.lazy="points.2" class="uk-select">    
@@ -150,10 +147,8 @@
                                             </div>
                                             <div class="uk-grid-margin uk-first-column">
                                                 <div class="uk-first-column">
-                                                    <h5 class="uk-text-bold mb-2"> الخيار الرابع</h5>
-                                                    <input type="text" wire:model.lazy="option.3" class="form-control" id="course_title"    placeholder="" >
-                                                    @error('option.3')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
+                                                    <div style='padding-right:150px;'> <button  class="uk-uk-button uk-button-default" type="button"  tabindex="-1"> الخيار 4</button> </div>
+                                                    
                                                     <h5 class="uk-text-bold mb-2">نوع الجواب </h5>
                                                     <select wire:model.lazy="points.3" class="uk-select">    
                                                         <option value="">من فضلك حدد الاجابة</option>

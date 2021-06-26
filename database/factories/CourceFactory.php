@@ -24,11 +24,11 @@ class CourceFactory extends Factory
         return [
             'title' => $this->faker->sentence(4),
             'short_description' => $this->faker->realText(100),
-            'description'=> $this->faker->realText(400),
-            'level' => 'Beginner',
+            'desc'=> $this->faker->realText(400),
+           // 'level' => 'Beginner',
             'thumbnail' => "https://picsum.photos/200/100",
-            'visibility' => true,
-            'category_id' => rand(1, 2)
+            //'visibility' => true,
+            'category_id' => rand(1, 13)
         ];
     }
 }

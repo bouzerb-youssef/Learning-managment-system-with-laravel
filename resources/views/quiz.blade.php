@@ -29,9 +29,18 @@
                                     @foreach($cource->courceQuestions as $question)
                                         <div class="card @if(!$loop->last)mb-3 @endif">
                                             @if (!$question->questionOptions->count()==0)
-                                            <div class="card-header"><div class="row" >
-                                                <h6>- {{ $question->question }} :</h6> <audio style="padding-right: 50px;"  controls src="{{asset('storage/questions/'.$question->audio)}}" type="audio/mp3" ></audio>
-                                            </span></div>
+                                            <div class="card-header">
+                                                <div class="d-flex justify-content-between mb-3">
+
+                                                    <h6>- {{ $question->question }} :</h6>
+                                            
+                                                    <div>
+                                                        <audio style="padding-right: 50px;"  controls src="{{asset('storage/questions/'.$question->audio)}}" type="audio/mp3" ></audio>
+                                            
+                                                    </div>
+                                                </div>
+                                                
+                                            </span>
                                            
                                             <div class="card-body">
                                                 <input type="hidden" name="questions[{{ $question->id }}]" value="">

@@ -31,8 +31,6 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
  public $materialname,$material;
  public $categories;
  public Lesson $lesson;
-
-   
     public $inputs = [];
     public $i = 0;
  
@@ -209,7 +207,6 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
                 'cource_id' => $createdCource->id,
         
             ]);
-       
           CreateThumbnailFromVideo::dispatch($this->lesson);
           ConvertForStreaming::dispatch($this->lesson);
 

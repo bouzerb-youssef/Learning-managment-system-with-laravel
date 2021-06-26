@@ -35,8 +35,8 @@ class DatabaseSeeder extends Seeder
     
       
        //  User::factory(10)->create();
-      //Category::factory(2)->create();
-     //  Cource::factory(4)->create(); 
+      //Category::factory(11)->create();
+     //  Cource::factory(60)->create(); 
 
     //  Section::factory(200)->create();
     //  Lesson::factory(1200)->create();
@@ -45,8 +45,8 @@ class DatabaseSeeder extends Seeder
      // Book::factory(100)->create();
      // Question::factory(40)->create();
      // Option::factory(160)->create();
-    content::factory(1)->create();
-     footercontent::factory(1)->create();
+    //content::factory(1)->create();
+    // footercontent::factory(1)->create();
 
     }
 

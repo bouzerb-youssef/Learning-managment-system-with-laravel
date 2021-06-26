@@ -135,12 +135,15 @@
                                  
                                  
                                   <a href="{{route("cources.lessons.vedio",$lesson->id)}}"  @if ($loop->last) class="uk-open" @endif aria-expanded="false">{{$lesson->name}} {{--  <span> {{$lesson->duration}} دقيقة </span> --}} </a> 
+                                
                               </li>
                              
   
                                      
                              
                           @endforeach 
+                          <li><i class='icon-feather-book'></i> <a href=" {{route('quiz.index',$cource->id)}} "   aria-expanded="false" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">اختبر قدراتك   </a>
+                          </li>
                          
                       </ul>
 
