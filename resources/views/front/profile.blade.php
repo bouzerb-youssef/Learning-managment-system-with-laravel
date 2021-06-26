@@ -81,11 +81,11 @@
                                     @if($stage->genre =='stage')
                                   
                                     <i class="icon-orange icon-small"></i>
-{{                                    $stage->genre 
-}}                                    @else
+                                            {{$stage->genre }}                                    
+                                            @else
                                     <i class="icon-green icon-small"></i>
-                                    {{                                    $stage->genre 
-                                    }}
+                                    {{$stage->genre }}
+                                    
                                     @endif
                                        
                                      

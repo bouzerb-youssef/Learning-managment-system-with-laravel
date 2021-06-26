@@ -30,30 +30,27 @@ class StudentAttachmentController extends Controller
     
  {
      $request->validate([
-         'name' => 'required',
+         'genre' => 'required',
          'file' => 'required',
-        
          'user_id' => 'required',
      ]);
      try {  
         $name = Str::random().'-'.request('file')->getClientOriginalName();
 
         $studentAttachment =request('file');
-     
-   
+        $student=User::findorfail(request('user_id'));
+        $storestudentAttachement=Storage::disk('studentAttachement')->put($student->name, $studentAttachment);
+
+   //dd( $studentAttachment);
         $createdstudentAttachment = studentAttachment::create([
     
-          "name"=> request('name'),
+          "genre"=> request('genre'),
           
-          'file' => $name,
+          'file' =>  $storestudentAttachement ,
          
           'user_id' =>  request('user_id'),
           ]);
-          $student=User::findorfail(request('user_id'));
-          $storestudentAttachement=Storage::disk('studentAttachement')->put($student->name, $studentAttachment);
-          $createdstudentAttachment->save();
-        
-        
+                
           toastr()->success('.لقد تم الاضافة  بنجاح');
         return redirect()->route('admin.studentAttachments', request('user_id'));  
     }
@@ -68,7 +65,9 @@ class StudentAttachmentController extends Controller
             //  dd($studentAttachment->student->name);
          try {  
             if($studentAttachment){
-                File::deleteDirectory(storage_path('app/public/studentAttachement/'.$studentAttachment->student->name.'/'.$studentAttachment->file));
+                $studentAttachement=Storage::disk('studentAttachement')->delete($studentAttachment->file);
+
+                //File::deleteDirectory(storage_path('app/public/studentAttachement/'.$studentAttachment->student->name.'/'.$studentAttachment->file));
                 $studentAttachment->delete();
              }
              toastr()->error('.لقد تم المسح  بنجاح');
@@ -87,38 +86,45 @@ class StudentAttachmentController extends Controller
      {
         
          $studentAttachment = studentAttachment::findorfail($id);
-         $years = Year::get();
-            return view("admin.studentAttachment.editstudentAttachment",compact("studentAttachment","years"));
+        
+            return view("admin.studentAttachment.editstudentAttachment",compact("studentAttachment"));
            
      }
      
  
         public function updatestudentAttachment($id,Request $request){
          $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'datebegun' => 'required',
-            'dateend' => 'required',
-            'year_id' => 'required',
+            'genre' => 'required',
+            'file' => 'required',
+           
+           // 'user_id' => 'required',
          ]);
-     
+  //  try {  
+         $Attachement=StudentAttachment::with('student')->findorfail($id);
+        
+        Storage::disk('studentAttachement')->delete($Attachement->file);
+         $studentAttachmentfile =request('file');
+         $storestudentAttachement=Storage::disk('studentAttachement')->put($Attachement->student->name, $studentAttachmentfile);
+ 
             $updatestudentAttachment = studentAttachment::findorfail($id)->update([
             
-                "title"=> request('title'),
-                'description' => request('description'),
-                'datebegun' =>  request('datebegun'),
-                'dateend' =>  request('dateend'),
-                'year_id' =>  request('year_id'),
+              
+                "genre"=> request('genre'),
+                
+                'file' =>  $storestudentAttachement ,
+
+                'user_id' =>  $Attachement->student->id,
+
                 ]);
+              
+        
                 toastr()->success('.لقد تم التعديل  بنجاح');
-            return redirect()->route('admin.studentAttachments');
-           
+
+            return redirect()->route('admin.studentAttachments',$Attachement->student->id);
+       // }
+       // catch (\Exception $e){
+        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+       // }
         }
-        public function download()
-        {
-            $myFile = storage_path("app/public/.pdf");
-    
-    
-            return response()->download($myFile);
-        }
+      
 }

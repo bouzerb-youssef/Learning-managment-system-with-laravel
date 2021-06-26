@@ -284,10 +284,7 @@ Route::group(
                 Route::get('/studentattachment/remove/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'removestudentAttachment'])->name('admin.studentAttachment.remove');
                
                         });
-        Route::get('/showstage/{id}', [App\Http\Controllers\Admin\StageController::class, 'showstage'])->name('admin.showstage');
-        
-
-        
+        Route::get('/showstage/{id}', [App\Http\Controllers\Admin\StageController::class, 'showstage'])->name('admin.showstage');  
     });
 
 

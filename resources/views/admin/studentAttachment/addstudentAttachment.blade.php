@@ -41,7 +41,7 @@
                         
                             <div class="uk-first-column">
                                 <h5 class="uk-text-bold mb-2"> الاسم</h5>
-                                <input type="text" class="uk-input" name="name" placeholder="الاسم">
+                                <input type="text" class="uk-input" name="genre" placeholder="الاسم">
                                 <input type="hidden" class="uk-input" value='{{$student->id}}' name="user_id" >
                             </div>
                           

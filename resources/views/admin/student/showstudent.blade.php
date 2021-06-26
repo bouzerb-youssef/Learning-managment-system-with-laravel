@@ -10,7 +10,7 @@
 
 
 
-           <h2>الحساب </h2>
+           <h2>الحساب : </h2>
 
         
 
@@ -36,32 +36,99 @@
                    <div class="uk-card-default rounded mt-5">
                        <div class="uk-flex uk-flex-between uk-flex-middle py-3 px-4">
                            <h5 class="mb-0"> الوثائق </h5>
-                               <a href="#"> اضافة وثيقة </a>
+                               <a href="{{route('admin.addstudentAttachment',$student->id)}}"> اضافة وثيقة </a>
                        </div>
                        <hr class="m-0">
                        <div class="p-3">
                         @foreach($student->studentattachments as $item)
-                           <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                           
+                            <div class="d-flex justify-content-between mb-3">
 
-                               <div class="uk-width-auto uk-first-column">
-                                   <button type="button" class="btn btn-default btn-icon-only">
-                                       <span class="d-flex justify-content-center">
-                                 {{ $item->genre}}
-                                       </span>
-                                     </button>
-                               </div>
-                               <div class="uk-width-expand">
-                                   <h5 class="mb-2"> {{ $item->file}} </h5>
-                                   
-                                    <a href="{{asset('storage/studentAttachement/'.$student->name .'/'.$item->file.'/'.$item->file)}}">تحميل</a>
+                                    <div class="uk-width-auto uk-first-column">
+                                    
+                                        <span >
+                                            <a href="{{asset('storage/studentAttachement/'.$item->file)}}">  {{ $item->genre}}</a>
+                                                
+                                        </span>
+                                    
+                                </div>
 
-                               </div>
+                                <div >
+                                    
+                                    <a href="{{asset('storage/studentAttachement/'.$item->file)}}">مشاهدة</a>
+                                  
+                                     <a href=" {{route("admin.editstudentAttachment",$item->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل السؤال" title="" aria-expanded="false">
+                                        <i class="uil-pen "></i> 
+                                    </a>
+                                    
+                                </div>
 
-                           </div>
+                            </div>
+                               
+
+                         
                            @endforeach
 
                        </div>
                    </div>
+
+                   <div class="uk-card-default rounded mt-5">
+                    <div class="uk-flex uk-flex-between uk-flex-middle py-3 px-4">
+                        <h5 class="mb-0"> السطاجات </h5>
+                        
+                    </div>
+                    <hr class="m-0">
+                    <div class="p-3">
+                        @if ($student->stages->count()>0 )
+                        @foreach ($student->stages as $stage)
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+
+                                    <div class="uk-width-auto uk-first-column">
+                                        <button type="button" class="btn btn-danger btn-icon-only">
+                                            <span class="d-flex justify-content-center">
+                                    @if($stage->genre =='stage')
+                                
+                                    <i class="icon-orange icon-small"></i>
+                                            {{$stage->genre }}                                    
+                                            @else
+                                    <i class="icon-green icon-small"></i>
+                                    {{$stage->genre }}
+                                    
+                                    @endif
+                                    
+                                    
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="uk-width-expand">
+                            
+                                    
+                            
+                                <div class="uk-width-expand">
+                                    <h6 ><a href="{{route("admin.showstage",$stage->id)}}">{{$stage->title}}</a></h6>
+                                
+                                </div>
+                                        
+                                    </div>
+
+                            </div>
+                            <div >
+                                    
+                                <a href="{{route("admin.showstage",$stage->id)}}">مشاهدة</a>
+                                
+                            </div>
+
+                        </div>
+
+                        @endforeach
+                        @else
+                        <h6>ليس هناك تدريبات مخصصة بعد</h6>
+                    @endif
+                     
+
+                    </div>
+                </div>
 
                </div>
                <div class="uk-width-expand@m">
@@ -87,6 +154,10 @@
                                <h6 class="uk-text-bold"> رقم الهاتف </h6>
                                    <p> {{$student->phone}}</p>
                             </div>
+                            <div class="uk-grid-margin">
+                                <h6 class="uk-text-bold"> الجنس </h6>
+                                    <p> {{$student->sex}}</p>
+                             </div>
                    </div>
 
                    <div class="uk-card-default rounded mt-4">

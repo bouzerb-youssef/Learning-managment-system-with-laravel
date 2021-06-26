@@ -1,128 +1,106 @@
-@extends('admin.layouts.app')
-@section('content')
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong></strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-    <div class="page-content-inner">
-
-        <div class="d-flex">
-            <nav id="breadcrumbs" class="mb-3">
+    @extends('admin.layouts.app')
+    @section('content')
+    <br><br><br>
+    <div class="page-content">
+        <div class="page-content-inner">
+    
+            <div class="d-flex">
+                <nav id="breadcrumbs" class="mb-3">
+                    <ul>
+                        <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
+                        <li><a href="#"> Setting </a></li>
+                        <li>Account Setting</li>
+                    </ul>
+                </nav>
+            </div>
+    
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong></strong> There were some problems with your input.<br><br>
                 <ul>
-                    <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> stage </a></li>
-                    <li>Create New stage</li>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
                 </ul>
-            </nav>
-        </div>
-
-
-
-        <div class="card">
-            <div class="card-header border-bottom-0 py-4">
-                <h5> stages Manager </h5>
             </div>
-
-
-            <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                <li class="uk-active"><a href="#" aria-expanded="true"> اضافة ستاج</a></li>
-                
-          
-            </ul>
-
-            <div class="card-body">
-
-                <ul class="uk-switcher uk-margin" id="course-edit-tab" style="touch-action: pan-y pinch-zoom;">
-
-                    <li class="uk-active">
-
-                        <div class="row">
-                            <div class="col-xl-9 m-auto">
-
-                             <form action="{{route("admin.stage.update",$stage->id)}}" method="POST" >
-                            {{ csrf_field() }}
-                            <div class="form-group row mb-3">
-                                <label class="col-md-3 col-form-label" for="course_title"> التلاميد <span class="required">*</span></label>
-                                <div class="col-md-9">
-                                    <div class="btn-group bootstrap-select"> 
-                                        <select name="user_id" class="selectpicker" 
-                                         tabindex="-98"> 
-                                        <option  selected>{{$stage->user->name}} </option>
+        @endif
     
-                                            @foreach ($users as $user) 
-                                                        <option  value="{{$user->id}}" > {{$user->name}}</option>
-                                            @endforeach 
-                                    </select></div>
-                                    
-                                </div>
-                            </div>
-                         
-                            <br>
-                                <div class="form-group row mb-3">
-                                    <label class="col-md-3 col-form-label" for="course_title" >اسم العمل/السطاج<span class="required">*</span></label>
-                                    <div class="col-md-9">
-                                        <input type="text" name="title" class="form-control" id="course_title"  value="{{$stage->title}}" name="title"  placeholder=""  required="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-3">
-                                    <label class="col-md-3 col-form-label" for="short_description"> التعريف </label>
-                                    <div class="col-md-9">
-                                        <textarea  name="description" id="description" class="form-control" >{{$stage->description}}</textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-3">
-                                    <label class="col-md-3 col-form-label" for="short_description"> العنوان </label>
-                                    <div class="col-md-9">
-                                        <textarea  name="address" id="address" class="form-control" >{{$stage->address}}</textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-3">
-                                    <label class="col-md-3 col-form-label" for="course_title"> النوع <span class="required">*</span></label>
-                                    <div class="col-md-9">
-                                        <div class="btn-group bootstrap-select"> 
-                                            <select  name="genre" class="selectpicker" tabindex="-98"> 
-                                               <option  selected >  {{$stage->genre}} </option> 
-
-                                            <option value="stage"  >سطاج</option>
-                                            <option value="emploi"   >عمل</option>
-                                        </select></div>
-                                        
-                                    </div>
-                                </div>
-                       
-                                <div class="form-group row mb-3">
-                                    <button type="submit" class="btn btn-default" >حفظ</button>
-                                </div>
-                                
-                      
-
-                            </div>
+            <div uk-grid="" class="uk-grid">
+      
+    
+                <div class="uk-width-2-4@m">
+    
+                    <div class="card rounded">
+                        <div class="p-3">
+                            <h5 class="mb-0"> اضافة فصل</h5>
                         </div>
-
-
-                    </li>
-                
-                </form>
-                </ul>
-
-            </div>
-
-        </div>
-
-
-
-
-
-
-</div>
+                        <hr class="m-0">
+                        <form action="{{route("admin.stage.update",$stage->id)}}" method="POST" >
+                                        {{ csrf_field() }}
+                                <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
+                                    <div class="uk-first-column">
+                                        <h5 class="uk-text-bold mb-2"> أسم التدريب/العمل </h5>
+                                        <input type="text" class="uk-input" value="{{$stage->title}}" name="title" placeholder="أسم التدريب/العمل">
+                                        <input type="hidden" class="uk-input" name="user_id" value='{{$stage->user_id}}' >
     
-@endsection
+                        
+                                    </div>
+                                    <div class="uk-grid-margin uk-first-column">
+                                        <h5 class="uk-text-bold mb-2"> اختر النوع   </h5>
+                                        <select name="genre" class="uk-select">
+                                            <option value="عمل" >
+                                                عمل
+                                            </option>
+                                            <option value="تدريب" >
+                                                تدريب</option>
+                                        
+                                            
+                                        </select>
+                                    </div>
+                                    <div  class='container' class="uk-grid-margin uk-first-column" >
+                                        <h5 class="uk-text-bold mb-2"   > تعريف </h5>
+                                        <textarea  name="description"  value="{{$stage->description}}" class="mytextarea"  placeholder="التعريف"   class="form-control"></textarea>
+                                    </div>  
+                                    <div  class='container' class="uk-grid-margin uk-first-column" >
+                                        <h5 class="uk-text-bold mb-2"> العنوان </h5>
+                                        <textarea  name="address"   value="{{$stage->address}}" class="mytextarea"  placeholder="العنوان"   class="form-control"></textarea>
+                                    </div>                           
+                                 
+                              
+                                  
+                                </div>
+                                <div class="uk-flex-right .uk-child-width-1-5 p-2">
+                                    
+                                    <button  type="submit" class="btn btn-default">حفظ البيانات</button>
+                                </div>
+                           
+                               
+                           
+                            
+                        </form>
+                   
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+    
+        </div>
+    
+    </div>    
+    
+        
+    @endsection
+    @section('scripts')
+    <script src="https://cdn.tiny.cloud/1/lp3k352k7b0pyw7jy2uvuh5igu4nxqn3k2bgrocu3c6kvhho/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+      selector: '.mytextarea',
+      language: 'ar'
+    });
+    </script>
+    
+    @endsection

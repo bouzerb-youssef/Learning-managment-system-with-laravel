@@ -157,7 +157,7 @@
                             <h4> الاساتذة </h4>
                             <div class="grid-slider-header-link">
 
-                                <a href="browse-channals.html" class="btn uk-visible@m">رؤية الكل </a>
+                                <a href="/admin/teachers" class="btn uk-visible@m">رؤية الكل </a>
                                 <a href="#" class="slide-nav-prev uk-invisible" uk-slider-item="previous"></a>
                                 <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
 
@@ -222,53 +222,11 @@
                          <p class="mb-0" >   التقارير :</p>
 
                         </div>
-                 {{--        <div class="col">
-
-                        <div class="btn-group bootstrap-select">
-                            <select class="selectpicker" tabindex="-98">
-                                <option value=""> اليوم </option>
-                                <option value="1"> هذا الاسبوع</option>
-                                <option value="2"> الاسبوع السابق</option>
-                            </select>
-                        </div>
-
-
-                    </div>
-                    </div> --}}
+            
                 </div>
-              {{--   <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                    <div class="uk-width-expand">
-                        <p class="uk-text-truncate mb-0"> المعاهد</p>
-                        @if(isset($centres) && $centres->count()>0)
-                        <span class="badge badge-soft-secondary mt-n1"> {{$centres->count()}}</span>
-                        @endif
-                    </div>
-                    <div class="uk-width-expand">
-                        <p class="uk-text-truncate mb-0"> الدورات</p>
-                        @if(isset($formation) && $formation->count()>0)
-                        <span class="badge badge-soft-secondary mt-n1"> {{$formation->count()}}</span>
-                        @endif
-                </div>
-                {{-- ################################### --}}
-            {{--     <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                    <div class="uk-width-expand">
-                        <p class="uk-text-truncate mb-0"> المجموعات</p>
-                        @if(isset($groups) && $groups->count()>0)
-                        <span class="badge badge-soft-secondary mt-n1"> {{$groups->count()}}</span>
-                        @endif
-                    </div>
-                    <div class="uk-width-expand">
-                        <p class="uk-text-truncate mb-0"> الطلاب</p>
-                        @if(isset($users) && $users->count()>0)
-                        <span class="badge badge-soft-secondary mt-n1"> {{$users->count()}}</span>
-                        @endif
-                    </div>
-                </div> --}}
+           
                     <hr class="m-0">
                     <div class="p-3">
-                     
-    
-
                         <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
                             <div class="uk-width-expand">
                                 <p class="uk-text-truncate mb-0"> المعاهد</p>
@@ -290,13 +248,9 @@
                                 <span class="badge badge-soft-secondary mt-n1">  عدد الطلاب : @if(isset($users) && $users->count()>0)  {{$users->count()}} @endif</span>
                             </div>
                         </div>
-
-
-                  
                     </div>
 <br>
                     <hr class="m-0">
-
                     <div class="p-3">
                         <h5> أخر الكورسات</h5>
                         @foreach ($cources as $cource) 
@@ -311,19 +265,18 @@
                                  <p class="uk-text-truncate mb-0"> {{$cource->title}}</p>
                                  <span class="badge badge-soft-secondary mt-n1"> {{$cource->enrolls->count()}} مسجل فيها</span>
                              </div>
- 
                          </div>
                          @endforeach 
 
 
 <br>
-                        <a href="#">
+                        <a href="/admin/cources">
                             <p class="uk-heading-line uk-text-center mt-2 uk-text-small"><span>رؤية الكل
                                 </span>
                             </p>
                         </a>
 
-                        <h5> اخر المسجلين</h5>
+                        <h5> اخرالطلاب المسجلين</h5>
                         @foreach ($lastusers as $user)
    
 
@@ -348,11 +301,32 @@
 
 
                         <br>
-                        <a href="#">
+                        <a href="/admin/students">
                             <p class="uk-heading-line uk-text-center mt-2 uk-text-small"><span>رؤية الكل
                                 </span>
                             </p>
                         </a>
+                        
+                        <h5>أخر الوضائف أو التداريب  </h5>
+                        @foreach ($laststages as $stage)
+   
+
+                      <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                         
+                          <div class="uk-width-expand">
+                              <p class="uk-text-truncate mb-0"> {{$stage->title}}</p>
+                          </div>
+                          <div class="uk-width-auto"> <span class="badge badge-soft-success mt-n1">
+                            {{$stage->user->name}} </span>
+                          </div>
+                      </div>
+
+                        @endforeach 
+
+
+
+                        <br>
+                        
 
                     </div>
 

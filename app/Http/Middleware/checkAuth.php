@@ -19,7 +19,7 @@ class checkAuth
     public function handle(Request $request, Closure $next)
     {
        
-       
+      if(Auth::user()) {
         $role =Auth::user()->role ;
 
         if (   !$role == 1) {
@@ -29,8 +29,8 @@ class checkAuth
          
         return $next($request); 
     
-    
-       
-       
+      }
+      return response()->view('front.accuille');
+
     }
 }

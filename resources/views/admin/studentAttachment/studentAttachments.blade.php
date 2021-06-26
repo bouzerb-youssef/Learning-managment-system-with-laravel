@@ -70,7 +70,7 @@
                                             <i class="uil-trash-alt text-danger" ></i> 
                                         </a>
                     
-                                        <a href=" {{route("admin.editstudent",$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل السؤال" title="" aria-expanded="false">
+                                        <a href=" {{route("admin.editstudentAttachment",$studentAttachment->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل السؤال" title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>     
                             </td>
