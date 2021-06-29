@@ -103,7 +103,7 @@
                                     <div class="d-flex justify-content-between mb-3">
                                         <h3> </h3>
                                         <div>
-                                            <a href="{{route('admin.addsection',$cource->id)}}" class="btn btn-default">
+                                            <a href="{{route('admin.material.add',$cource->id)}}" class="btn btn-default">
                                                 <i class="uil-plus"> </i>اضافة مرفق جديد
                                             </a>
                                         </div>

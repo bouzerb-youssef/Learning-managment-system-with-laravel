@@ -232,7 +232,7 @@
                                                                                                 
                                                                                             </div>
                                                                             </div>
-                                                                    </div>
+                                                                        </div>
                                                                     {{-- lesson 2 --}}
                                                               
                                                                     @foreach($inputs1 as $key1 => $value1)

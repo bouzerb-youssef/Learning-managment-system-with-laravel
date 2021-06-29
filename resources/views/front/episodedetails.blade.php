@@ -46,7 +46,7 @@
 
         <div class="course-layouts course-sidebar-collapse">
 
-            <div class="course-content bg-dark">
+            <div  class="course-content bg-dark" >
 
                 <div class="course-header">
                     
@@ -142,7 +142,8 @@
                                      
                              
                           @endforeach 
-                          <li><i class='icon-feather-book'></i> <a href=" {{route('quiz.index',$cource->id)}} "   aria-expanded="false" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">اختبر قدراتك   </a>
+                           <br><br><br>
+                          <li> <a href=" {{route('quiz.index',$cource->id)}} "   aria-expanded="false" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">اختبر قدراتك   </a>
                           </li>
                          
                       </ul>

@@ -24,7 +24,12 @@ class CategoryController extends Controller
       $category_id =$id /* Category::with('cources')->findorfail($id) */;
          return view("admin.categories.categorylist",compact("categories","category_id"));
      }
-    
+     
+     public function categorylist(){
+      $categories = Category::get();
+     
+         return view("admin.categories.categories",compact("categories"));
+     }
 
      public function  addcategory(){
       $categories = Category::all();
@@ -125,24 +130,30 @@ class CategoryController extends Controller
 
   
    public function  storecategory(Request $request){
-     
+    try {  
       $request->validate([
-           'title' => 'required|max:70',
-         ]);  
- 
-       $addcategory = Category::create([
- 
-           "title"=>request('title'),
-          
-       
-   
-           ]);
-          
-           $addcategory->save();
-          
-           toastr()->success('.لقد تم الاضافة  بنجاح');
+        'title' => 'required|max:70',
+      ]);  
 
-       return redirect()->route('admin.categories');
+    $addcategory = Category::create([
+
+        "title"=>request('title'),
+       
+    
+
+        ]);
+       
+       
+       
+        toastr()->success('.لقد تم الاضافة  بنجاح');
+
+    return redirect()->route('admin.categorylist');
+    }
+  
+    catch (\Exception $e){
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
+     
   
    }
    

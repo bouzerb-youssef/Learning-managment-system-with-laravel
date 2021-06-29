@@ -3458,7 +3458,7 @@ ul.dropdown-user-menu .menu-divider {
 ------------------------------------- */
 
 ul.course-curriculum-list {
-  padding: 0;
+   padding: 0;
   list-style: none;
 }
 
@@ -3799,7 +3799,7 @@ ul.course-curriculum-list {
 .comments-avatar  {
   display: inline-block;
   padding: 0 0 0 17px;
-  position: absolute;
+  position: relative;
   right: 0px;
   top: -5px;
 }

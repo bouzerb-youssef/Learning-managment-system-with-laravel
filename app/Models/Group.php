@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Centre;
+use App\Models\Message;
 
 class Group extends Model
 {
@@ -30,6 +31,10 @@ class Group extends Model
     public function centre()
     {
         return $this->belongsTo(Centre::class);
+    }
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 
 }

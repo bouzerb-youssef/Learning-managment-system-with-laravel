@@ -39,19 +39,17 @@
                            
                             <li> انشات في :{{$cource->created_at->format("d/m/y")}}<a href="#"> بواسطة أمل سونتر </a> </li>
                             
-{{--                             <li>      أخر تحديث:{{$cource->updated_at->format("d/m/y")}}</li>
- --}}                            
+                        
                         </ul>
 
                     </div>
 
                     <div class="uk-flex uk-flex-between uk-flex-middle">
                         <div class=" uk-visible@m">
-                         
                         </div>
                             
                         @if ($is_enroll->count())
-                        <h4>انت مسجل مسبقا</h4>   
+                        <h5>انت مسجل مسبقا</h5>   
                         @else
                         <a href="{{route("cource.enroll",$cource->id)}}" class="btn-course-start-2 my-lg-4 mt-3"> ابدأ الان 
                             <i class="icon-feather-chevron-right"></i> </a>
@@ -102,7 +100,7 @@
 {{--                                         <a  uk-toggle="target: #modal-example"  href="#modal-example">{{$lesson->name}} </a>
  --}}                                       {{--  @endif --}}
                                       
-                                        <span> {{$lesson->duration}} دقيقة</span></li>
+{{--                                         <span> {{$lesson->duration}} دقيقة</span></li> --}}
                                     
                                     @endforeach  
                                     </ul>
@@ -123,7 +121,7 @@
                         <p>{!!$cource->desc!!} </p>
 
 
-                        <h4> ماذا ستتعلم من الكورس :</h4>
+                        <h4> ماذا تحتاج من اجل البدأ في تعلم الكورس :</h4>
                         <div class="uk-child-width-1-2@s uk-grid" uk-grid="">
                             <div class="uk-first-column">
                                 <ul class="list-2">
@@ -137,18 +135,7 @@
                                   
                                 </ul>
                             </div>
-                         {{--    <div>
-                                <ul class="list-2">
-                                    @if ($cource->whatinthecoures && $cource->whatinthecoures->count()>0)
-                                    @foreach ($cource->whatinthecoures as $detail)
-                                    @if($element == 1)
-                                    <li>{{$detail->detail}}</li>
-                                  
-                                    @endforeach
-                                        
-                                    @endif
-                                </ul>
-                            </div> --}}
+                     
                         </div>
                        
 
@@ -161,25 +148,27 @@
                    
          
                     <!-- course Announcement-->
-                    <li class="" style="">
+                    <li  style="">
 
                         <h4 class="my-4">مرفقات الفصول</h4>
-  
-                        <ul class="course-faq uk-accordion" uk-accordion="">
-                           
-                               
-                                <li >
-                                   
-                                    @foreach ($cource->materials as $material)
+                        <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
+                            @foreach ($cource->materials as $material)
+
+                                <li class="uk-open">
+                                    <a class="uk-accordion-title" href="#"> {{$material->materialname}} </a>
                                     <div class="uk-accordion-content" aria-hidden="true" hidden="">
-                                    
-                                        <p>{{$material->materialname}}<a href="{{$material->pdfPath}}"> <br><i class="uil-external-link-alt "></i> </a></p>
+                            
+                                        <!-- course-video-list -->
+                                        <ul class="course-curriculum-list">
+                                            <li>{{$material->materialname}} <span> <a href="{{$material->pdfPath}}" {{-- style='padding-bottom:30px;' --}}>  <i class="uil-external-link-alt "></i> </a> </span>
+                                        
+                                        </ul>
+                            
                                     </div>
-                                    @endforeach
                                 </li>
-                             
-                         
+                            @endforeach
                         </ul>
+                 
   
                     </li>
                     <!-- course Reviews-->
@@ -198,7 +187,7 @@
             <!-- sidebar -->
             <div class="uk-width-1-3@m uk-grid-margin uk-first-column">
 
-                <h4 class="mt-lg-4"> Related Courses</h4>
+                <h4 class="mt-lg-4"> كورسات أخري</h4>
                 <div class="uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
                     @foreach ($cources as $cource)
                     <div class="uk-first-column">
@@ -238,7 +227,7 @@
                                         <h5> <i class="icon-feather-film"></i> {{$countlesson}} دروس </h5>
                                       {{--   <h5> <i class="icon-feather-clock"></i> {{ $countlessontime}} دقيقة </h5>
                                         @else --}}
-                                        <h5> <i class="icon-feather-film"></i> ليس هناك فصول بعد </h5>
+                                      
                                         
                                         
                                          @endif

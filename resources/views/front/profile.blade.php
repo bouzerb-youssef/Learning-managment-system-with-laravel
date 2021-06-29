@@ -209,15 +209,19 @@
                                     <a href="course-lesson-1.html">
                                         <div class="course-card-resume">
                                             <div class="course-card-resume-thumbnail">
-                                                @if (!$enroll->cource->thumbnail==null)
-                                                <img src="{{$enroll->cource->imagePath}}">
-                                                @else
-                                                <img src="../assets/images/course/2.png" alt="">
-                                                @endif
-                                              
+                                           @if (isset($enroll->cource))
+                                            @if ( !$enroll->cource->thumbnail==null)
+                                            <img src="{{$enroll->cource->imagePath}}">
+                                            @else
+                                            <img src="../assets/images/course/2.png" alt="">
+                                            @endif
+                                            @endif
+                                               
                                             </div>
                                             <div class="course-card-resume-body">
+                                                @if (isset($enroll->cource))
                                                 <h5>{{$enroll->cource->title}}</h5>
+                                                @endif
                                                 <span class="number"> 3/20 </span>
                                                 <div class="course-progressbar">
                                                     <div class="course-progressbar-filler" style="width:65%"></div>

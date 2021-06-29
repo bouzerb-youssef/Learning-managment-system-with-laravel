@@ -30,6 +30,7 @@ class SectionController extends Controller
         $section->delete();
    return redirect()->back();/* route("admin.index") */;
    }
+
    public function storesection(Request $request)
    
    {
@@ -40,9 +41,6 @@ class SectionController extends Controller
            'description' => 'required',
     
            'cource_id' => 'required',
-         
-         
-
        ]);
        $section = Section::create([
 

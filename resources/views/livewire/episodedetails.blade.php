@@ -21,36 +21,24 @@
                         <h3> Table of Contents </h3>
                     </div>
                     <div class="course-sidebar-container" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="left: 0px; bottom: -17px;"><div class="simplebar-content" style="padding: 0px; height: 100%; overflow: scroll hidden;">
-    
-                 
                             <!-- course-video-list -->
                             <ul   class="course-video-list highlight-watched">
                               @php
                                 $authid=\Auth::user()->id;
                              @endphp 
-        
                                 @foreach ($cource->lessons as $lesson) 
                                     <li  
                                         @foreach ($lesson->users as $user)
-                                      
                                             @if( $user->pivot->lesson_id==$lesson->id   &&  $user->pivot->user_id==$authid    )
                                              class="watched" 
-                                            
-                                                
                                             @else
                                             class=""   
                                             @endif
 
                                         @endforeach 
                                         > 
-                                       
-                                       
                                         <a href="{{route("cources.lessons.vedio",$lesson->id)}}"  @if ($loop->last) class="uk-open" @endif aria-expanded="false">{{$lesson->name}}  <span> {{$lesson->duration}} دقيقة </span> </a> 
                                     </li>
-                                   
-        
-                                           
-                                   
                                 @endforeach 
                                
                             </ul>

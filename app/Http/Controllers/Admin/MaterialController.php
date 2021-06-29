@@ -39,7 +39,7 @@ class MaterialController extends Controller
              
                'title' => 'required',
         
-               'section_id' => 'required',
+               
              
              
     
@@ -55,8 +55,8 @@ class MaterialController extends Controller
     
              "material"=> $name ,
              "title"=>request('title'),
-             "section_id"=> request('section_id'),
-             ]);;
+             "cource_id"=>  $material->cource->id,
+            ]);;
     
              $material->save();
              $section=Section::with('cource')->find(request('section_id'));  
@@ -80,29 +80,30 @@ class MaterialController extends Controller
 
            public function update($id,Request $request){
             $material = Material::findorfail($id);
+          //dd( $material->cource);
             $request->validate([
               'material' => 'required',
               'title' => 'required',
-              'section_id' => 'required',
+             
           ]);
           File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
           $name =request('material')->getClientOriginalName();
 
-          $material =request('material');
+          $materiall =request('material');
   
-         $storematerial=Storage::disk('materials')->put($name, $material);
+         $storematerial=Storage::disk('materials')->put( $materiall.$request['title'], $materiall);
   
          
                $updatematerial = material::findorfail($id)->update([
                
-                   "material"=> $name,
-                   "title"=>$request['title'],
-                   "section_id"=>$request['section_id'],
+                   "material"=>  $materiall.$request['title'],
+                   "materialname"=>$request['title'],
+                 "cource_id"=>  $material->cource->id,
                    ]);
         //$materialid=material::with('material')->Find($id);
               
         toastr()->success('.لقد تم التعديل  بنجاح');
         $section=Section::with('cource')->find(request('section_id'));  
-               return redirect()->route("admin.sections",$section->cource->id);
+               return redirect()->route("admin.sections",$material->cource->id);
            }
 }

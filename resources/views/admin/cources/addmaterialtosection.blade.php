@@ -38,7 +38,7 @@
 
 
             <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                <li class="uk-active"><a href="#" aria-expanded="true"> الادوات</a></li>
+                <li class="uk-active"><a href="#" aria-expanded="true"> الأدوات</a></li>
             </ul>
 
             <div class="card-body">

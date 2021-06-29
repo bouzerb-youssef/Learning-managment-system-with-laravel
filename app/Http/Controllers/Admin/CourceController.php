@@ -110,47 +110,55 @@ class CourceController extends Controller
      }
      
    public function updatecource($id,Request $request){
-        $cource= Cource::findorfail($id);
-        Storage::disk("cources")->delete($cource->thumbnail);
-         
-               $request->validate([
-                  'title' => 'required',
-                  'short_description' => 'required',
-                  'desc' => 'required', 
-                  
-                  'thumbnail' => 'required', 
-                  
-                  'category_id' => 'required',
-              ]);
-              Storage::disk("cources")->delete($cource->thumbnail);
-
-              
-              $thumbnail = $request['thumbnail'];
+    try {  
+      $cource= Cource::findorfail($id);
+      Storage::disk("cources")->delete($cource->thumbnail);
        
-              $img   = ImageManagerStatic::make($request->thumbnail)->resize(367,190)->encode('jpg');
-              $name  =$request->thumbnail->getClientOriginalName();
-             
-           
-              Storage::disk('cources')->put($name, $img);
+             $request->validate([
+                'title' => 'required',
+                'short_description' => 'required',
+                'desc' => 'required', 
+                
+                'thumbnail' => 'required', 
+                
+                'category_id' => 'required',
+            ]);
+            Storage::disk("cources")->delete($cource->thumbnail);
 
-            $update = Cource::findorfail($id)->update([
-          
+            
+            $thumbnail = $request['thumbnail'];
+     
+            $img   = ImageManagerStatic::make($request->thumbnail)->encode('jpg');
+            $name  =$request->thumbnail->getClientOriginalName();
            
-              "title"=> request('title'),
-              "short_description"=>request('short_description'),
-              "desc"=>request('desc'),
-             
-              "thumbnail"=> $name,
          
-              "category_id"=> request('category_id'),
+            Storage::disk('cources')->put($name.request('title'), $img);
 
-              ]);
-   
-   
-             
-   
-   
-          return redirect()->route('admin.index');
+          $update = Cource::findorfail($id)->update([
+        
+         
+            "title"=> request('title'),
+            "short_description"=>request('short_description'),
+            "desc"=>request('desc'),
+           
+            "thumbnail"=> $name.request('title'),
+       
+            "category_id"=> request('category_id'),
+
+            ]);
+ 
+ 
+           
+ 
+ 
+        return redirect()->route('admin.index');  
+    }
+  
+    catch (\Exception $e){
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
+
+      
       }
 
 

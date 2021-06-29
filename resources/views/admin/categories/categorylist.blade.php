@@ -5,7 +5,7 @@
 @if(session()->has('message'))
 <div class="container">
     <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
-        <p> {{ session()->get('message') }}</p> 
+        <p> {{ session()->get('message')}}</p> 
     </div> 
 </div>
     
@@ -23,7 +23,15 @@
             </nav>
         </div>
 
-
+        <div class="d-flex justify-content-between mb-3">
+            <h5> عدد الاصناف :{{$categories->count()}}</h5>
+    
+            <div>
+                <a href="{{route('admin.addcategory')}}" class="btn btn-default">
+                    <i class="uil-plus"> </i> اضافة صنف جديد
+                </a>
+            </div>
+        </div>
 
         <div uk-grid="" class="uk-grid">
             <div class="uk-width-1-3@m uk-first-column">

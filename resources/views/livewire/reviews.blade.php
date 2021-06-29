@@ -31,13 +31,7 @@
         </div>
         <div >
             @error('review') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
-            <div>
-                @if (session()->has('message'))
-                <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
-                    {{ session('message') }}
-                </div>
-                @endif
-            </div>
+            
         </div>
         <div class="comments">
             <h3>انشاء تعليق  </h3>
@@ -56,11 +50,17 @@
                             </div>
                             <div class="uk-width-1-1@s uk-grid-margin uk-first-column">
                                 <label  class="uk-form-label">التعليق</label>
-                                <textarea class="uk-textarea" wire:model.lazy='review' placeholder="Enter Your Comments her..." style=" height:160px"></textarea>
+                                <textarea class="uk-textarea" wire:model.lazy='review' placeholder="أكتب تعليقك هنا ....." style=" height:160px"></textarea>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h4> </h4>
+                            
+                                    <div class="uk-grid-margin uk-first-column">
+                                        <input type="submit" value="حفظ" class="btn btn-dark">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="uk-grid-margin uk-first-column">
-                                <input type="submit" value="submit" class="btn btn-default">
-                            </div>
+                           
+                          
                         </form>
 
                     </div>

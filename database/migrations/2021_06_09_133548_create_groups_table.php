@@ -19,6 +19,7 @@ class CreateGroupsTable extends Migration
             $table->text('description');
             $table->unsignedInteger('formation_id')->nullable();
             $table->unsignedInteger('centre_id');
+            $table->unsignedInteger('group_id')->nullable();
              // $table->foreign('category_id')->references('id')->on('categories')
 
           //  ->onDelete('set null'); 

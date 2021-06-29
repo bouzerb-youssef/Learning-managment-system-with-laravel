@@ -184,13 +184,13 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
     $name  =$this->thumbnail->getClientOriginalName();
     
      Storage::disk('cources')->put($name, $img);
-        $category_id=$this->category_id;      
+       ;      
         $createdCource = Cource::create([
        "title"=> $this->title,
        "short_description"=>$this->short_description,
         "desc"=>$this->desc,
        "thumbnail"=>$name,
-       "category_id"=> $category_id[0],
+       "category_id"=> $this->category_id,
       ]); 
         $names = $this->name; 
         $vedios = $this->vedio;

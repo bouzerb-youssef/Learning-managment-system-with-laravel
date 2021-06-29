@@ -16,7 +16,7 @@ Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){ 
+    ], function(){  
         Route::get('/register', function () {
             return view('auth.register');
         });
@@ -75,6 +75,7 @@ Route::group(
         
         Route::group(["middleware"=>"admin","prefix"=>"admin"],function(){
             /* ########################################################begin admin############################################################################################## */
+         
                 Route::get('/', [App\Http\Controllers\DashboardFrontController::class, 'admin'])->name('admin');
         
              
@@ -131,7 +132,9 @@ Route::group(
 
 
                 /* ################################################categories################################################################################################ */
-                Route::get('/categories/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.categories')->middleware('admin');
+                Route::get('/categories/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.categories');
+                Route::get('/categorylist', [App\Http\Controllers\Admin\CategoryController::class, 'categorylist'])->name('admin.categorylist');
+               
                 Route::get('/category/remove/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'remove'])->name('admin.category.remove');
         
                 Route::get('/category/addcategory', [App\Http\Controllers\Admin\CategoryController::class, 'addcategory'])->name('admin.addcategory');
@@ -153,7 +156,6 @@ Route::group(
                 /* students */
           /*       Route::get('/student', [App\Http\Controllers\Admin\StudentController::class, 'index'])->name('admin.student');
                 Route::get('/addstudent', [App\Http\Controllers\Admin\StudentController::class, 'addstudent'])->name('admin.addstudent');
-        
                 Route::get('/showstudent/{id}', [App\Http\Controllers\Admin\StudentController::class, 'showstudent'])->name('admin.showstudent');
 
             */
@@ -283,8 +285,16 @@ Route::group(
                 Route::post('/updatestudentattachment/update/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'updatestudentAttachment'])->name('admin.studentAttachment.update');
                 Route::get('/studentattachment/remove/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'removestudentAttachment'])->name('admin.studentAttachment.remove');
                
+
+               /*  Route::get('/chat', function () {
+                    return view('chat');
+                }); */
+              
+
                         });
+                        Route::get('/chat', [App\Http\Controllers\Admin\ChatController::class, 'index'])->name('chat');  
+                        Route::get('/chatshow/{group}', [App\Http\Controllers\Admin\ChatController::class, 'show'])->name('chat.show');  
         Route::get('/showstage/{id}', [App\Http\Controllers\Admin\StageController::class, 'showstage'])->name('admin.showstage');  
-    });
+    }); 
 
 

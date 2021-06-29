@@ -23,7 +23,13 @@
                         $category=Category::first();
                         
                     @endphp
-                    <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-tag-alt"></i><span>{{trans('sidebar.category')}}</span> </a> </li>
+                  @if (isset($category))
+                   <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-tag-alt"></i><span>{{trans('sidebar.category')}}</span> </a> </li> 
+
+                     @else
+                   <li><a href="{{route("admin.categorylist")}}"><i class="uil-tag-alt"></i><span>{{trans('sidebar.category')}}</span> </a> </li>
+
+                    @endif 
                   {{--   <li class="#"><a href="#"><i class="uil-layers"></i> <span> {{trans('sidebar.manager')}}
                     </span></a>
                         <ul>
