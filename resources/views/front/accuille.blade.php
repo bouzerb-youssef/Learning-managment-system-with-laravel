@@ -29,7 +29,7 @@
            <div class="section-small text-md-left text-center">
                <div class="uk-child-width-1-2@m uk-gird-large uk-flex-middle uk-grid" uk-grid="">
                 <div>
-                    <img src="../assets/images/amal2.jpg" alt="">                   
+                    <img style="border-radius:15px;" src="../assets/images/amal2.jpg" alt="">                   
                 </div>
                    
                 <div>
@@ -67,7 +67,7 @@
                            <a href="{{route("cources.show",$cource->id)}}">
                                <div class="course-card">
                                    <div class="course-card-thumbnail ">
-                                       <img  href="{{route("cources.show",$cource->id)}}" src="{{$cource->imagePath}}">
+                                       <img   href="{{route("cources.show",$cource->id)}}" src="{{$cource->imagePath}}">
                                        <span class="play-button-trigger"></span>
                                    </div>
                                    <div class="course-card-body">
@@ -82,7 +82,7 @@
                                           
                                              @endforeach --}}
                                     
-                                           <a href="{{route("category.show",$cource->category->id)}}"> <span class="catagroy">{{$cource->category->title}}</span></a>
+                                           <a href="{{route("category.show",$cource->category->id)}}"> <span class="catagroy" style="color: #3e416d;font-size: initial;">{{$cource->category->title}}</span></a>
 
                                             @else
                                             <span class="catagroy">category null</span> 
@@ -92,7 +92,7 @@
                                                <i class="icon-feather-bookmark icon-small"></i>
                                            </div>
                                        </div>
-                                       <h4><a href="{{route("cources.show",$cource->id)}}">{{$cource->title}}</a> </h4>
+                                       <h4 style="color: #3e416d"><a  href="{{route("cources.show",$cource->id)}}" >{{$cource->title}}</a> </h4>
                                        <p> {!!$cource->short_description!!} </p>
                                        <div class="course-card-footer">
                                     @if (isset($cource->lessons)&& $cource->lessons->count()>0)
@@ -107,10 +107,10 @@
                                                 $countlessontime=0; */
                                             }
                                         @endphp
-                                        <h5> <i class="icon-feather-film"></i> {{$countlesson}} دروس </h5>
+                                        <h5 style="color: #3e416d"> <i class="icon-feather-film"></i> {{$countlesson}} دروس </h5>
                                         {{-- <h5> <i class="icon-feather-clock"></i> {{ $countlessontime}} دقيقة </h5> --}}
                                         @else
-                                        <h5> <i class="icon-feather-film"></i> ليس هناك دروس بعد </h5>
+                                        <h5 style="color: #3e416d"> <i class="icon-feather-film"></i> ليس هناك دروس بعد </h5>
                                         {{-- <h5> <i class="icon-feather-clock"></i> ليس هناك فصول بعد </h5> --}}
                                     @endif
                                    

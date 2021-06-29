@@ -120,10 +120,6 @@ class CategoryController extends Controller
            "title"=>$request['title'],
            ]);
 
-
-          
-
-
        return redirect()->route('admin.categories')->with('message', '.لقد تم التعديل بنجاح ');
       
    }

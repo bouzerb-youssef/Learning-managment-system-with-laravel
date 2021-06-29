@@ -19,8 +19,8 @@
                 <!-- breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="/"> الرئيسية </a></li>
-                        <li><a href="/cources">الكورسات</a></li>
+                        <li><a style="font-size: large;"  href="/"> الرئيسية </a></li>
+                        <li><a style="font-size: large;" href="/cources">الكورسات</a></li>
                         
                     </ul>
                 </nav>

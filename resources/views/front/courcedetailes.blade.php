@@ -80,10 +80,12 @@
     <div class="container">
 
         <div class="uk-grid-large mt-4 uk-grid uk-grid-stack" uk-grid="">
-            <div class="uk-width-2-3@m uk-first-column">
+            <div class="uk-width-2-3@m uk-first-column" >
                 <ul id="course-intro-tab" class="uk-switcher" style="touch-action: pan-y pinch-zoom;">
                     <!-- course Curriculum-->
-                    <li class="" style="">
+                    <li class="" style="background: white;
+                    padding: 24px;
+                    border-radius: 10px;">
                         <h4> الدروس </h4>
 
                         <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
@@ -115,13 +117,16 @@
                     </li>
 
                     <!-- course description -->
-                    <li class="course-description-content uk-active  " style="">
+                    <li class="course-description-content uk-active  " style="    background: white;
+                    padding: 12px;
+                    border-radius: 10px;">
 
                         <h4> الوصف </h4>
                         <p>{!!$cource->desc!!} </p>
 
 
-                        <h4> ماذا تحتاج من اجل البدأ في تعلم الكورس :</h4>
+                        <h4  style="    border-bottom: 2px solid;
+                        width: 39%;"> ماذا تحتاج من اجل البدأ في تعلم الكورس :</h4>
                         <div class="uk-child-width-1-2@s uk-grid" uk-grid="">
                             <div class="uk-first-column">
                                 <ul class="list-2">

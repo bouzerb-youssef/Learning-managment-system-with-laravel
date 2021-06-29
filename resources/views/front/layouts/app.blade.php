@@ -36,7 +36,7 @@
 
 </head>
 
-<body>
+<body style="background: #edeff0 !important;">
 
 
 

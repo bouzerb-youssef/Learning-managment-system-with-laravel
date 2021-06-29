@@ -88,15 +88,18 @@ class MaterialController extends Controller
           ]);
           File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
           $name =request('material')->getClientOriginalName();
-
+//dd(request('material'));
+//$path = $request->file('material')->store(
+    //'materials', 'public'
+//);
           $materiall =request('material');
   
-         $storematerial=Storage::disk('materials')->put( $materiall.$request['title'], $materiall);
+         $storematerial=Storage::disk('materials')->put($request['title'].$name, $materiall);
   
          
                $updatematerial = material::findorfail($id)->update([
                
-                   "material"=>  $materiall.$request['title'],
+                   "material"=>   $storematerial,
                    "materialname"=>$request['title'],
                  "cource_id"=>  $material->cource->id,
                    ]);

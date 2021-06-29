@@ -68,7 +68,7 @@ protected $rules = [
           for($i = 0; $i < count($pointss); $i++){
             $image = $images[$i]; 
   
-            $img   = ImageManagerStatic::make($images[$i])->resize(100,100)->encode('jpg');
+            $img   = ImageManagerStatic::make($images[$i])->resize(252,174)->encode('jpg');
            
             $name  = Str::random() .'options'. ($i) .'jpg';
             Storage::disk('options')->put($name, $img);

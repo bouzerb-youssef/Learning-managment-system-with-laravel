@@ -27,7 +27,7 @@ class QuizController extends Controller
             ->find($id);
           
 
-       //    dd($cource);
+// dd($cource);
       
         return view('quiz', compact('cource'));
     }
@@ -113,7 +113,7 @@ class QuizController extends Controller
               foreach($options as $key->option){
             $image = $request['image']; 
   
-            $img   = ImageManagerStatic::make($images[$key])->resize(100,100)->encode('jpg');
+            $img   = ImageManagerStatic::make($images[$key])->encode('jpg');
            
             $name  = Str::random() .'options'. $options[$key] .'jpg';
             Storage::disk('options')->put($name, $img);
@@ -221,7 +221,7 @@ class QuizController extends Controller
 
          $image = $request['image']; 
   
-         $img   = ImageManagerStatic::make($request->image)->resize(100,100)->encode('jpg');
+         $img   = ImageManagerStatic::make($request->image)->encode('jpg');
         
          $name  = Str::random() .'options'.request('option').'jpg';
          Storage::disk('options')->put($name, $img);

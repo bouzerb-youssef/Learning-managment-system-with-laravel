@@ -6648,7 +6648,7 @@ ul.dropdown-nav .menu-divider {
   display: flex;
   padding: 16px 16px;
   padding-bottom: 9px;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 0px solid #e6e6e6;
   /* width: 100%; */
 }
 
@@ -6669,12 +6669,12 @@ ul.dropdown-nav .menu-divider {
 }
 
 .dropdown-user-name {
-  line-height: 20px;
+  line-height: 27px;
   padding: 2px 15px 0 0;
   width: 100%;
   padding-bottom: 8px;
   font-weight: 600;
-  color: #333;
+  color: #ffffff;
   font-size: 17px;
 }
 
