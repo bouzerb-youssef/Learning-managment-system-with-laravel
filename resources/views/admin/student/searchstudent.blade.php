@@ -51,17 +51,7 @@
                             </form>
                         </div>
 
-                    {{--     <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="filter" title="" aria-expanded="false">
-                            <i class="uil-filter"></i>
-                        </a>
-                        <div uk-dropdown="pos: bottom-right ; mode: click ;animation: uk-animation-scale-up" class="uk-dropdown">
-                            <ul class="uk-nav uk-dropdown-nav">
-                                <li class="uk-active"><a href="#"> Newest </a></li>
-                                <li><a href="#">From A-Z</a></li>
-                                <li><a href="#">From Z-A</a></li>
-                            </ul>
-                        </div> --}}
-
+                
 
                    
 
@@ -128,6 +118,9 @@
                                         <a href="{{route('admin.studentAttachments',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
                                                 <i class="icon-material-outline-attach-file"></i> 
                                         </a> 
+                                        <a href="{{route('admin.stage.add',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="عمل أو تدريب" title="" aria-expanded="false">
+                                            <i class=" icon-line-awesome-inbox"></i> 
+                                    </a> 
                             </td>
                         </tr>
                         @endforeach

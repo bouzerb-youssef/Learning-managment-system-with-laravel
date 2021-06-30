@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Lesson;
-use App\Models\Section;
+use App\Models\Cource;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\File;
@@ -14,9 +14,9 @@ class LessonController extends Controller
 {
     public function  addlesson($id){
 
-        $section=Section::find($id);
+        $cource=Cource::find($id);
      
-         return view("admin.lessons.addlesson",compact("section"));
+         return view("admin.lessons.addlesson",compact("cource"));
     }
 
     public function  editlesson($id){

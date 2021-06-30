@@ -38,8 +38,8 @@
                     </div>
                     <div class="grid-slider-header-link">
 
-                        <a href="courses.html" class="button transparent uk-visible@m"> رؤية الكل  </a>
-                        <a href="#" class="slide-nav-prev uk-invisible" uk-slider-item="previous"></a>
+{{--                         <a href="courses.html" class="button transparent uk-visible@m"> رؤية الكل  </a>
+ --}}                        <a href="#" class="slide-nav-prev uk-invisible" uk-slider-item="previous"></a>
                         <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
 
                     </div>
@@ -50,7 +50,7 @@
                                   
                   
                     <li tabindex="-1" class="uk-active">
-                        <a href="course-lesson-1.html">
+                        <a href="{{route("cources.show",$enroll->cource->id)}}">
                             <div class="course-card-resume">
                                 <div class="course-card-resume-thumbnail">
                                     @if ($enroll->cource)
@@ -64,7 +64,10 @@
                                 </div>
                                 <div class="course-card-resume-body">
                                     <h5>{{$enroll->cource->title}}</h5>
-                                    <span class="number"> 3/20 </span>
+                                    @php
+                                        
+                                    @endphp
+                                  
                                     <div class="course-progressbar">
                                         <div class="course-progressbar-filler" style="width:65%"></div>
                                     </div>
@@ -96,8 +99,8 @@
                     </div>
                     <div class="grid-slider-header-link">
 
-                        <a href="course-path.html" class="button transparent uk-visible@m"> رؤية الكل</a>
-                        <a href="#" class="slide-nav-prev uk-invisible" uk-slider-item="previous"></a>
+{{--                         <a href="course-path.html" class="button transparent uk-visible@m"> رؤية الكل</a>
+ --}}                        <a href="#" class="slide-nav-prev uk-invisible" uk-slider-item="previous"></a>
                         <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
 
                     </div>
@@ -141,7 +144,7 @@
                     </div>
                     <div class="grid-slider-header-link">
 
-                        <a href="courses.html" class="button transparent uk-visible@m"> رؤية الكل</a>
+                        <a href="/cources" class="button transparent uk-visible@m"> رؤية الكل</a>
                         <a href="#" class="slide-nav-prev uk-invisible" uk-slider-item="previous"></a>
                         <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
 
@@ -219,7 +222,7 @@
                     </div>
                     <div class="grid-slider-header-link">
 
-                        <a href="courses.html" class="button transparent uk-visible@m">رؤية الكل </a>
+                       {{--  <a href="courses.html" class="button transparent uk-visible@m">رؤية الكل </a> --}}
                         <a href="#" class="slide-nav-prev uk-invisible" uk-slider-item="previous"></a>
                         <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
 
@@ -240,7 +243,7 @@
                                                 <span class="item-tag">{{$cource->title}}</span>
                                                 {{-- <span class="duration">{{$lesson->duration}} دقيقة</span> --}}
                                                 @if (!$lesson->thumbnail_image==null)
-                                                    <img src="{{asset('storage/lessons/'.$lesson->title .'/'.$lesson->thumbnail_image)}}">
+                                                    <img src="{{asset('storage/lessons/'.$lesson->name .'/'.$lesson->thumbnail_image)}}">
                                                     @else
                                                     <img src="../assets/images/episodes/2.png">
                                                     @endif

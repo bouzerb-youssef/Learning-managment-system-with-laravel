@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> كلمة السر</h5>
-                                    <input type="text" class="uk-input"   value="{{$student->password}}"name="password" placeholder="كلمة السر">
+                                    <input type="text" class="uk-input"  name="password" placeholder="كلمة السر">
                                 </div> 
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> الجنس </h5>

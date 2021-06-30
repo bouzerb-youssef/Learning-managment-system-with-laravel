@@ -30,7 +30,7 @@
                     <div class="course-details-info mt-5">
                         <ul>
                            
-                            <li> <i class="icon-feather-users"></i>5 :: مسجل  </li>
+                            <li> <i class="icon-feather-users"  style='padding-left: 14px;'   ></i> مسجل   ::  <span style='padding-right: 7px;'> {{$cource->enrolls->count()}}<span></li>
                         </ul>
                     </div>
                     <div class="course-details-info">

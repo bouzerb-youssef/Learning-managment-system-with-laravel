@@ -78,12 +78,14 @@ public $title,$short_description,$desc,$thumbnail,$category_id= [];
           
         ],
         3 => [
-            'detail' => ['required'],
+            'name' => ['required'],
+            'vedio' => ['required'],
+           
         ],
           
        4 => [
-        'name' => ['required'],
-        'vedio' => ['required'],
+      
+        'detail' => ['required'],
         
     ],
            

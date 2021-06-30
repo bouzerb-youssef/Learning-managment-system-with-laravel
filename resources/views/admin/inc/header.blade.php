@@ -67,7 +67,7 @@
                     <!-- profile-icon-->
                     <div class="dropdown-user-details">
                         <div class="dropdown-user-avatar">
-                            @if ($user->profile_photo_path)
+                            @if ($user->photo)
                             <img src="{{$user->imagePath}}"></span>
                             @else
                             <img src="../assets/images/avatars/avatar-2.jpg" alt="">                                    

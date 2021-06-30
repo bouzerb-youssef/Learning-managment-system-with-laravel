@@ -54,38 +54,23 @@
                         <i class="icon-feather-chevron-left"></i>
                     </a>
 
-                    <h4 class="text-white"> Build Responsive Websites </h4>
+                    <h4 class="text-white"> الدروس الموجودة في الكورس </h4>
 
                     <div>
-                        <a href="#" aria-expanded="false">
-                            <i class="icon-feather-help-circle btns"></i> </a>
-                        <div uk-drop="pos: bottom-right;mode : click" class="uk-drop">
-                            <div class="uk-card-default p-4">
-                                <h4> Elementum tellus id mauris faucibuss soluta nobis </h4>
-                                <p class="mt-2 mb-0">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                    diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                    volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-                                    suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum
-                                    soluta nobis eleifend option congue nihil imperdiet</p>
-                            </div>
-                        </div>
-
-                        <a hred="#" aria-expanded="false" class="">
-                            <i class="icon-feather-more-vertical btns"></i>
-                        </a>
+                     
+     
                         <div class="dropdown-option-nav uk-dropdown uk-dropdown-bottom-left" uk-dropdown="pos: bottom-right ;mode : click" style="left: 105.516px; top: 47px;">
                             <ul>
 
                                 <li><a href="#">
                                         <i class="icon-feather-bookmark"></i>
-                                        Add To Bookmarks</a></li>
+                                        </a></li>
                                 <li><a href="#">
-                                        <i class="icon-feather-share-2"></i>
-                                        Share With Friend </a></li>
+                                       
 
                                 <li>
                                     <a href="#" id="night-mode" class="btn-night-mode">
-                                        <i class="icon-line-awesome-lightbulb-o"></i> Night mode
+                                      
                                         <label class="btn-night-mode-switch">
                                             <div class="uk-switch-button"></div>
                                         </label>
@@ -93,17 +78,19 @@
                                 </li>
                             </ul>
                         </div>
+                     
 
 
                     </div>
-
+                
                 </div>
 
-                <div {{--  class="course-content-inner" --}}  >
+                <div class='container'  >
                     @livewire('episode', ['lesson' => $lesson])
-                </div>
+                </div>>
 
             </div>
+            
 
             <!-- course sidebar -->
 

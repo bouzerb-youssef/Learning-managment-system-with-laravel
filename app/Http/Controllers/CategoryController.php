@@ -29,7 +29,7 @@ class CategoryController extends Controller
         $categories=Category::take(4)->get();
         $user =User::with('enrolls')->find(\Auth::user()->id);
   // dd($user);
-         return view("test",compact("categories","category","user","content"));
+         return view("categoryshow",compact("categories","category","user","content"));
         
   
      }

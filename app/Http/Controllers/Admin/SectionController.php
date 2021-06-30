@@ -11,7 +11,7 @@ class SectionController extends Controller
 {
   public function  sections($id){
 
-   $cource=Cource::with('lessons','materials')->find($id);
+   $cource=Cource::with('lessons','materials','whatinthecoures')->find($id);
   
  //dd($cource);
  //  $cources=Cource::get();

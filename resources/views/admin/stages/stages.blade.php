@@ -28,7 +28,7 @@
         <h3> عدد الاسئلة :{{$stages->count()}} </h3>
 
         <div>
-            <a href="{{route('admin.addstage')}}" class="btn btn-default">
+            <a {{-- href="{{route('admin.stage.add')}}"  --}}class="btn btn-default">
                 <i class="uil-plus"> </i> اضافة سطاج جديد
             </a>
         </div>
@@ -97,10 +97,7 @@
                                     <a href="  {{route("admin.editstage",$stage->id)}} " class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل السطاج" title="" aria-expanded="false">
                                         <i class="uil-pen "></i> 
                                     </a>   
-                                  
                         </td>
-                        
-                      
                     </tr>  
                     @endforeach 
                 </tbody>

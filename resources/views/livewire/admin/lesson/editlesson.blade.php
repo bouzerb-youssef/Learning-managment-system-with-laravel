@@ -53,18 +53,18 @@
                                                         <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
                                                             <div class="uk-first-column">
                                                                 <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
-                                                                <input type="text" class="uk-input" wire:model='title' placeholder="اسم الدرس">
+                                                                <input type="text" class="uk-input" wire:model='name' placeholder="اسم الدرس">
                                                             </div>
-                                                            <div class="uk-first-column">
+                                                         {{--    <div class="uk-first-column">
                                                                 <h5 class="uk-text-bold mb-2">عدد الدقائق</h5>
                                                                 <input type="text" class="uk-input"  wire:model='duration' placeholder="عدد الدقائق">
-                                                            </div>
+                                                            </div> --}}
                                                     
                                                         
                                                         </div>
                                                         <div  class='container' class="uk-grid-margin uk-first-column" >
                                                             <div class="uk-grid-margin uk-first-column">
-                                                                <h5 class="uk-text-bold mb-2">الصورة </h5>
+                                                                <h5 class="uk-text-bold mb-2">الفيديو </h5>
                                                                 <div class="uk-margin"> 
                                                                     <div uk-form-custom> 
                                                                         <input type="file" wire:model='vedio'> 
@@ -81,11 +81,8 @@
                                                     
                                                 </form>
                                                 
-                                            @error('duration')
-                                            <div class="alert alert-danger">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
+                                       
+                                          
                                             @error('vedio')
                                             <div class="alert alert-danger">
                                                 {{ $message }}

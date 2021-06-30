@@ -6,7 +6,7 @@ namespace App\Http\Livewire\Admin\Lesson;
  use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
-use App\Models\Section;
+use App\Models\cource;
 use App\Models\Lesson;
 use Livewire\WithFileUploads;
 
@@ -14,10 +14,10 @@ class Addlesson extends Component
 {
     use WithFileUploads;
 
-    public $section_id;
-    public Section $section;
+    public $cource_id;
+    public cource $cource;
     public Lesson $lesson;
-    public $title;
+    public $name;
     public $duration;
     public $vedio;
     
@@ -25,9 +25,9 @@ class Addlesson extends Component
         'vedio' => 'required|mimes:mp4|max:12288000'
     ];
 
-    public function mount(Section $section){
+    public function mount(Cource $cource ){
 
-      $this->section=$section;
+      $this->cource=$cource;
 
     }
 
@@ -37,7 +37,7 @@ class Addlesson extends Component
 
         
         $this->validate([
-            'title' => 'required|max:70',
+            'name' => 'required|max:70',
             //'duration' => 'required|integer',
             'vedio' => 'required',
           ]); 
@@ -45,8 +45,8 @@ class Addlesson extends Component
         $path = $this->vedio->store('public/lessons-temp');
 
         //create video record in sb
-        $this->lesson = $this->section->lessons()->create([
-            'title' =>$this->title,
+        $this->lesson = $this->cource->lessons()->create([
+            'name' =>$this->name,
            // 'duration' => $this->duration,
             'video' => explode('/lessons-temp', $path)[1]
            
@@ -55,13 +55,13 @@ class Addlesson extends Component
        CreateThumbnailFromVideo::dispatch($this->lesson);
     ConvertForStreaming::dispatch($this->lesson);
  
-     $cource_id=section::with("cource")->find($this->section->id);
+    // $cource_id=cource::with("cource")->find($this->cource->id);
   
         
         //redirect to edit route
         toastr()->success('.لقد تم الانشاء  بنجاح');
 
-        return redirect()->route("admin.sections",$cource_id->cource->id);
+        return redirect()->route("admin.sections",$this->cource->id);
    
        
     }
@@ -73,7 +73,7 @@ class Addlesson extends Component
       $lesson = Lesson::Find($id);
         if($lesson){
         
-            Storage::deleteDirectory("app/public/lessons/".$lesson->title);
+            Storage::deleteDirectory("app/public/lessons/".$lesson->name);
             $lesson->delete();
         }
         toastr()->error('.لقد تم المسح  بنجاح');
@@ -82,7 +82,7 @@ class Addlesson extends Component
 
     public function render()
     {
-        $section =Section::find($this->section_id);
-        return view('livewire.admin.lesson.addlesson',compact("section"));
+        $cource =cource::find($this->cource_id);
+        return view('livewire.admin.lesson.addlesson',compact("cource"));
     }
 }

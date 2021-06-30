@@ -5,41 +5,39 @@
                 <a href="home.html" class="uk-logo">
                     <!-- logo icon -->
                     <i class="uil-graduation-hat"> </i>
-                    Courseplus
+                   أمال سونتر
                 </a>
-                <p class="footer-description"> Launch your site in style with Courseplus, Create rich layouts A
-                    unique and beautiful collection of UI elements that are all flexible and modular.</p>
+                <p class="footer-description"> لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور
+
+                    أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد
+                    
+                    أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .</p>
             </div>
             <div class="uk-width-expand@s uk-width-1-2">
                 <div class="footer-links pl-lg-8">
-                    <h5>Explore </h5>
+                    <h5>أستكشاف </h5>
                     <ul>
-                        <li><a href="course-card.html"> Courses </a></li>
-                        <li><a href="course-path.html"> Track </a></li>
-                        <li><a href="blog-card.html"> Blog </a></li>
+                        <li><a href="course-card.html">الكرسات  </a></li>
+                        <li><a href="course-path.html"> الاصناف </a></li>
+                   
                     </ul>
                 </div>
             </div>
+            @auth
+   
             <div class="uk-width-expand@s uk-width-1-2">
                 <div class="footer-links pl-lg-8">
-                    <h5> Account </h5>
+                    <h5> الحساب </h5>
                     <ul>
-                        <li><a href="profile-1.html"> Profile </a></li>
-                        <li><a href="#"> Settings </a></li>
-                        <li><a href="#"> Projects </a></li>
+                        <li><a href="profile-1.html"> الصفحة الشخصية </a></li>
+                        <li><a href="#"> ادارة الحساب </a></li>
+                      
                     </ul>
                 </div>
             </div>
-            <div class="uk-width-expand@s uk-width-1-2">
-                <div class="footer-links pl-lg-8">
-                    <h5> Resources</h5>
-                    <ul>
-                        <li><a href="#"> Contact </a></li>
-                        <li><a href="page-Privacy.html"> Privacy Policy </a></li>
-                        <li><a href="page-term.html"> Terms of Use </a></li>
-                    </ul>
-                </div>
-            </div>
+                         
+            @endauth
+       
         </div>
         <hr>
         <div class="uk-grid-collapse uk-grid" uk-grid="">

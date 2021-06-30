@@ -109,19 +109,24 @@ class CategoryController extends Controller
    }
 
    public function editcategoryupdate($id,Request $request){
+    $request->validate([
+      'title' => 'required|max:70',
+    ]); 
    
-  
- /*   $this->validate([
-           'title' => 'required',
-         ]);  */ 
- 
-       $addcategory = Category::findorfail($id)->update([
+    try {
+      $addcategory = Category::findorfail($id)->update([
        
-           "title"=>$request['title'],
-           ]);
+        "title"=>$request['title'],
+        ]);
 
-       return redirect()->route('admin.categories')->with('message', '.لقد تم التعديل بنجاح ');
-      
+    return redirect()->route('admin.categories')->with('message', '.لقد تم التعديل بنجاح ');
+     
+    }
+    catch (\Exception $e){
+      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+  }
+ 
+       
    }
 
   

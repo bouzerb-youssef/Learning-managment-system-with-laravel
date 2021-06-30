@@ -55,9 +55,15 @@ class CourceController extends Controller
       
         if($cource){
          
+          foreach( $cource->enrolls as $enroll){
+            if( $enroll){
+                
+                $enroll->delete();
+              }
+            }
           foreach( $cource->courceQuestions as $question){
           if( $question){
-               File::deleteDirectory(storage_path('app/public/questions/'.$question->audio));
+            Storage::disk("questions")->delete($question->audio);
               $question->delete();
             }
           }
@@ -79,7 +85,8 @@ class CourceController extends Controller
       foreach( $cource->materials as $material){
         if( $material){
        
-          
+      
+
           File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
           $material->delete();
         }}

@@ -36,10 +36,10 @@
 
 </head>
 
-<body style="background: #edeff0 !important;">
+<body {{-- style="background: #edeff0 !important;" --}}>
 
-
-
+    <div id="wrapper">
+        <div class="hs-dummy-scrollbar-size"><div style="height: 200%; width: 200%; margin: 10px 0;"></div></div>
         @include('front.inc.header')
         @include('front.inc.sidebar') 
 
@@ -47,7 +47,7 @@
         <br><br><br><br>
        <div class="container">@include('front.inc.footer')
     </div></div> 
-
+</div> 
 
  
   @livewireScripts

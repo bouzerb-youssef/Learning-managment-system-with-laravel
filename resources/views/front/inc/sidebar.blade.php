@@ -32,10 +32,10 @@
                 </div></div></div><div class="simplebar-placeholder" style="width: 230px; height: 929px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: visible;"><div class="simplebar-scrollbar" style="width: 25px; transform: translate3d(-25px, 0px, 0px); visibility: visible;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); visibility: hidden;"></div></div></ul></div>
             </div>
         </li>
-        <li>
+    {{--     <li>
             <!-- book -->
             <a href="/books"> <i class="uil-book-alt"></i> <span class="tooltips"> الكتب</span> </a>
-        </li>
+        </li> --}}
         <li>
             <!-- Blog-->
 {{--             <a href="blog-1.html"> <i class="uil-file-alt"></i> <span class="tooltips"> Blog</span></a>
@@ -52,10 +52,11 @@
     <ul class="uk-position-bottom">
  
         <li>
-            @auth
+           
             <a @auth href="#" @endauth href="/login" aria-expanded="false">
                 <span class="icon-feather-user"></span>
             </a>
+            @auth
             <div uk-drop="pos: right-bottom ;mode:click ; offset: 10;animation: uk-animation-slide-right-small" class="uk-drop">
                 <div class="uk-card-default rounded p-0">
                     <a href="/profile" class="p-0">
@@ -75,9 +76,10 @@
                         </div>
 
                     </a>
-                 @endauth
+                
                 </div>
             </div>
+            @endauth
         </li>
     </ul>
 </div>

@@ -23,7 +23,8 @@
                             <li tabindex="-1" >
 
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body" style="
+                                    width: 98%;" >
                                         <div class="uk-flex-middle uk-grid" uk-grid="">
                                             <div class="uk-width-auto uk-first-column">
                                                 <h5 class="mb-2"> مجموع التلاميد</h5>
@@ -32,7 +33,7 @@
                                                @endif
                                             </div>
                                             <div class="uk-width-expand">
-                                                <img  width="197" height="192" src="../assets/images/demos/students.jpg" alt="">
+                                                <img  width="197" height="192" src="../assets/images/demos/student.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +56,7 @@
                                                 
                                             </div>
                                             <div class="uk-width-expand">
-                                                <img  width="197" height="192" src="../assets/images/demos/admin1.jpg" alt="">
+                                                <img  width="197" height="192" src="../assets/images/demos/admin1.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -76,7 +77,7 @@
                                                 
                                             </div>
                                             <div class="uk-width-expand">
-                                                <img  width="197" height="192" src="../assets/images/demos/admin1.jpg" alt="">
+                                                <img  width="197" height="192" src="../assets/images/demos/cource.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -184,10 +185,10 @@
                                             <h5 class="h6 mt-4 mb-0"> {{$teacher->name}} </h5>
                 
                                             <div class="d-flex justify-content-between px-4">
-                                                <a href="{{-- {{route('admin.editcource',$cource->id)}} --}}" class="btn btn-icon btn-hover btn-circle" uk-tooltip="تعديل" title="" aria-expanded="false">
+                                                <a href="{{route("admin.editteacher",$teacher->id)}}" class="btn btn-icon btn-hover btn-circle" uk-tooltip="تعديل" title="" aria-expanded="false">
                                                     <i class="uil-edit-alt"></i> </a>
                                              
-                                                <a href="{{-- {{route('admin.remove',$cource->id)}} --}}"  class="button delete-confirm" class="btn btn-icon btn-hover btn-circle" uk-tooltip="مسح" title="" aria-expanded="false">
+                                                <a href=" {{route("admin.teacher.remove",$teacher->id)}}"   class="btn   delete-confirm btn-icon btn-hover btn-circle" uk-tooltip="مسح" title="" aria-expanded="false">
                                                     <i class="uil-trash-alt"></i> </a>
                                             </div>
                                         </div>

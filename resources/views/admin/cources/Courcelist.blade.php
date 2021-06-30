@@ -47,7 +47,7 @@
                                 <i class="uil-pen" style="padding-right:20px;" ></i> </a>
                                <a href="{{route('admin.remove',$cource->id)}}"  class="delete-confirm"  uk-tooltip="حدف " title="" aria-expanded="false">
                                 <i class="uil-trash-alt text-danger" style="padding-right:20px;" ></i> </a>
-                                <a href="{{route('admin.sections',$cource->id)}}"  uk-tooltip="الفصول" title="" aria-expanded="false">
+                                <a href="{{route('admin.sections',$cource->id)}}"  uk-tooltip="الدروس" title="" aria-expanded="false">
                                     <i class="icon-line-awesome-outdent " style="padding-right:20px;" ></i> </a>
                                     <a href="{{route('admin.showquestion',$cource->id)}}" uk-tooltip="اسئلة الاختبار" title="" aria-expanded="false">
                                         <i class="icon-material-outline-library-books " style="padding-right:20px;" ></i> </a>

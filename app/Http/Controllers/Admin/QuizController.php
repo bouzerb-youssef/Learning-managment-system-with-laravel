@@ -151,7 +151,7 @@ class QuizController extends Controller
                     Storage::disk("options")->delete($option->image);
                     $option->delete();
                   }  
-                  File::deleteDirectory(storage_path('app/public/questions/'.$question->audio));
+                  Storage::disk("questions")->delete($question->audio);
 
                   $question->delete();
           };

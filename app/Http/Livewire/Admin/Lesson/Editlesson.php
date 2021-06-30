@@ -19,7 +19,7 @@ class Editlesson extends Component
 
  
     public Lesson $lesson;
-    public $title;
+    public $name;
     public $duration;
     public $vedio;
 
@@ -37,22 +37,22 @@ class Editlesson extends Component
     {
       
 
-      //dd($this->lesson->title);
+      //dd($this->lesson->name);
          // validation
         $this->validate([
-            'title' => 'required|max:250',
-            'duration' => 'required|integer',
+            'name' => 'required|max:250',
+            //'duration' => 'required|integer',
             'vedio' => 'required',
           ]); 
-        File::deleteDirectory(storage_path('app/public/lessons/'.$this->lesson->title));
+        File::deleteDirectory(storage_path('app/public/lessons/'.$this->lesson->name));
         $path = $this->vedio->store('public/lessons-temp');
 
         //create video record in sb
      $lesson=Lesson::findorfail($this->lesson->id)->update([
-            'title' =>$this->title,
-            'duration' => $this->duration,
+            'name' =>$this->name,
+            //'duration' => $this->duration,
             'video' => explode('/lessons-temp', $path)[1],
-            'section_id'=>$this->lesson->section_id,
+            'section_id'=>$this->lesson->cource_id,
         ]);
 
 //dispatch jobs
@@ -60,16 +60,16 @@ class Editlesson extends Component
       ConvertForStreaming::dispatch($this->lesson);
  
            
-            $this->title="";
+            $this->name="";
             $this->duration="";
             $this->vedio="";  
            
         //redirect to edit route
-        $cource_id=section::with("cource")->find($this->lesson->section_id);
+        //$cource_id=section::with("cource")->find($this->lesson->cource_id);
 
         toastr()->success('.لقد تم التعديل  بنجاح');
 
-        return redirect()->route("admin.sections",$cource_id->cource->id);
+        return redirect()->route("admin.sections",$this->lesson->cource_id);
    
        
     }

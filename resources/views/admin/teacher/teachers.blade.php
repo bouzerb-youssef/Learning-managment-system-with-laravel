@@ -52,26 +52,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="d-inline-block mb-0">الأساثذة</h4>
                     <div class="d-flex">
-                       
-                        <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="Search product" title="" aria-expanded="false">
-                            <i class="uil-search"></i>
-                        </a>
-                        <div class="uk-drop" uk-drop="mode: click; pos: right-center; offset: 0">
-                            <form class="uk-search uk-search-navbar uk-width-1-1" {{-- action='{{route("search.teacher")}}' --}}>
-                                <input class="uk-search-input shadow-0 uk-form-small"  name='searchteacher' type="search" placeholder="البحث..." autofocus="">
-                            </form>
-                        </div>
-
-                        <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="filter" title="" aria-expanded="false">
-                            <i class="uil-filter"></i>
-                        </a>
-                        <div uk-dropdown="pos: bottom-right ; mode: click ;animation: uk-animation-scale-up" class="uk-dropdown">
-                            <ul class="uk-nav uk-dropdown-nav">
-                                <li class="uk-active"><a href="#"> Newest </a></li>
-                                <li><a href="#">From A-Z</a></li>
-                                <li><a href="#">From Z-A</a></li>
-                            </ul>
-                        </div>
+                    
 
 
                    

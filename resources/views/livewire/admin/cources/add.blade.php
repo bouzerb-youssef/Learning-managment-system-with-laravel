@@ -33,6 +33,7 @@
                     <div class="card rounded">
                         <div class="p-3">
                             <h5 class="mb-0"> تسجيل الكورس</h5>
+                          
                         </div>
                         <hr class="m-0">
                         <form  wire:submit.prevent='store' method="POST" enctype="multipart/form-data" >
@@ -54,14 +55,10 @@
                                                                 @if (isset($categories) && $categories->count()>0)
                                                                 @foreach ($categories as $category)
                                                                 <option value="{{$category->id}}" >{{$category->id}}::{{$category->title}}</option>
-                            
                                                                 @endforeach
                                                                 @endif
                                                             </select>
-                                                            
-                    
                                                             @error('category_id')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
                                                         </div>
                                                       
                                                         <div class="uk-grid-margin uk-first-column">
@@ -164,38 +161,8 @@
                                                     {{-- </div> --}}
                                                     @elseif ($currentPage === 3)
                                                     {{-- ######################################################################################### --}}
-                                                    <br>
-                                                    
-                                                        <div class="col-xl-9">
-                                                          
-                                                                <button   type='button'  class="btn btn-default mb-3"  wire:click.prevent="add({{$i}})" >    اضافة الاحتياجات </button>    
-                                                                <div class="row"> <div class="col-md-9">  <input type='text' wire:model.lazy='detail.0' class='uk-input'
-                                                                    placeholder="">
-                                                                    @error('detail.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-
-                                                                </div>
-                                                                    <div class="col-md-2">          <div class="col-md-2">  </div>
-                                                                    </div></div>  
-                                                                    @error('detail') <span class="text-danger error">{{ $message }}</span>@enderror 
-                                                                   
-                                                                        
-                                                                @foreach($inputs as $key => $value)
-                                                                <div class="row"> <div class="col-md-9">  <input type='text' wire:model.lazy='detail.{{ $value }}' class='uk-input'
-                                                                    placeholder=""></div>
-                                                                    <div class="col-md-2">          <div class="col-md-2">  <a   uk-tooltip="حدف " wire:click.prevent="remove({{$key}})" aria-expanded="false">
-                                                                        <i class="uil-trash-alt text-danger"  ></i> </a></div>
-                                                                    </div></div>  
-                                                                    @error('detail')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
-                                                                @endforeach
-                                                            
-                            
-                                                           
-                                                        </div>
-                                              
-                                                  
-                                                    @elseif ($currentPage === 4)
-                                                    {{-- ######################################################################################### --}}
-                                                    <br>
+                                            
+                                                        <br>
                                                   
 
                                                         <div class="col-xl-9 m-auto">
@@ -278,6 +245,36 @@
                                                   
                             
                                                   
+                                                    @elseif ($currentPage === 4)
+                                                    {{-- ######################################################################################### --}}
+                                              
+                                                    <br>
+                                                    
+                                                    <div class="col-xl-9">
+                                                      
+                                                            <button   type='button'  class="btn btn-default mb-3"  wire:click.prevent="add({{$i}})" >    اضافة الاحتياجات </button>    
+                                                            <div class="row"> <div class="col-md-9">  <input type='text' wire:model.lazy='detail.0' class='uk-input'
+                                                                placeholder="">
+                                                                @error('detail.0')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+
+                                                            </div>
+                                                                <div class="col-md-2">          <div class="col-md-2">  </div>
+                                                                </div></div>  
+                                                                @error('detail') <span class="text-danger error">{{ $message }}</span>@enderror 
+                                                               
+                                                                    
+                                                            @foreach($inputs as $key => $value)
+                                                            <div class="row"> <div class="col-md-9">  <input type='text' wire:model.lazy='detail.{{ $value }}' class='uk-input'
+                                                                placeholder=""></div>
+                                                                <div class="col-md-2">          <div class="col-md-2">  <a   uk-tooltip="حدف " wire:click.prevent="remove({{$key}})" aria-expanded="false">
+                                                                    <i class="uil-trash-alt text-danger"  ></i> </a></div>
+                                                                </div></div>  
+                                                                @error('detail')<div class="uk-alert-danger" uk-alert>   <p>{{ $message }} </p> </div> @enderror
+                                                            @endforeach
+                                                        
+                        
+                                                       
+                                                    </div>
                                                         
                                                    
                                                    

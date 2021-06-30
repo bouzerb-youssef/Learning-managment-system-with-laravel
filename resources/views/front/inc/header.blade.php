@@ -140,7 +140,7 @@
 
                             <div  {{-- style='padding-bottom:60px;' --}} class=" dropdown-user-details ">
                                 <div class="dropdown-user-avatar">
-                                    @if ($user->profile_photo_path)
+                                    @if ($user->photo)
                                     <img src="{{$user->imagePath}}"></span>
                                     @else
                                     <img src="../assets/images/avatars/avatar-2.jpg" alt="">                                    
@@ -163,7 +163,7 @@
                                     <i class="icon-material-outline-dashboard"></i> الصفحة الشخصية</a>
                             </li>
                           
-                            <li><a href="user/profile">
+                            <li><a href="/user/profile">
                                 <i class="icon-feather-settings"></i> ادارة الحساب</a>
                             </li>
                           

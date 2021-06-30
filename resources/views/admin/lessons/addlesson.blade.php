@@ -2,5 +2,5 @@
 
 @section('content')
 
- @livewire('admin.lesson.addlesson', ['section' => $section])       
+ @livewire('admin.lesson.addlesson', ['cource' => $cource])       
 @endsection

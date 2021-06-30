@@ -45,7 +45,7 @@ class CreateThumbnailFromVideo implements ShouldQueue
             ->save($destination);
          
        $this->video->update([
-            'thumbnail_image' => $this->video->title .'.png',
+            'thumbnail_image' => $this->video->name .'.png',
             
         ]); 
     }

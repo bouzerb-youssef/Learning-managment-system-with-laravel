@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -210,8 +210,98 @@
                     @foreach (Auth::user()->allTeams() as $team)
                         <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
                     @endforeach
+                 
                 @endif
             </div>
         </div>
     </div>
 </nav>
+ --}}
+ <header class="header header-transparent uk-sticky header-sticky uk-sticky-below uk-sticky-fixed" uk-sticky="top:20 ; cls-active:header-sticky ; cls-inactive: uk-light" style="position: fixed; top: 0px; width: 1375px;">
+
+    <div class="container">
+        <nav uk-navbar="" class="uk-navbar">
+
+            <!-- left Side Content -->
+            <div class="uk-navbar-left">
+
+                <span class="btn-mobile" uk-toggle="target: #wrapper ; cls: mobile-active"></span>
+
+
+
+                <!-- logo -->
+                <a href="dashboard.html" class="logo">
+                    <img src="../assets/images/logo-dark.svg" alt="">
+                    <span> Courseplus</span>
+                </a>
+
+                <!-- breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a style="font-size: large;"  href="/"> الرئيسية </a></li>
+                        <li><a style="font-size: large;" href="/cources">الكورسات</a></li>
+                        
+                    </ul>
+                </nav>
+
+
+            </div>
+            <div class="uk-navbar-right">
+
+                <div class="header-widget">
+                    <!-- User icons close mobile-->
+                    <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"> </span>
+
+
+                    <a href="#" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21" title="" aria-expanded="false">
+                        <i class="uil-youtube-alt"></i>
+                    </a>
+
+                    <!-- courses dropdown List -->
+                    <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small" class="dropdown-notifications my-courses-dropdown uk-dropdown">
+
+                        <!-- notivication header -->
+                        <div class="dropdown-notifications-headline">
+                            <h4>كورساتك</h4>
+                            <a href="#">
+                                <i class="icon-feather-settings" uk-tooltip="title: Notifications settings ; pos: left" title="" aria-expanded="false"></i>
+                            </a>
+                        </div>
+                     
+                        <!-- notification contents -->
+                        <div class="dropdown-notifications-content" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="left: -17px; bottom: -17px;"><div class="simplebar-content" style="padding: 0px; height: 100%; overflow: scroll;">
+
+                            <!-- notiviation list -->
+                            </ul>
+       
+                        </div></div></div><div class="simplebar-placeholder" style="width: 339px; height: 712px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: visible;"><div class="simplebar-scrollbar" style="width: 25px; transform: translate3d(-25px, 0px, 0px); visibility: visible;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 139px; transform: translate3d(0px, 0px, 0px); visibility: visible;"></div></div></div>
+                        <div class="dropdown-notifications-footer">
+                            <a href="#"> sell all</a>
+                        </div>
+                    </div>
+
+
+    
+
+                  
+                      
+                <!-- icon search-->
+                <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">
+                    <i class="uil-search icon-small"></i>
+                </a>
+                
+                <!-- User icons -->
+                    <a href="#" class="uil-user icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active">
+                    </a>
+                    
+
+            </div>
+            <!-- End Right Side Content / End -->
+
+
+        </nav>
+
+    </div>
+    <!-- container  / End -->
+
+</header>

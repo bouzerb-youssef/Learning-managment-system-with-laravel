@@ -12,17 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(
+/* Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){  
-        Route::get('/register', function () {
-            return view('auth.register');
+    ], function(){  */ 
+        Route::get('/user/profile', function () {
+            return view('profile.show');
         });
-        Route::get('/login', function () {
+     /*    Route::get('/login', function () {
             return view('auth.login');
-        });
+        }); */
         Route::get('/quiz', function () {
             return view('quiz');
         });
@@ -36,31 +36,31 @@ Route::group(
         })->name('dashboard');
         
         Route::get('/', [App\Http\Controllers\DashboardFrontController::class, 'index'])->name('home');
-        Route::get('/cources', [App\Http\Controllers\CourceController::class, 'index'])->name('cources');
-        Route::get('/cources/detail/{id}', [App\Http\Controllers\CourceController::class, 'show'])->name('cources.show');
+        Route::get('/cources', [App\Http\Controllers\CourceController::class, 'index'])->name('cources')->middleware('auth');
+        Route::get('/cources/detail/{id}', [App\Http\Controllers\CourceController::class, 'show'])->name('cources.show')->middleware('auth');
         
-        Route::get('/cources/lessons/{id}', [App\Http\Controllers\CourceController::class, 'lessons'])->name('cources.lessons');
+        Route::get('/cources/lessons/{id}', [App\Http\Controllers\CourceController::class, 'lessons'])->name('cources.lessons')->middleware('auth');
         
-        Route::get('/cources/lessons/vedio/{id}', [App\Http\Controllers\CourceController::class, 'episode'])->name('cources.lessons.vedio');
+        Route::get('/cources/lessons/vedio/{id}', [App\Http\Controllers\CourceController::class, 'episode'])->name('cources.lessons.vedio')->middleware('auth');
         
         /* enroll */
-        Route::get('/cources/enroll/{id}', [App\Http\Controllers\EnrollController::class, 'store'])->name('cource.enroll');
-        Route::get('/test', [App\Http\Controllers\DashboardFrontController::class, 'test'])->name('test');
+        Route::get('/cources/enroll/{id}', [App\Http\Controllers\EnrollController::class, 'store'])->name('cource.enroll')->middleware('auth');
+        Route::get('/test', [App\Http\Controllers\DashboardFrontController::class, 'test'])->name('test')->middleware('auth');
         
         /* category */
         
-        Route::get('/category/{id}', [App\Http\Controllers\CategoryController::class, 'show'])->name('category.show');
+        Route::get('/category/{id}', [App\Http\Controllers\CategoryController::class, 'show'])->name('category.show')->middleware('auth');
         
         
         /* quiz front*/
-        Route::get('/takequiz/{id}', [App\Http\Controllers\Admin\QuizController::class, 'index'])->name('quiz.index');
-        Route::post('/takequiz/store', [App\Http\Controllers\Admin\QuizController::class, 'store'])->name('quiz.store');
+        Route::get('/takequiz/{id}', [App\Http\Controllers\Admin\QuizController::class, 'index'])->name('quiz.index')->middleware('auth');
+        Route::post('/takequiz/store', [App\Http\Controllers\Admin\QuizController::class, 'store'])->name('quiz.store')->middleware('auth');
         
-        Route::get('/takequiz/showresult/{id}', [App\Http\Controllers\Admin\QuizController::class, 'show'])->name('quiz.results.show');
+        Route::get('/takequiz/showresult/{id}', [App\Http\Controllers\Admin\QuizController::class, 'show'])->name('quiz.results.show')->middleware('auth');
         
         
         /* profile student */
-        Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+        Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile')->middleware('auth');
         
         
         
@@ -70,8 +70,8 @@ Route::group(
         
         
         /* #######################################################bOOKS################################################################################################## */
-        Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('books');
-        Route::get('/books/detail/{id}', [App\Http\Controllers\BookController::class, 'show'])->name('books.show');
+        Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('books')->middleware('auth');
+        Route::get('/books/detail/{id}', [App\Http\Controllers\BookController::class, 'show'])->name('books.show')->middleware('auth');
         
         Route::group(["middleware"=>"admin","prefix"=>"admin"],function(){
             /* ########################################################begin admin############################################################################################## */
@@ -292,9 +292,9 @@ Route::group(
               
 
                         });
-                        Route::get('/chat', [App\Http\Controllers\Admin\ChatController::class, 'index'])->name('chat');  
-                        Route::get('/chatshow/{group}', [App\Http\Controllers\Admin\ChatController::class, 'show'])->name('chat.show');  
+                        Route::get('/chat', [App\Http\Controllers\Admin\ChatController::class, 'index'])->name('chat')->middleware('auth');  
+                        Route::get('/chatshow/{group}', [App\Http\Controllers\Admin\ChatController::class, 'show'])->name('chat.show')->middleware('auth');  
         Route::get('/showstage/{id}', [App\Http\Controllers\Admin\StageController::class, 'showstage'])->name('admin.showstage');  
-    }); 
+    /* }); */ 
 
 

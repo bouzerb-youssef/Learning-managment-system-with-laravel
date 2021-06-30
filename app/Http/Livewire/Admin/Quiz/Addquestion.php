@@ -50,7 +50,7 @@ protected $rules = [
         $audio =$this->audio;
      
         $name = Str::random().'-'.$this->audio->getClientOriginalName();
-       $storeaudio=Storage::disk('questions')->put($name, $audio);
+        $storeaudio=Storage::disk('questions')->put($name, $audio);
         $createdquestion = Question::create([
 
           "question"=>$this->question,
@@ -59,19 +59,21 @@ protected $rules = [
 
           "cource_id"=>$this->cource->id,
           ]);
-
+       
      
           $options = $this->option;
           $pointss =$this->points;
           $images =$this->image;
       // dd( $images);
           for($i = 0; $i < count($pointss); $i++){
+           // foreach($options as $key=>$option){
             $image = $images[$i]; 
   
             $img   = ImageManagerStatic::make($images[$i])->resize(252,174)->encode('jpg');
            
             $name  = Str::random() .'options'. ($i) .'jpg';
             Storage::disk('options')->put($name, $img);
+
            $createdoption = Option::create([
     
              "option"=> $i ,

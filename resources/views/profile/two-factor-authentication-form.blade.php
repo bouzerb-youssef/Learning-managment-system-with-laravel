@@ -1,6 +1,6 @@
-<x-jet-action-section>
+
     <x-slot name="title">
-        {{ __('Two Factor Authentication') }}
+        توثيق ذو عاملين
     </x-slot>
 
     <x-slot name="description">
@@ -80,4 +80,5 @@
             @endif
         </div>
     </x-slot>
-</x-jet-action-section>
+
+

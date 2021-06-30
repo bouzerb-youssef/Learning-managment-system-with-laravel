@@ -4792,12 +4792,12 @@ ul.course-video-list {
 
 .course-video-list li>a {
   display: block;
-  padding: 14px 55px 14px 60px;
-  line-height: 26px;
+  padding: 14px 76px 14px 60px;
+  line-height: 56px;
   font-size: 15px;
   font-weight: 500;
   position: relative;
-  color: #afafaf;
+  color: #000000;
   max-width: 100%;
   /* overflow: hidden; */
   text-overflow: ellipsis;
@@ -5028,6 +5028,7 @@ ul.course-video-list-2 li.uk-active a {
   order: 2;
   background-color: #f8fbff;
   transition: 0.3s;
+ /* height: 89%;*/
 }
 
 .course-content-inner {
@@ -5066,7 +5067,7 @@ ul.course-video-list-2 li.uk-active a {
   }
 
   .course-header .btn-back {
-    display: none;
+   /*  display: none; */
   }
 
   .course-header .btn-back i {

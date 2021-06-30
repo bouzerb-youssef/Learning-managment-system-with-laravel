@@ -48,13 +48,13 @@
                     </div>
                     <div style="padding-right: 0;" class="comment-content">
                         <form  wire:submit.prevent='addComment' class="uk-grid-small uk-grid" uk-grid="">
-                            <div class="uk-width-1-2@s uk-first-column">
+                           {{--  <div class="uk-width-1-2@s uk-first-column">
                                 <label class="uk-form-label">الاسم</label>
                                 @php
                                 use Illuminate\Support\Facades\Auth;
                              @endphp 
                              <input class="uk-input" type="text"    @auth  value="({{Auth::user()->name}})" @endauth }>
-                            </div>
+                            </div> --}}
                             <div class="uk-width-1-1@s uk-grid-margin uk-first-column">
                                 <label  class="uk-form-label">التعليق</label>
                                 <textarea class="uk-textarea" wire:model.lazy='review' placeholder="أكتب تعليقك هنا ....." style=" height:160px"></textarea>
