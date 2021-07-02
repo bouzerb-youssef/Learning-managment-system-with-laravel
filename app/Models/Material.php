@@ -18,10 +18,7 @@ class Material extends Model
         
     ];
 
-    public function getPdfPathAttribute()
-    {
-        return Storage::disk("materials")->url($this->material);
-    }
+  
     public function cource()
     {
         return $this->belongsTo(Cource::class);

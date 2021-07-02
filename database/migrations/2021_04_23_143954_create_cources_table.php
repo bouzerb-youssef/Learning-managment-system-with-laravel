@@ -16,8 +16,8 @@ class CreateCourcesTable extends Migration
         Schema::create('cources', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('short_description');
-            $table->text('desc');
+            $table->text('description')->nullable();
+         
          
             $table->string('thumbnail')->nullable();
            

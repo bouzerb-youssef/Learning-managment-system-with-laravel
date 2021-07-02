@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Vimeo\Laravel\VimeoManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,15 +115,27 @@ use Illuminate\Support\Facades\Route;
                 Route::post('/updatesection/update/{id}', [App\Http\Controllers\Admin\SectionController::class, 'updatesection'])->name('admin.section.update');
                 Route::get('/section/remove/{id}', [App\Http\Controllers\Admin\SectionController::class, 'removesection'])->name('admin.section.remove');
 
-                
+              
                     /* lesson */
-                    
+                    Route::get('/vediofetsh', function (VimeoManager $vimeo) {
+                        $vedio='/videos/569999168';
+                        $result=  $vimeo->request($vedio, ['per_page' => 2], 'GET');
+                      dd( $result/* ['embed']['html'] */);
+                       return view('admin.lessons.showvedio',compact('result')); 
+                    });   
+                  
+
+                    Route::get('/vediocreate', [App\Http\Controllers\Admin\LessonController::class, 'create'])->name('vedio.create');
+                    Route::post('/vediocreate', [App\Http\Controllers\Admin\LessonController::class, 'store'])->name('admin.video.store');
+
                 Route::get('/addlesson/{id}', [App\Http\Controllers\Admin\LessonController::class, 'addlesson'])->name('admin.lesson.add');
                 Route::get('/editlesson/{id}', [App\Http\Controllers\Admin\LessonController::class, 'editlesson'])->name('admin.lesson.edit');
                 Route::get('/removelesson/{id}', [App\Http\Controllers\Admin\LessonController::class, 'remove'])->name('admin.lesson.remove');
                 /* material */
              //   Route::get('/cources/addmaterialtosection/{id}', [App\Http\Controllers\Admin\CourceController::class, 'addmaterialtosection'])->name('admin.addmaterialtosection');
-                Route::get('/addmaterial/{id}', [App\Http\Controllers\Admin\MaterialController::class, 'addmaterial'])->name('admin.material.add');
+             Route::get('/materials', [App\Http\Controllers\Admin\MaterialController::class, 'index'])->name('admin.materials');
+
+                Route::get('/addmaterial', [App\Http\Controllers\Admin\MaterialController::class, 'addmaterial'])->name('admin.material.add');
                 Route::post('/storematerial', [App\Http\Controllers\Admin\MaterialController::class, 'store'])->name('admin.material.store');
                 Route::get('/editmaterial/{id}', [App\Http\Controllers\Admin\MaterialController::class, 'editmaterial'])->name('admin.material.edit');
                 Route::post('/updatematerial/{id}', [App\Http\Controllers\Admin\MaterialController::class, 'update'])->name('admin.material.update');
@@ -192,32 +205,8 @@ use Illuminate\Support\Facades\Route;
                 Route::get('/editstage/{id}', [App\Http\Controllers\Admin\StageController::class, 'editstage'])->name('admin.editstage');
                 Route::post('/updatestage/update/{id}', [App\Http\Controllers\Admin\StageController::class, 'updatestage'])->name('admin.stage.update');
                 Route::get('/stage/remove/{id}', [App\Http\Controllers\Admin\StageController::class, 'remove'])->name('admin.stage.remove');
-                /* content  */
-                Route::get('/addcontent', [App\Http\Controllers\Admin\contentController::class, 'addcontent'])->name('admin.addcontent');
-                Route::post('/addcontent/store', [App\Http\Controllers\Admin\contentController::class, 'storecontent'])->name('admin.addcontent.store');
-                Route::get('/editcontent', [App\Http\Controllers\Admin\contentController::class, 'editcontent'])->name('admin.editcontent');
-        
-                Route::post('/content/update/title1', [App\Http\Controllers\Admin\contentController::class, 'updatecontenttitle1'])->name('admin.content.update.title1');
-                Route::post('/content/update/description1', [App\Http\Controllers\Admin\contentController::class, 'updatecontentdescription1'])->name('admin.content.update.description1');
-                Route::post('/content/update/button1', [App\Http\Controllers\Admin\contentController::class, 'updatecontentbutton1'])->name('admin.content.update.button1');
-                Route::post('/content/update/heroimage1', [App\Http\Controllers\Admin\contentController::class, 'updatecontentheroimage1'])->name('admin.content.update.heroimage1');
-                Route::post('/content/update/title2', [App\Http\Controllers\Admin\contentController::class, 'updatecontenttitle2'])->name('admin.content.update.title2');
-                Route::post('/content/update/description2', [App\Http\Controllers\Admin\contentController::class, 'updatecontentdescription2'])->name('admin.content.update.description2');
-                Route::post('/content/update/button2', [App\Http\Controllers\Admin\contentController::class, 'updatecontentbutton2'])->name('admin.content.update.button2');
-                Route::post('/content/update/image2', [App\Http\Controllers\Admin\contentController::class, 'updatecontentimage2'])->name('admin.content.update.image2');
-                Route::post('/content/update/title3', [App\Http\Controllers\Admin\contentController::class, 'updatecontenttitle3'])->name('admin.content.update.title3');
-                Route::post('/content/update/description3', [App\Http\Controllers\Admin\contentController::class, 'updatecontentdescription3'])->name('admin.content.update.description3');
-                Route::post('/content/update/button3', [App\Http\Controllers\Admin\contentController::class, 'updatecontentbutton3'])->name('admin.content.update.button3');
-                /* footer content */
-        
-                Route::get('/editfooter', [App\Http\Controllers\Admin\FootercontentController::class, 'editfooter'])->name('admin.editfooter');
-        
-                Route::post('/footer/update/title', [App\Http\Controllers\Admin\FootercontentController::class, 'updatecontenttitle'])->name('admin.footer.update.title');
-                Route::post('/footer/update/description', [App\Http\Controllers\Admin\FootercontentController::class, 'updatecontentdescription'])->name('admin.footer.update.description');
-                Route::post('/footer/update/facebook', [App\Http\Controllers\Admin\FootercontentController::class, 'updatecontentfacebook'])->name('admin.footer.update.facebook');
-                Route::post('/footer/update/twitter', [App\Http\Controllers\Admin\FootercontentController::class, 'updatecontenttwitter'])->name('admin.footer.update.twitter');
-                Route::post('/footer/update/instagram', [App\Http\Controllers\Admin\FootercontentController::class, 'updatecontentinstagram'])->name('admin.footer.update.instagram');
-                Route::post('/footer/update/youtube', [App\Http\Controllers\Admin\FootercontentController::class, 'updatecontentyoutube'])->name('admin.footer.update.youtube');
+                
+               
 
                /* year */
                Route::get('/years', [App\Http\Controllers\Admin\YearController::class, 'years'])->name('admin.years');

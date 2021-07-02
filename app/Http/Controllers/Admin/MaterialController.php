@@ -5,20 +5,38 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Material;
-use App\Models\Section;
+use App\Models\Cource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 
 class MaterialController extends Controller
 {
+  public function index(){
+
+    $materials = material::paginate(12);
+    
+  // dd( $materials);
+
+   return view('admin.materials.materials',compact('materials'));
+   }
+
+
+
+
+
+
+
+
     public function remove($id){
 
         $material = material::Find($id);
         if( $material){
            
-                //Storage::disk("materials")->delete($material->material);
-                File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
+          $path = public_path()."/materials/".$material->material;
+          unlink($path);
            
                  $material->delete();
         };
@@ -37,76 +55,80 @@ class MaterialController extends Controller
            $request->validate([
                'material' => 'required',
              
-               'title' => 'required',
+               'materialname' => 'required',
         
                
              
              
     
            ]);
-           $name =request('material')->getClientOriginalName();
+          
 
-           $material =request('material');
+        
+            
+        $fileName = time().'.'.$request->material->extension();  
    
-          $storematerial=Storage::disk('materials')->put( $name,  $material);
+        $request->material->move(public_path('materials'), $fileName);
    
     
            $material = material::create([
-    
-             "material"=> $name ,
-             "title"=>request('title'),
-             "cource_id"=>  $material->cource->id,
-            ]);;
-    
-             $material->save();
-             $section=Section::with('cource')->find(request('section_id'));  
-             toastr()->success('.لقد تم الانشاء  بنجاح');
-           return redirect()->route("admin.sections",$section->cource->id);
-       }
-    
-       public function  addmaterial($id){
-    
-        $section=Section::findorfail($id);
 
-         
-         
-           return view("admin.materials.addmaterial",compact('section'));
+             "material"=>$fileName ,
+             "materialname"=>request('materialname'),
+             "cource_id"=> request('cource_id'),
+
+            ]);
     
+         
+             toastr()->success('.لقد تم الانشاء  بنجاح');
+           return redirect()->route("admin.materials");
        }
+    
+       public function  addmaterial(){
+        $cources=Cource::all();
+           return view("admin.materials.addmaterial",compact('cources'));
+       }
+
         public function editmaterial($id){
             $material = material::findorfail($id);
-               return view("admin.materials.editmaterial",compact("material")); 
+            $cources=Cource::all();
+               return view("admin.materials.editmaterial",compact("material","cources")); 
            }
 
            public function update($id,Request $request){
             $material = Material::findorfail($id);
           //dd( $material->cource);
             $request->validate([
-              'material' => 'required',
-              'title' => 'required',
+              "cource_id" => 'required',
+              'materialname' => 'required',
              
           ]);
-          File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
-          $name =request('material')->getClientOriginalName();
-//dd(request('material'));
-//$path = $request->file('material')->store(
-    //'materials', 'public'
-//);
-          $materiall =request('material');
-  
-         $storematerial=Storage::disk('materials')->put($request['title'].$name, $materiall);
-  
-         
-               $updatematerial = material::findorfail($id)->update([
-               
-                   "material"=>   $storematerial,
-                   "materialname"=>$request['title'],
-                 "cource_id"=>  $material->cource->id,
-                   ]);
-        //$materialid=material::with('material')->Find($id);
+          
+        
+
+         if(request('material')){
+        
+          $path = public_path()."/materials/".$material->material;
+          unlink($path);
+          $fileName = time().'.'.$request->material->extension();  
+   
+          $request->material->move(public_path('materials'), $fileName);
+                $updatematerial = material::findorfail($id)->update([
+                
+                 "material"=>$fileName ,
+                 "materialname"=>request('materialname'),
+                 "cource_id"=> request('cource_id'),
+                    ]);
+
+         }
+         $updatematerial = material::findorfail($id)->update([
+          "materialname"=>request('materialname'),
+          "cource_id"=> request('cource_id'),
+             ]);
+
               
         toastr()->success('.لقد تم التعديل  بنجاح');
-        $section=Section::with('cource')->find(request('section_id'));  
-               return redirect()->route("admin.sections",$material->cource->id);
+       
+               return redirect()->route("admin.materials");
            }
 }

@@ -29,12 +29,11 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-
 @font-face {
   font-family: gotham-rounded;
-  font-style: normal;
-  font-weight: 300;
-  src: url(../fonts/Gotham-Rounded.ttf) format('woff')
+  font-style: bolder;
+  font-weight: 700;
+  src: url(../fonts/Hacen-Casablanca-Hd.ttf) format('woff');
 }
 
 @font-face {

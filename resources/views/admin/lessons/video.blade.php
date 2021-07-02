@@ -1,3 +1,5 @@
+@extends('admin.layouts.app')
+@section('content')
 <div>
     <div class="page-content">
         <div class="page-content-inner">
@@ -34,8 +36,7 @@
                         </div>
                        
                         <div class="">
-                            <div class="">
-                                
+                            <div class="">              
                                     <div class="card" x-data="{ isUploading: false, progress: 0 }"
                                         x-on:livewire-upload-start="isUploading = true"
                                         x-on:livewire-upload-finish="isUploading = false {{-- , $wire.fileCompleted() --}}"
@@ -48,21 +49,26 @@
                                                 <div class="progress-bar" role="progressbar" :style="`width: ${progress}%`"></div>
                                             </div>
     
-                                                <form  wire:submit.prevent="fileCompleted"  >
-                                                                {{ csrf_field() }}
+                                            <form  action="{{route("admin.video.store")}}" method="POST" enctype="multipart/form-data" >
+                                                {{ csrf_field() }}
                                                         <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
                                                             <div class="uk-first-column">
                                                                 <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
-                                                                <input type="text" class="uk-input" wire:model='name' placeholder="اسم الدرس">
+                                                                <input type="text" class="uk-input" name='name' placeholder="اسم الدرس">
                                                             </div>
-                                                  
+                                                           {{--  <div class="uk-first-column">
+                                                                <h5 class="uk-text-bold mb-2">عدد الدقائق</h5>
+                                                                <input type="text" class="uk-input"  wire:model='duration' placeholder="عدد الدقائق">
+                                                            </div> --}}
+                                                    
+                                                        
                                                         </div>
                                                         <div  class='container' class="uk-grid-margin uk-first-column" >
                                                             <div class="uk-grid-margin uk-first-column">
                                                                 <h5 class="uk-text-bold mb-2">الفيديو </h5>
                                                                 <div class="uk-margin"> 
                                                                     <div uk-form-custom> 
-                                                                        <input type="file" wire:model='vedio'> 
+                                                                        <input type="file" name='video'> 
                                                                         <button class="uk-uk-button uk-button-default" type="button" tabindex="-1"> اختر فيديو </button> 
                                                                     </div> 
                                                                 </div> 
@@ -110,3 +116,5 @@
 
 </div> 
         
+
+@endsection

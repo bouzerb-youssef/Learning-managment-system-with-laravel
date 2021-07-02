@@ -8,8 +8,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> Setting </a></li>
-                    <li>Account Setting</li>
+                    <li><a href="#"> materials </a></li>
+                    <li>Edit material</li>
                 </ul>
             </nav>
         </div>
@@ -32,33 +32,42 @@
 
                 <div class="card rounded">
                     <div class="p-3">
-                        <h5 class="mb-0"> اضافة فصل</h5>
+                        <h5 class="mb-0"> Edit Material</h5>
                     </div>
                     <hr class="m-0">
                     <form  action="{{route("admin.material.update",$material->id)}}" method="POST" enctype="multipart/form-data" >
                                     {{ csrf_field() }}
-                            <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
-                                <div class="uk-first-column">
-                                    <h5 class="uk-text-bold mb-2">اسم الفصل</h5>
-                                    <input type="text" class="uk-input" name="title"  value='{{$material->title}}' placeholder="الاسم الكامل">
-                                </div>
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2">المرفق </h5>
-                                    <div class="uk-margin"> 
-                                        <div uk-form-custom> 
-                                            <input type="file" name="material"> 
-                                            <button class="uk-uk-button uk-button-default" type="button" tabindex="-1"> اختر مرفق </button> 
-                                        </div> 
-                                    </div> 
-                                </div>
-                              
-                                <div class="uk-first-column">
-                                    
-                                    <input type="hidden" class="uk-input" name="section_id"  value='{{$material->section_id}}' placeholder="الاسم الكامل">
-                                </div>
-                          
-                              
-                            </div>
+                                    <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
+                                        <div class="uk-first-column">
+                                            <h5 class="uk-text-bold mb-2">Name</h5>
+                                            <input type="text" class="uk-input"  value='{{$material->materialname}}' name="materialname" placeholder="name">
+                                        </div>
+                                        <div class="uk-grid-margin uk-first-column">
+                                            <h5 class="uk-text-bold mb-2"> Select Cource </h5>
+                                            <select name="cource_id" class="uk-select">
+                                                @if (isset($cources) && $cources->count()>0)
+                                                @foreach ($cources as $cource)
+                                                <option  value="{{$cource->id}}" >{{$cource->title}}</option>
+        
+                                                @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="uk-grid-margin uk-first-column">
+                                            <h5 class="uk-text-bold mb-2">Material </h5>
+                                            <div class="uk-margin"> 
+                                                <div uk-form-custom> 
+                                                    <input type="file" name="material"> 
+                                                    <button class="uk-uk-button uk-button-default" type="button" tabindex="-1"> Select Material </button> 
+                                                </div> 
+                                            </div> 
+                                        </div>
+                            
+                                      
+                                  
+                                      
+                                    </div>
+                                                   
                                                       
                           <div class="uk-flex-right .uk-child-width-1-5 p-2">
                             

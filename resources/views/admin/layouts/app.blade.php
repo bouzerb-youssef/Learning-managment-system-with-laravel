@@ -1,5 +1,5 @@
 <!doctype html>
-<html    @if (App::getlocale()== 'fr') lang="fr"  @else lang="ar" dir="rtl" @endif >
+<html    >
 
 <head>
 
@@ -19,13 +19,13 @@
  
 
     <link rel="stylesheet" href="{{ asset('../assets/css/night-mode.css') }}">
-    @if (App::getlocale()== 'fr')
+   
     <link rel="stylesheet" href="{{ asset('../assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/css/framework.css') }}">
-    @else
-    <link rel="stylesheet" href="{{ asset('../assets/css/style-rtl.css') }}">
+ 
+  {{--   <link rel="stylesheet" href="{{ asset('../assets/css/style-rtl.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/css/framework-rtl.css') }}">
-    @endif
+   --}}
   
    
 

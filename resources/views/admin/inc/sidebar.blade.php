@@ -30,33 +30,26 @@
                    <li><a href="{{route("admin.categorylist")}}"><i class="uil-tag-alt"></i><span>{{trans('sidebar.category')}}</span> </a> </li>
 
                     @endif 
-                  {{--   <li class="#"><a href="#"><i class="uil-layers"></i> <span> {{trans('sidebar.manager')}}
+              
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Cources
                     </span></a>
-                        <ul>
-                        <li><a href="{{route("admin.years")}}" >{{trans('sidebar.years')}}</a>
+                    <ul>
+                        <li><a href="{{route("admin.index")}}">All Cources</a>
                         </li>
-                        <li><a href="{{route("admin.centres")}}" > {{trans('sidebar.centres')}} </a></li>
-                        <li><a href="{{route("admin.formations")}}" > {{trans('sidebar.formations')}} </a></li>
-                        <li><a href="{{route("admin.studentgroups")}}" > {{trans('sidebar.groupstudents')}} </a></li>
-                        </ul>
-                    </li>  --}}
-                    <li><a href="{{route("admin.index")}}"><i class="uil-youtube-alt"></i> <span> {{trans('sidebar.cources')}}</span></a> </li>
+                        <li><a href="{{route("admin.addcource")}}"> Add Cource </a></li>
+                    </ul>
+                    </li>
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Materials
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.materials")}}">All Material</a>
+                        </li>
+                        <li><a href="{{route("admin.material.add")}}"> Add Material </a></li>
+                    </ul>
+                    </li>  
                     <li><a href="{{route("admin.teacher")}}"><i class="uil-users-alt"></i> <span> الأساثذة</span></a> </li>                    
                     <li><a href="{{route("admin.students")}}"><i class="uil-youtube-alt"></i> <span> {{trans('sidebar.student')}}</span></a> </li>
 
-{{--                     <li><a href="{{route("admin.question.add")}}"><i class="uil-users-alt"></i> <span> {{trans('sidebar.quizs')}}</span></a> </li>
-                 
-                    <li><a href=" {{route("admin.categorybook")}} "><i class="uil-file-alt"></i> <span> {{trans('sidebar.BookCategory')}}</span></a> </li>
-                    <li><a href="{{route("admin.books")}}"><i class="uil-layers"></i> <span> {{trans('sidebar.books')}}</span></a> </li>
-{{--                     <li><a href="{{route("admin.addcontent")}}"><i class="uil-chart-line"></i> <span> {{trans('sidebar.edit')}}</span></a> </li>
- --}}                   {{--  <li class="#"><a href="#"><i class="uil-layers"></i> <span> {{trans('sidebar.edit')}}
-                            </span></a>
-                            <ul>
-                                <li><a href="{{route("admin.editcontent")}}" >{{trans('sidebar.editContent')}}</a>
-                                </li>
-                                <li><a href="{{route("admin.editfooter")}}" > {{trans('sidebar.editFooter')}} </a></li>
-                            </ul>
-                        </li>  --}}
                 </ul>
      
         

@@ -15,24 +15,17 @@
 
     <!-- CSS 
     ================================================== -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
+   <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}"> 
     <link rel="stylesheet" href="{{ asset('assets/css/night-mode.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/framework-rtl.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">   
- 
-
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">  
     <!-- icons
     ================================================== -->
     <link rel="stylesheet" href="{{ asset('assets/css/icons.css') }}">
-    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-    <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet"> 
-{{--     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
- --}}   {{--  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/demo.css" /> --}}
 
-<style>
-    /* video { width: 80%; }
-    video source { width: 100%; height: auto; } */
-</style>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+
+
     @livewireStyles
   @yield('styles')
   @stack('styles')
@@ -85,7 +78,7 @@
                 
                 </div>
 
-                <div class='container'  >
+                <div     class='container'  >
                     @livewire('episode', ['lesson' => $lesson])
                 </div>>
 
@@ -288,6 +281,8 @@ $(document).ready(function () {
 
 <!-- javaScripts
 ================================================== -->
+<script src="https://cdn.plyr.io/3.6.8/demo.js" crossorigin="anonymous"></script>
+
 <script src="{{ asset('assets/js/framework.js') }}"></script>
 <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('assets/js/simplebar.js') }}"></script>

@@ -53,43 +53,44 @@ class CourceController extends Controller
       $cource = Cource::with('courceQuestions','options','lessons','materials')->find($id);
      // dd( $cource);
       
-        if($cource){
+       if($cource){
          
-          foreach( $cource->enrolls as $enroll){
-            if( $enroll){
+         // foreach( $cource->enrolls as $enroll){
+         //   if( $enroll){
                 
-                $enroll->delete();
-              }
-            }
-          foreach( $cource->courceQuestions as $question){
-          if( $question){
-            Storage::disk("questions")->delete($question->audio);
-              $question->delete();
-            }
-          }
+          //      $enroll->delete();
+          //    }
+          //  }
+       //   foreach( $cource->courceQuestions as $question){
+        //  if( $question){
+         //   Storage::disk("questions")->delete($question->audio);
+           //   $question->delete();
+        // //   }
+        //  }
          
-          foreach( $cource->options as $option){
-            if( $option){
-              Storage::disk("options")->delete($option->image);
-              $option->delete();
+        //  foreach( $cource->options as $option){
+         //   if( $option){
+          //    Storage::disk("options")->delete($option->image);
+          //    $option->delete();
 
-            }}
+        //    }}
             /* delete lessson */
-      foreach( $cource->lessons as $lesson){
-        if( $lesson){
-          File::deleteDirectory(storage_path('app/public/lessons/'.$lesson->name));
-          $lesson->delete();
-        }}
+     // foreach( $cource->lessons as $lesson){
+       // if( $lesson){
+        //  File::deleteDirectory(storage_path('app/public/lessons/'.$lesson->name));
+       //   $lesson->delete();
+       // }}
 /* delete materials */
 
-      foreach( $cource->materials as $material){
-        if( $material){
-       
-      
-
-          File::deleteDirectory(storage_path('app/public/materials/'.$material->material));
-          $material->delete();
-        }}
+     foreach( $cource->materials as $material){
+      if( $material){
+           
+        $path = public_path()."/materials/".$material->material;
+        unlink($path);
+         
+               $material->delete();
+      }
+    }
           Storage::disk("cources")->delete($cource->thumbnail);
           
           $cource->delete();  
@@ -117,53 +118,36 @@ class CourceController extends Controller
      }
      
    public function updatecource($id,Request $request){
-    try {  
+   // try {  
       $cource= Cource::findorfail($id);
-      Storage::disk("cources")->delete($cource->thumbnail);
-       
-             $request->validate([
-                'title' => 'required',
-                'short_description' => 'required',
-                'desc' => 'required', 
-                
-                'thumbnail' => 'required', 
-                
-                'category_id' => 'required',
-            ]);
-            Storage::disk("cources")->delete($cource->thumbnail);
-
-            
-            $thumbnail = $request['thumbnail'];
      
-            $img   = ImageManagerStatic::make($request->thumbnail)->encode('jpg');
-            $name  =$request->thumbnail->getClientOriginalName();
-           
-         
-            Storage::disk('cources')->put($name.request('title'), $img);
-
-          $update = Cource::findorfail($id)->update([
-        
-         
-            "title"=> request('title'),
-            "short_description"=>request('short_description'),
-            "desc"=>request('desc'),
-           
-            "thumbnail"=> $name.request('title'),
        
-            "category_id"=> request('category_id'),
-
-            ]);
- 
- 
-           
- 
- 
+      if(request('thumbnail')){
+        Storage::disk("cources")->delete($cource->thumbnail);
+        $name  = Str::random() .'cource'.'jpg';
+        $update = Cource::findorfail($id)->update([
+          "title"=> request('title'),
+          "description"=>request('description'),
+          "thumbnail"=> $name,
+          "category_id"=> request('category_id'),
+          ]);
+          $thumbnail = $request['thumbnail'];
+     
+          $img   = ImageManagerStatic::make($request->thumbnail)->encode('jpg');
+          Storage::disk('cources')->put($name, $img);
+      }
+      $update = Cource::findorfail($id)->update([
+        "title"=> request('title'),
+        "description"=>request('description'),
+       
+        "category_id"=> request('category_id'),
+        ]);     
         return redirect()->route('admin.index');  
-    }
+   // }
   
-    catch (\Exception $e){
-        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-    }
+   // catch (\Exception $e){
+    //    return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+   // }
 
       
       }
@@ -183,11 +167,11 @@ class CourceController extends Controller
      public function store(Request $request)
    
      {
-      DB::beginTransaction();
-      try {  
+     // DB::beginTransaction();
+     // try {  
         $request->validate([
           'title' => 'required',
-          'short_description' => 'required',
+          'description' => 'required',
          // 'description' => 'required',
         
          // 'level' => 'required', 
@@ -203,52 +187,25 @@ class CourceController extends Controller
     
     $name  = Str::random() .'cource'.'jpg';
   
-     Storage::disk('cources')->put($name, $img);
+    Storage::disk('cources')->put($name, $img);
 
       $createdCource = Cource::create([
 
        "title"=> request('title'),
-       "short_description"=>request('short_description'),
-     //  "description"=>request('description'),
-       "level"=>request('level'),
-       "thumbnail"=>request('title'),
-       //"detail"=> request('detail'),
+       "description"=>request('description'),
+       "thumbnail"=> $name,
        "category_id"=> request('category_id'),
       ]); 
-  
-    //   $sections = $request->input('section', []);
-
-  
-    //   $descriptions = $request->input('description', []);
-    //   return  $descriptions;
-   //  for($section = 0; $section < count( $sections); $section++){
-    //     Section::create([
-
-       //   "section"=> $sections[$section],
-       //  "description"=>$descriptions[$section],
-       //  "cource_id"=>  $createdCource->id ,
-       //   ]);
-     // }
-
-      $details = $request->input('detail', []);
-      return  $details ;
-      for($detail = 0; $detail < count( $details); $detail++){
-        whatinthecoure::create([
-
-         "detail"=> $details[$detail],
-        
-         "cource_id"=>  $createdCource->id ,
-         ]);
-     }
-     DB::commit();
+    
+     //DB::commit();
 
      return redirect()->route('admin.index');
            
-      }
-      catch (\Exception $e){
-        DB::rollback();
-         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-     }
+     // }
+     // catch (\Exception $e){
+     //   DB::rollback();
+     //    return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    // }
 
          
      }

@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
+
 <br><br><br><br>
 <div class="page-content-inner">
 
@@ -8,48 +9,59 @@
     <nav id="breadcrumbs" class="mb-3">
         <ul>
             <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-            <li> Cources </li>
+            <li> materials </li>
 
         </ul>
     </nav>
 
     <div class="d-flex justify-content-between mb-3">
-        <h4>  Cources :{{$cources->count()}} </h4>
+        <h4>  materials :{{$materials->count()}} </h4>
 
         <div>
-            <a href="{{route('admin.addcource')}}" class="btn btn-outline-dark">
-                <i class="uil-plus"> </i> Add New Cource
+            <a href="{{route('admin.material.add')}}" class="btn btn-outline-dark">
+                <i class="uil-plus"> </i> Add New material
             </a>
         </div>
     </div>
 
-    <div class="uk-child-width-1-4@m uk-grid" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom-small; target: > div ; delay: 200">
-        @foreach ($cources as $cource)
+    <div class="uk-child-width-1-5@m uk-grid" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom-small; target: > div ; delay: 200">
+        @foreach ($materials as $material)
         <div class="uk-first-column uk-scrollspy-inview uk-animation-slide-bottom-small" style="">
             <a href="#">
                 </a><div class="card animate-this uk-inline-clip"><a href="#">
-                    @if (!$cource->thumbnail== null)
-                    <img src="{{$cource->imagePath}}" alt="">
+                    @if (!$material->material== null)
+                    @if (pathinfo($material->material, PATHINFO_EXTENSION) == 'docx')
+                    <img src="../assets/images/course/1.png"  alt="">
+                    @elseif(pathinfo($material->material, PATHINFO_EXTENSION) == 'txt')
+                    <img src="../assets/images/course/2.png" alt="">
+                    @elseif(pathinfo($material->material, PATHINFO_EXTENSION) == 'pdf')
+                    <img src="../assets/images/course/4.png" alt="">
+                    @else
+                    <img src="../assets/images/course/3.png" alt="">
+                    @endif
                     @else
                     <img src="../assets/images/course/2.png" alt="">
                     @endif
                 
                     <div class="card-body text-center pb-3">
-                        <h6 class=" mb-0"><a href="{{route('admin.editcource',$cource->id)}}">{{$cource->title}}</a> </h6>
+                        <h6 class=" mb-0"><a href="{{route('admin.material.edit',$material->id)}}">{{$material->title}}</a> </h6>
+                                    
+                                    
                       
                         <div class="">
-                            <a href="#"   class="text-muted"> {{$cource->enrolls->count()}}Enroll </a>
+                            <a href="{{asset('materials/'.$material->material)}}">View</a>
+
                         </div>
                         <br>
                         <div class="actions ml-3">
                                    
-                            <a href="{{route('admin.editcource',$cource->id)}}"  uk-tooltip="Edit " title="" aria-expanded="false">
+                            <a href="{{route('admin.material.edit',$material->id)}}"  uk-tooltip="Edit " title="" aria-expanded="false">
                                 <i class="uil-pen" style="padding-right:20px;" ></i> </a>
-                               <a href="{{route('admin.remove',$cource->id)}}"  class="delete-confirm"  uk-tooltip="Delete " title="" aria-expanded="false">
+                               <a href="{{route('admin.material.remove',$material->id)}}"  class="delete-confirm"  uk-tooltip="Delete " title="" aria-expanded="false">
                                 <i class="uil-trash-alt text-danger" style="padding-right:20px;" ></i> </a>
-                               {{--  <a href="{{route('admin.sections',$cource->id)}}"  uk-tooltip="الدروس" title="" aria-expanded="false">
+                               {{--  <a href="{{route('admin.sections',$material->id)}}"  uk-tooltip="الدروس" title="" aria-expanded="false">
                                     <i class="icon-line-awesome-outdent " style="padding-right:20px;" ></i> </a>
-                                    <a href="{{route('admin.showquestion',$cource->id)}}" uk-tooltip="اسئلة الاختبار" title="" aria-expanded="false">
+                                    <a href="{{route('admin.showquestion',$material->id)}}" uk-tooltip="اسئلة الاختبار" title="" aria-expanded="false">
                                         <i class="icon-material-outline-library-books " style="padding-right:20px;" ></i> </a> --}}
                         </div>
                     </div>
@@ -65,7 +77,7 @@
 
 
     <ul class="uk-pagination my-5 uk-flex-center" uk-margin="">
-       {{ $cources->links() }}
+       {{ $materials->links() }}
     </ul>
     
 @endsection

@@ -168,7 +168,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
-
+        Vimeo\Laravel\VimeoServiceProvider::class,
+        Alaouy\Youtube\YoutubeServiceProvider::class,
+        Dawson\Youtube\YoutubeServiceProvider::class,
 
 
 
@@ -182,6 +184,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+      
 
     ],
 
@@ -237,7 +240,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         /* added packeges by youssef bouzerb */
         'Image' => Intervention\Image\Facades\Image::class,
-        'FFMpeg' => ProtoneMedia\LaravelFFMpeg\Support\FFMpeg::class
+        'FFMpeg' => ProtoneMedia\LaravelFFMpeg\Support\FFMpeg::class,
+        'Vimeo' => Vimeo\Laravel\Facades\Vimeo::class,
+        /* 'Youtube' => Alaouy\Youtube\Facades\Youtube::class, */
+        'Youtube' => Dawson\Youtube\Facades\Youtube::class,
 
 
 

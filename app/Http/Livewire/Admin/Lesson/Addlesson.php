@@ -39,7 +39,7 @@ class Addlesson extends Component
         $this->validate([
             'name' => 'required|max:70',
             //'duration' => 'required|integer',
-            'vedio' => 'required',
+            //'vedio' => 'required',
           ]); 
         //save the file
         $path = $this->vedio->store('public/lessons-temp');
@@ -52,8 +52,8 @@ class Addlesson extends Component
            
         ]);
 //dispatch jobs
-       CreateThumbnailFromVideo::dispatch($this->lesson);
-    ConvertForStreaming::dispatch($this->lesson);
+        CreateThumbnailFromVideo::dispatch($this->lesson);
+        ConvertForStreaming::dispatch($this->lesson);
  
     // $cource_id=cource::with("cource")->find($this->cource->id);
   

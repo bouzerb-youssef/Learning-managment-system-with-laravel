@@ -65,10 +65,10 @@
             <div class="subnav">
 
                 <ul class="uk-child-width-expand mb-0 uk-tab" uk-switcher="connect: #course-intro-tab ;animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium" uk-tab="">
-                    <li class=""><a href="#" aria-expanded="false">الكورسات</a></li>
+                    <li class=""><a href="#" aria-expanded="false">الدروس </a></li>
                     <li class=""><a href="#" aria-expanded="false">الوصف</a></li>
                   
-                    <li class=""><a href="#" aria-expanded="false">الادوات</a></li>
+                  ّ
                     <li class=""><a href="#" aria-expanded="false">التعليقات</a></li>
                 </ul>
 
@@ -81,7 +81,7 @@
 
         <div class="uk-grid-large mt-4 uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-2-3@m uk-first-column" >
-                <ul id="course-intro-tab" class="uk-switcher" style="touch-action: pan-y pinch-zoom;">
+               {{--  <ul id="course-intro-tab" class="uk-switcher" style="touch-action: pan-y pinch-zoom;">
                     <!-- course Curriculum-->
                     <li class="" style="background: white;
                     padding: 24px;
@@ -95,15 +95,9 @@
                                     
                                     @foreach ($cource->lessons as $lesson) 
                                     <li>
-{{--                                         @if ($is_enroll->count())
- --}}                                        <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->name}} </a>
-                                      {{--   @else --}}
-                                       
-{{--                                         <a  uk-toggle="target: #modal-example"  href="#modal-example">{{$lesson->name}} </a>
- --}}                                       {{--  @endif --}}
-                                      
-{{--                                         <span> {{$lesson->duration}} دقيقة</span></li> --}}
-                                    
+
+                                      <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->name}} </a>
+                             
                                     @endforeach  
                                     </ul>
 
@@ -111,81 +105,160 @@
                          
                           
 
-                        </ul>
+                        </ul>--}}
+                        <ul id="course-intro-tab" class="uk-switcher mt-4" style="touch-action: pan-y pinch-zoom;">
 
 
-                    </li>
+                            <!-- course Curriculum-->
+                            <li class="uk-active  " style="">
 
-                    <!-- course description -->
-                    <li class="course-description-content uk-active  " style="    background: white;
-                    padding: 12px;
-                    border-radius: 10px;">
+                                <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
 
-                        <h4> الوصف </h4>
-                        <p>{!!$cource->desc!!} </p>
+                                    <li class="">
+                                        <a class="uk-accordion-title" href="#">الدروس </a>
+                                        <div class="uk-accordion-content" aria-hidden="true" hidden="">
 
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                    
+                                                @foreach ($cource->lessons as $lesson) 
+                                                <li>
+            
+                                                  <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->name}} </a>
+                                         
+                                                @endforeach  
+                                                </ul>
 
-                        <h4  style="    border-bottom: 2px solid;
-                        width: 39%;"> ماذا تحتاج من اجل البدأ في تعلم الكورس :</h4>
-                        <div class="uk-child-width-1-2@s uk-grid" uk-grid="">
-                            <div class="uk-first-column">
-                                <ul class="list-2">
-                                    @if ($cource->whatinthecoures && $cource->whatinthecoures->count()>0)
-                                    @foreach ($cource->whatinthecoures as $detail)
+                                        </div>
+                                    </li>
+
+                                    <li class="">
+                                        <a class="uk-accordion-title" href="#">  المرفقات</a>
+                                        <div class="uk-accordion-content" aria-hidden="true" hidden="">
+
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                                @foreach ($cource->materials as $material)
+                                                <li>{{$material->materialname}} <span><i class='
+                                                    icon-material-outline-attach-file'></i> {{$material->material}} </span>
+                                              
+                                                @endforeach
+                                            </ul>
+
+                                        </div>
+                                    </li>
                                   
-                                    <li>{{$detail->detail}}</li>
-                                    @endforeach
-                                        
-                                    @endif
-                                  
+
+                                 
+                               
+
+                                    <li class="">
+                                        <a class="uk-accordion-title" href="#"> البودكاست </a>
+                                        <div class="uk-accordion-content" aria-hidden="true" hidden="">
+
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                                <li> The paragraph tag <span> 23 min </span> </li>
+                                                <li> The break tag <a href="#trailer-modal" uk-toggle=""> Preview </a>
+                                                    <span> 23 min </span> </li>
+                                                <li> Headings in HTML <span> 23 min </span> </li>
+                                                <li> Bold, Italics Underline <span> 23 min </span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </li>
+
+                                    <li class="">
+                                        <a class="uk-accordion-title" href="#">الاختبار  </a>
+                                        <div class="uk-accordion-content" aria-hidden="true" hidden="">
+
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                                <li> Something to Ponder<span> 23 min </span> </li>
+                                                <li> Tables <span> 23 min </span> </li>
+                                                <li> HTML Entities <a href="#trailer-modal" uk-toggle=""> Preview
+                                                    </a><span> 23 min </span> </li>
+                                                <li> HTML Iframes <span> 23 min </span> </li>
+                                                <li> Some important things <span> 23 min </span> </li>
+                                            </ul>
+
+                                        </div>
+                                    </li>
+
                                 </ul>
-                            </div>
+
+                            </li>
+
+                         
+
                      
-                        </div>
-                       
 
 
-                        
+                   
 
-                    </li>
-                
+                           <!-- course description -->
+                           <li class="course-description-content " style="    background: white  padding: 12px;border-radius: 10px;">
+
+                                <h4> الوصف </h4>
+                                <p>{!!$cource->desc!!} </p>
+
+
+                                <h4  style="    border-bottom: 2px solid;
+                                width: 39%;"> ماذا تحتاج من اجل البدأ في تعلم الكورس :</h4>
+                                <div class="uk-child-width-1-2@s uk-grid" uk-grid="">
+                                    <div class="uk-first-column">
+                                        <ul class="list-2">
+                                            @if ($cource->whatinthecoures && $cource->whatinthecoures->count()>0)
+                                            @foreach ($cource->whatinthecoures as $detail)
+                                        
+                                            <li>{{$detail->detail}}</li>
+                                            @endforeach
+                                                
+                                            @endif
+                                        
+                                        </ul>
+                                    </div>
+                            
+                                </div>
+                            </li>
+                         
 
                    
          
-                    <!-- course Announcement-->
-                    <li  style="">
+                                <!-- course Announcement-->
+                                <li  style="">
 
-                        <h4 class="my-4">مرفقات الفصول</h4>
-                        <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
-                            @foreach ($cource->materials as $material)
+                                    <h4 class="my-4">مرفقات الفصول</h4>
+                                    <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
+                                        @foreach ($cource->materials as $material)
 
-                                <li class="uk-open">
-                                    <a class="uk-accordion-title" href="#"> {{$material->materialname}} </a>
-                                    <div class="uk-accordion-content" aria-hidden="true" hidden="">
-                            
-                                        <!-- course-video-list -->
-                                        <ul class="course-curriculum-list">
-                                            <li>{{$material->materialname}} <span> <a href="{{$material->pdfPath}}" {{-- style='padding-bottom:30px;' --}}>  <i class="uil-external-link-alt "></i> </a> </span>
+                                            <li class="uk-open">
+                                                <a class="uk-accordion-title" href="#"> {{$material->materialname}} </a>
+                                                <div class="uk-accordion-content" aria-hidden="true" hidden="">
                                         
-                                        </ul>
+                                                    <!-- course-video-list -->
+                                                    <ul class="course-curriculum-list">
+                                            
+                                                    </ul>
+                                        
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                             
-                                    </div>
+            
                                 </li>
-                            @endforeach
-                        </ul>
-                 
-  
-                    </li>
-                    <!-- course Reviews-->
-                    <li class="" style="">
+                   
+                                <li class="" style="">
 
-                     
-                        @auth
-                            @livewire('reviews',['cource' => $cource])
-                        @endauth
-                    </li>
+                                
+                                    @auth
+                                        @livewire('reviews',['cource' => $cource])
+                                    @endauth
+                                </li>
 
-                </ul>
+                </ul> 
             </div>
 
 

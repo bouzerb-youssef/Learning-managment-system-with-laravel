@@ -27,7 +27,7 @@ class QuizController extends Controller
             ->find($id);
           
 
-// dd($cource);
+dd($cource);
       
         return view('quiz', compact('cource'));
     }

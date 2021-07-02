@@ -35,48 +35,48 @@
                         <h5 class="mb-0"> اضافة كورس</h5>
                     </div>
                     <hr class="m-0">
-                    <form  action="{{route("admin.updatecource",$cource->id)}}" method="POST" enctype="multipart/form-data" class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
+                    <form  action="{{route("admin.updatecource",$cource->id)}}" method="POST" enctype="multipart/form-data" >
                                     {{ csrf_field() }}
 
-                                <div class="uk-first-column">
-                                    <h5 class="uk-text-bold mb-2">اسم الكورس</h5>
-                                    <input type="text" class="uk-input"  value="{{$cource->title}}" name="title" placeholder="الاسم الكامل">
-                                </div>
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> اختر صنف </h5>
-                                    <select name="category_id" class="uk-select">
-                                        @if (isset($categories) && $categories->count()>0)
-                                        @foreach ($categories as $category)
-                                        <option  value="{{$category->id}}" >{{$category->title}}</option>
-
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> تعريف قصير</h5>
-                                    <textarea  name="short_description" class="mytextarea"  placeholder="الملاحضات"   class="form-control"> {{$cource->short_description}}</textarea>
-                                </div>
-
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> التعريف </h5>
-                                    <textarea  name="desc" class="mytextarea"  placeholder="الملاحضات"   class="form-control"> {{$cource->desc}}</textarea>
-                                </div>
-                            
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2">الصورة </h5>
-                                    <div class="uk-margin"> 
-                                        <div uk-form-custom> 
-                                            <input type="file" name="thumbnail"> 
-                                            <button class="uk-uk-button uk-button-default" type="button" tabindex="-1"> اختر صورة </button> 
-                                        </div> 
+                                    <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
+                                        <div class="uk-first-column">
+                                          <h5 class="uk-text-bold mb-2">Name</h5>
+                                          <input type="text" class="uk-input" name="title" value='{{$cource->title}}' placeholder="Name">
+                                      </div>
+                                      <div class="uk-grid-margin uk-first-column">
+                                          <h5 class="uk-text-bold mb-2"> Select Category </h5>
+                                          <select name="category_id" class="uk-select">
+                                              @if (isset($categories) && $categories->count()>0)
+                                              @foreach ($categories as $category)
+                                              <option  value="{{$category->id}}" >{{$category->title}}</option>
+      
+                                              @endforeach
+                                              @endif
+                                          </select>
+                                      </div>
+                                      <div class="uk-grid-margin uk-first-column"   >
+                                        <h5 class="uk-text-bold mb-2"> Description </h5>
+                                        <textarea  name="description" class="mytextarea"  placeholder="short description"   value='{{$cource->description}}' class="form-control"></textarea>
+                                    </div>
+                                    
+                               
+                                
+                               
+                                   
+                                    <div class="uk-grid-margin uk-first-column">
+                                        <h5 class="uk-text-bold mb-2">Image </h5>
+                                          <div class="uk-margin"> 
+                                         <div class="uk-margin" uk-margin> <div uk-form-custom="target: true"> <input type="file" name='thumbnail'> <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled> </div>  </div> 
                                     </div> 
-                                </div> 
-                            <div class="uk-flex uk-flex-right p-4">
-                            
-                                <button  type="submit" class="btn btn-default">حفظ البيانات</button>
-                            </div>
+                                    
+                               
+      
+                                  
+                                 
+                                    <div class="uk-flex uk-flex-right p-4">
+                                
+                                      <button  type="submit" class="btn btn-default">Submit</button>
+                                  </div>
                         </div>
                      </form>
                
@@ -98,7 +98,7 @@
 <script>
 tinymce.init({
   selector: '.mytextarea',
-  language: 'ar'
+  language: 'en'
 });
 </script>
 

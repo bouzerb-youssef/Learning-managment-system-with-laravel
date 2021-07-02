@@ -4,12 +4,19 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Lesson;
+use Vimeo\Laravel\VimeoManager;
 use Illuminate\Support\Facades\Auth;
 
 class Episode extends Component
 {
     public $lesson;
     protected $listeners = ['VideoViewed' => 'countView'];
+/* 
+    protected $vimeo;
+    function __construct(VimeoManager $vimeo)
+   {
+       $this->vimeo = $vimeo;
+   } */
 
     public function mount( $lesson)
     {
