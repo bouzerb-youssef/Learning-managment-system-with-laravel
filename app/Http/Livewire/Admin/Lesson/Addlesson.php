@@ -9,59 +9,56 @@ use Livewire\Component;
 use App\Models\cource;
 use App\Models\Lesson;
 use Livewire\WithFileUploads;
-
+use Vimeo\Laravel\VimeoManager;
 class Addlesson extends Component
 {
     use WithFileUploads;
+    protected $vimeo;
 
     public $cource_id;
-    public cource $cource;
+    public  $cources;
     public Lesson $lesson;
     public $name;
-    public $duration;
-    public $vedio;
-    
+    //public $duration;
+    public $video;
+   
     protected $rules = [
         'vedio' => 'required|mimes:mp4|max:12288000'
     ];
 
-    public function mount(Cource $cource ){
+    public function mount($cources ){
 
-      $this->cource=$cource;
+      $this->cources=$cources;
+     // $this->vimeo = $vimeo;
 
     }
 
-    public function fileCompleted()
+    public function fileCompleted( VimeoManager $vimeo)
     {
          // validation
 
-        
+       // dd($this->video);
         $this->validate([
             'name' => 'required|max:70',
-            //'duration' => 'required|integer',
-            //'vedio' => 'required',
+            
+            'video' => 'required',
           ]); 
         //save the file
-        $path = $this->vedio->store('public/lessons-temp');
-
-        //create video record in sb
-        $this->lesson = $this->cource->lessons()->create([
-            'name' =>$this->name,
-           // 'duration' => $this->duration,
-            'video' => explode('/lessons-temp', $path)[1]
-           
+        //dd($vimeo);
+        $video= $vimeo->upload($this->video,[
+            'title'=>$this->name,
         ]);
-//dispatch jobs
-        CreateThumbnailFromVideo::dispatch($this->lesson);
-        ConvertForStreaming::dispatch($this->lesson);
- 
-    // $cource_id=cource::with("cource")->find($this->cource->id);
+ dd($video);
+        $createdCource = Lesson::create([
   
-        
-        //redirect to edit route
+          "name"=> this->name,
+          "video"=> $video,
+       
+          "cource_id"=> $this->cource_id,
+         ]); 
         toastr()->success('.لقد تم الانشاء  بنجاح');
 
-        return redirect()->route("admin.sections",$this->cource->id);
+        return redirect()->route("admin.lessons");
    
        
     }

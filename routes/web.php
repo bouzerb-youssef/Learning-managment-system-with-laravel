@@ -127,8 +127,12 @@ use Vimeo\Laravel\VimeoManager;
 
                     Route::get('/vediocreate', [App\Http\Controllers\Admin\LessonController::class, 'create'])->name('vedio.create');
                     Route::post('/vediocreate', [App\Http\Controllers\Admin\LessonController::class, 'store'])->name('admin.video.store');
+                    Route::get('/lessons', [App\Http\Controllers\Admin\LessonController::class, 'index'])->name('admin.lessons');
 
-                Route::get('/addlesson/{id}', [App\Http\Controllers\Admin\LessonController::class, 'addlesson'])->name('admin.lesson.add');
+                Route::get('/addlesson', [App\Http\Controllers\Admin\LessonController::class, 'addlesson'])->name('admin.lesson.add');
+                Route::post('/storelesson', [App\Http\Controllers\Admin\LessonController::class, 'store'])->name('admin.lesson.store');
+                Route::post('/storelesson/{id}', [App\Http\Controllers\Admin\LessonController::class, 'update'])->name('admin.lesson.update');
+
                 Route::get('/editlesson/{id}', [App\Http\Controllers\Admin\LessonController::class, 'editlesson'])->name('admin.lesson.edit');
                 Route::get('/removelesson/{id}', [App\Http\Controllers\Admin\LessonController::class, 'remove'])->name('admin.lesson.remove');
                 /* material */
@@ -141,7 +145,14 @@ use Vimeo\Laravel\VimeoManager;
                 Route::post('/updatematerial/{id}', [App\Http\Controllers\Admin\MaterialController::class, 'update'])->name('admin.material.update');
                 Route::get('/removematerial/{id}', [App\Http\Controllers\Admin\MaterialController::class, 'remove'])->name('admin.material.remove');
 
+/* podcasts */
+Route::get('/podcasts', [App\Http\Controllers\Admin\PodcastController::class, 'index'])->name('admin.podcasts');
 
+Route::get('/addpodcast', [App\Http\Controllers\Admin\PodcastController::class, 'addpodcast'])->name('admin.podcast.add');
+Route::post('/storepodcast', [App\Http\Controllers\Admin\PodcastController::class, 'store'])->name('admin.podcast.store');
+Route::get('/editpodcast/{id}', [App\Http\Controllers\Admin\PodcastController::class, 'editpodcast'])->name('admin.podcast.edit');
+Route::post('/updatepodcast/{id}', [App\Http\Controllers\Admin\PodcastController::class, 'update'])->name('admin.podcast.update');
+Route::get('/removepodcast/{id}', [App\Http\Controllers\Admin\PodcastController::class, 'remove'])->name('admin.podcast.remove');
 
 
                 /* ################################################categories################################################################################################ */

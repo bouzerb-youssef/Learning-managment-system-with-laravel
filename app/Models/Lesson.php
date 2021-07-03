@@ -22,7 +22,7 @@ class Lesson extends Model
     ];
     public function cource()
     {
-        return $this->belongsTo(Cource::class)->with("cource");
+        return $this->belongsTo(Cource::class);
     } 
     public function getVideoPathAttribute()
     {

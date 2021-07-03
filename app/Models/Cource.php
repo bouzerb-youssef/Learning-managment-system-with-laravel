@@ -33,7 +33,10 @@ class Cource extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function podcasts()
+    {
+        return $this->hasMany(Podcast::class);
+    } 
     public function materials()
     {
         return $this->hasMany(Material::class);

@@ -30,7 +30,7 @@
     
                     <div class="card rounded">
                         <div class="p-3">
-                            <h5 class="mb-0"> اضافة فصل</h5>
+                            <h5 class="mb-0">Add Video</h5>
                         </div>
                        
                         <div class="">
@@ -52,25 +52,37 @@
                                                                 {{ csrf_field() }}
                                                         <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
                                                             <div class="uk-first-column">
-                                                                <h5 class="uk-text-bold mb-2">اسم الدرس</h5>
-                                                                <input type="text" class="uk-input" wire:model='name' placeholder="اسم الدرس">
+                                                                <h5 class="uk-text-bold mb-2">Name</h5>
+                                                                <input type="text" class="uk-input" wire:model='name' placeholder="Name">
+                                                            </div>
+                                                            <div class="uk-grid-margin uk-first-column">
+                                                                <h5 class="uk-text-bold mb-2"> Select Cource </h5>
+                                                                <select wire:model="cource_id" class="uk-select">
+                                                                    @if (isset($cources) && $cources->count()>0)
+                                                                    @foreach ($cources as $cource)
+                                                                    <option  value="{{$cource->id}}" >{{$cource->title}}</option>
+                            
+                                                                    @endforeach
+                                                                    @endif
+                                                                </select>
                                                             </div>
                                                   
                                                         </div>
+                                                     
                                                         <div  class='container' class="uk-grid-margin uk-first-column" >
                                                             <div class="uk-grid-margin uk-first-column">
-                                                                <h5 class="uk-text-bold mb-2">الفيديو </h5>
+                                                                <h5 class="uk-text-bold mb-2">Video </h5>
                                                                 <div class="uk-margin"> 
                                                                     <div uk-form-custom> 
-                                                                        <input type="file" wire:model='vedio'> 
-                                                                        <button class="uk-uk-button uk-button-default" type="button" tabindex="-1"> اختر فيديو </button> 
+                                                                        <input type="file" wire:model="video"> 
+                                                                        <button class="uk-uk-button uk-button-default" type="button" tabindex="-1"> Select Video </button> 
                                                                     </div> 
                                                                 </div> 
-                                                            </div> 
+                                                            </div>   
                                                         </div>                            
                                                     <div class="uk-flex-right .uk-child-width-1-5 p-2">
                                                         
-                                                            <button  type="submit" class="btn btn-default">حفظ البيانات</button>
+                                                            <button  type="submit" class="btn btn-default">Save</button>
                                                         </div>
                                                 
                                                     

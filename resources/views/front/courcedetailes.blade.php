@@ -149,7 +149,14 @@
                                     </li>
                                   
 
-                                 
+                                       {{--  
+                                    <ul class="course-curriculum-list">
+                                             
+                                        @foreach ($cource->podcasts as $podcast)
+                                        <li>{{$podcast->name}} <span>{{$podcast->podcast}} </span></li>
+                                      
+                                        @endforeach
+                                    </ul> --}}
                                
 
                                     <li class="">
@@ -158,12 +165,11 @@
 
                                             <!-- course-video-list -->
                                             <ul class="course-curriculum-list">
-                                                <li> The paragraph tag <span> 23 min </span> </li>
-                                                <li> The break tag <a href="#trailer-modal" uk-toggle=""> Preview </a>
-                                                    <span> 23 min </span> </li>
-                                                <li> Headings in HTML <span> 23 min </span> </li>
-                                                <li> Bold, Italics Underline <span> 23 min </span>
-                                                </li>
+                                                @foreach ($cource->podcasts as $podcast)
+                                                 
+                                                  <li>{{$podcast->podcast}}<span>{{$podcast->podcast}} </span></li>
+                                                 @endforeach
+                                             
                                             </ul>
 
                                         </div>

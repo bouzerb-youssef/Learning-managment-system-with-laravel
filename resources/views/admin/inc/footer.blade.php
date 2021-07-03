@@ -1,5 +1,6 @@
         <!-- footer
             ================================================== -->
+            <br><br><br><br><br><br>
             <div class="footer">
                 <div class="uk-grid-collapse" uk-grid>
                     <div class="uk-width-expand@s uk-first-column">

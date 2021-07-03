@@ -8,7 +8,7 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> cource </a></li>
+                    <li><a href="#"> Cources </a></li>
                     <li>Add Cource </li>
                 </ul>
             </nav>
@@ -73,7 +73,7 @@
                            
                               <div class="uk-flex uk-flex-right p-4">
                           
-                                <button  type="submit" class="btn btn-default">Submit</button>
+                                <button  type="submit" class="btn btn-outline-dark">Save</button>
                             </div>
                              
                         </div>

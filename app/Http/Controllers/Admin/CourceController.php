@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use Vimeo\Laravel\Facades\Vimeo;
 
 
 class CourceController extends Controller
@@ -50,7 +51,7 @@ class CourceController extends Controller
 
      public function remove($id){
 
-      $cource = Cource::with('courceQuestions','options','lessons','materials')->find($id);
+      $cource = Cource::with('courceQuestions','options','lessons','materials','podcasts')->find($id);
      // dd( $cource);
       
        if($cource){
@@ -80,6 +81,7 @@ class CourceController extends Controller
         //  File::deleteDirectory(storage_path('app/public/lessons/'.$lesson->name));
        //   $lesson->delete();
        // }}
+    
 /* delete materials */
 
      foreach( $cource->materials as $material){
@@ -90,7 +92,24 @@ class CourceController extends Controller
          
                $material->delete();
       }
+    }   
+    foreach( $cource->podcasts as $podcast){
+      if( $podcast){
+           
+        $path = public_path()."/podcasts/".$podcast->podcast;
+        unlink($path);
+         
+               $podcast->delete();
+      }
     }
+    foreach( $cource->lessons as $lesson){
+      if($lesson){
+        Vimeo::request($lesson->video, ['per_page' => 10], 'delete');
+          
+     $lesson->delete();
+      
+      }
+    } 
           Storage::disk("cources")->delete($cource->thumbnail);
           
           $cource->delete();  

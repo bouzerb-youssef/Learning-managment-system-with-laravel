@@ -7,27 +7,30 @@
 
     <!-- logo -->
     <div class="logo  uk-visible@s  ">
-        <a href="/admin"> <i class=" uil-graduation-hat"></i> <span> أمل سونتر       </span> </a>
+        <a href="/admin"> <i class=" uil-graduation-hat"></i> <span>Amal Tadrib     </span> </a>
     </div>
     <div class="page-menu-inner" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="left: 0px; bottom: -17px;"><div class="simplebar-content" style="padding: 0px; height: 100%; overflow: scroll hidden;">
             <ul class="mt-0">
                 <br><br>
-                    <li><a href="/admin"><i class="uil-home-alt"></i> <span>{{trans('sidebar.dashboard')}}</span></a> </li>
-                    <li><a href="{{route("admin.years")}}" > <i class="uil-layers"> </i><span>{{trans('sidebar.years')}}</span></a>
+                    <li><a href="/admin"><i class="uil-home-alt"></i> <span>Dashboard</span></a> </li>
+                    <li><a href="{{route("admin.years")}}" > <i class="uil-layers"> </i><span>Years</span></a>
                     </li>
-                    <li><a href="{{route("admin.centres")}}" ><i class="uil-layers"></i>  <span>{{trans('sidebar.centres')}} </span></a></li>
-                    <li><a href="{{route("admin.formations")}}" > <i class="uil-layers"></i> <span>{{trans('sidebar.formations')}} </span></a></li>
-                    <li><a href="{{route("admin.studentgroups")}}" ><i class="uil-layers"> </i><span> {{trans('sidebar.groupstudents')}}</span> </a></li>
+                    <li><a href="{{route("admin.centres")}}" ><i class="uil-layers"></i>  <span>Centres </span></a></li>
+                    <li><a href="{{route("admin.formations")}}" > <i class="uil-layers"></i> <span>Formations </span></a></li>
+                    <li><a href="{{route("admin.studentgroups")}}" ><i class="uil-layers"> </i><span> Groups</span> </a></li>
+                    <li><a href="{{route("admin.teacher")}}"><i class="uil-layers"></i> <span> Teachers</span></a> </li>                    
+                    <li><a href="{{route("admin.students")}}"><i class="uil-layers"></i> <span> Students</span></a> </li>
+                  <!-- <ul data-submenu-title="Lessons Managment">-->
                     @php
                         use App\Models\Category;
                         $category=Category::first();
                         
                     @endphp
                   @if (isset($category))
-                   <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-tag-alt"></i><span>{{trans('sidebar.category')}}</span> </a> </li> 
+                   <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-layers"></i><span>Categories</span> </a> </li> 
 
                      @else
-                   <li><a href="{{route("admin.categorylist")}}"><i class="uil-tag-alt"></i><span>{{trans('sidebar.category')}}</span> </a> </li>
+                   <li><a href="{{route("admin.categorylist")}}"><i class="uil-layers"></i>><span>Categories</span> </a> </li>
 
                     @endif 
               
@@ -39,6 +42,14 @@
                         <li><a href="{{route("admin.addcource")}}"> Add Cource </a></li>
                     </ul>
                     </li>
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Videos
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.lessons")}}">All Videos</a>
+                        </li>
+                        <li><a href="{{route("admin.lesson.add")}}"> Add Video </a></li>
+                    </ul>
+                    </li>
                     <li class="#"><a href="#""><i class="uil-layers"></i> <span> Materials
                     </span></a>
                     <ul>
@@ -47,14 +58,22 @@
                         <li><a href="{{route("admin.material.add")}}"> Add Material </a></li>
                     </ul>
                     </li>  
-                    <li><a href="{{route("admin.teacher")}}"><i class="uil-users-alt"></i> <span> الأساثذة</span></a> </li>                    
-                    <li><a href="{{route("admin.students")}}"><i class="uil-youtube-alt"></i> <span> {{trans('sidebar.student')}}</span></a> </li>
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Podcasts
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.podcasts")}}">All Podcast</a>
+                        </li>
+                        <li><a href="{{route("admin.podcast.add")}}"> Add Podcast </a></li>
+                    </ul>
+                    </li> 
+                  
 
                 </ul>
-     
+
+                 <!-- </ul>-->
         
 
-        <ul data-submenu-title="{{trans('sidebar.manager')}}">
+        <ul data-submenu-title="logout">
         
             <li><a href="/login"><i class="uil-sign-out-alt"></i> <span><form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -62,7 +81,7 @@
                 <dropdown-link href="{{ route('logout') }}"
                          onclick="event.preventDefault();
                                 this.closest('form').submit();">
-                  {{trans('sidebar.logout')}}
+                 Log Out
                 </dropdown-link>
             </form></span></a> </li>
         </ul>
