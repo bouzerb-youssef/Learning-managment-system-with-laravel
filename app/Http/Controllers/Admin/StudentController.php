@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Student;
 use App\Models\Group;
 
-
+use App\Models\StudentAttachment;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -85,10 +85,18 @@ class StudentController extends Controller
 
 
     
-     try {  
+    // try {  
 
-         $student = User::with('studentAttachments')->Find($id);    
+         $student = User::with('studentAttachments')->Find($id);   
+        //dd( $student->$studentAttachment );
          if( $student){
+            foreach( $student->studentAttachments as $studentAttachment){
+                if($studentAttachment){
+                    $path = public_path()."/student-attachment/".$student->name."/".$studentAttachment->file;
+                    unlink($path);
+                    $studentAttachment->delete();
+                 }
+              } 
             Storage::disk('student')->delete($student->photo); 
             $student->delete();
          }
@@ -107,16 +115,16 @@ class StudentController extends Controller
         // }
         
 
-         $student->delete();
+         
          toastr()->success('.لقد تم المسح  بنجاح');
      return back()->with('message', '.لقد تم المسح بنجاح ');
 
-    }
+    //}
   
-    catch (\Exception $e){
-        toastr()->error('.هناك خطأ');
-        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-    }
+   // catch (\Exception $e){
+    //    toastr()->error('.هناك خطأ');
+    //    return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+  //  }
      
        
 

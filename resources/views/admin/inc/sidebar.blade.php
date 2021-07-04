@@ -74,6 +74,14 @@
                     </ul>
                     </li>
                 </ul>
+                <li class="#"><a href="#""><i class="uil-layers"></i> <span> Traineeship
+                </span></a>
+                <ul>
+                    <li><a href="{{route("admin.podcasts")}}" class='sidebardropdown'>All Traineeship</a>
+                    </li>
+                    <li><a href="{{route("admin.podcast.add")}}" class='sidebardropdown'> Add Traineeship </a></li>
+                </ul>
+                </li> 
               
                     <li><a href="{{route("admin.years")}}" > <i class="uil-layers"> </i><span>Years</span></a>
                     </li>

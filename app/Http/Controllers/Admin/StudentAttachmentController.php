@@ -59,15 +59,15 @@ class StudentAttachmentController extends Controller
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
  }
-     public function removestudentAttachment($id){
+ public function removestudentAttachment($id){
  
          $studentAttachment = StudentAttachment::with('student')->Find($id);
             //  dd($studentAttachment->student->name);
          try {  
             if($studentAttachment){
-                $studentAttachement=Storage::disk('studentAttachement')->delete($studentAttachment->file);
-
-                //File::deleteDirectory(storage_path('app/public/studentAttachement/'.$studentAttachment->student->name.'/'.$studentAttachment->file));
+                $Attachement=StudentAttachment::with('student')->findorfail($id);
+                $path = public_path()."/student-attachment/".$Attachement->student->name."/".$Attachement->file;
+                unlink($path);
                 $studentAttachment->delete();
              }
              toastr()->error('.لقد تم المسح  بنجاح');
@@ -99,33 +99,46 @@ class StudentAttachmentController extends Controller
            
             'user_id' => 'required',
          ]);
-  //  try {  
-         $Attachement=StudentAttachment::with('student')->findorfail($id);
-         $path = public_path()."/student-attachment/".$Attachement->file;
-         unlink($path);
-         $fileName = time().'.'.$request->file->extension();  
-   
-        $request->file->move(public_path('student-attachment').'/'. $Attachement->student->name, $fileName);
+   try {  
+      if($request->file){
+        $Attachement=StudentAttachment::with('student')->findorfail($id);
+        $path = public_path()."/student-attachment/".$Attachement->student->name."/".$Attachement->file;
+        unlink($path);
+        $fileName = time().'.'.$request->file->extension();  
+  
+       $request->file->move(public_path('student-attachment').'/'. $Attachement->student->name, $fileName);
+       
+           $updatestudentAttachment = studentAttachment::findorfail($id)->update([
+           
+             
+               "genre"=> request('genre'),
+               
+               'file' => $fileName ,
+
+               'user_id' =>request('user_id')  ,
+
+               ]);
+      }
+      $updatestudentAttachment = studentAttachment::findorfail($id)->update([
+           
+             
+        "genre"=> request('genre'),
         
-            $updatestudentAttachment = studentAttachment::findorfail($id)->update([
-            
-              
-                "genre"=> request('genre'),
-                
-                'file' => $fileName ,
+       
 
-                'user_id' =>request('user_id')  ,
+        'user_id' =>request('user_id')  ,
 
-                ]);
+        ]);
+        
               
         
                 toastr()->success('.لقد تم التعديل  بنجاح');
 
             return redirect()->route('admin.studentAttachments');
-       // }
-       // catch (\Exception $e){
-        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-       // }
+        }
+        catch (\Exception $e){
+             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
         }
       
 }
