@@ -151,9 +151,9 @@
          
              
         </div>
-        <ul class="uk-pagination my-5 uk-flex-center" uk-margin="">
-            {{ $students->links() }}
-         </ul>
+   <ul class="uk-pagination my-5 uk-flex-center" uk-margin="">
+                {{ $students->links() }}
+             </ul>
 
 
     </div>

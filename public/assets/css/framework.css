@@ -1592,7 +1592,7 @@ select.uk-form-width-xsmall {
  */
 .uk-form-custom {
   /* 1 */
-  display: inline-block;
+ /* display: inline-block;*/
   /* 2 */
   position: relative;
   /* 3 */

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Trainship extends Model
 {
@@ -15,9 +16,15 @@ class Trainship extends Model
         'begundate',
         'enddate',
         'company',
-        "photo",
+        "address",
         "responsible",
         "necessaryskills",
         "user_id",
     ];
+    public function user()
+    {
+
+        return $this->belongsTo(User::class);
+
+    }
 }

@@ -284,7 +284,14 @@ Route::get('/removepodcast/{id}', [App\Http\Controllers\Admin\PodcastController:
 
                 Route::post('/updatestudentattachment/update/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'updatestudentAttachment'])->name('admin.studentAttachment.update');
                 Route::get('/studentattachment/remove/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'removestudentAttachment'])->name('admin.studentAttachment.remove');
-               
+                            /* trainship */
+                Route::get('/trainships', [App\Http\Controllers\Admin\TrainshipController::class, 'trainships'])->name('admin.trainships');
+
+                Route::get('/addtrainship', [App\Http\Controllers\Admin\TrainshipController::class, 'addtrainship'])->name('admin.addtrainship');
+                Route::post('/addtrainship/store', [App\Http\Controllers\Admin\TrainshipController::class, 'storetrainship'])->name('admin.trainship.store');
+                Route::get('/edittrainship/{id}', [App\Http\Controllers\Admin\TrainshipController::class, 'edittrainship'])->name('admin.edittrainship');
+                Route::post('/updatetrainship/update/{id}', [App\Http\Controllers\Admin\TrainshipController::class, 'updatetrainship'])->name('admin.trainship.update');
+                Route::get('/trainship/remove/{id}', [App\Http\Controllers\Admin\TrainshipController::class, 'removetrainship'])->name('admin.trainship.remove');
 
                /*  Route::get('/chat', function () {
                     return view('chat');

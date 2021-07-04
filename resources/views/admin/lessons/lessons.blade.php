@@ -2,7 +2,8 @@
 
 @section('content')
 
-<br><br><br><br>
+
+<div class="page-content">
 <div class="page-content-inner">
 
 
@@ -24,7 +25,7 @@
         </div>
     </div>
 
-    <div class="uk-child-width-1-3@m uk-grid" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom-small; target: > div ; delay: 200">
+    <div class="uk-child-width-1-4@m uk-grid" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom-small; target: > div ; delay: 200">
        @php
               use Vimeo\Laravel\Facades\Vimeo;
 

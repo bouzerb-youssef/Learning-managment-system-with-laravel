@@ -301,7 +301,7 @@
 
 
 
-                        <br>
+                    {{--     <br>
                         <a href="/admin/students">
                             <p class="uk-heading-line uk-text-center mt-2 uk-text-small"><span>رؤية الكل
                                 </span>
@@ -325,8 +325,8 @@
                         @endforeach 
 
 
-
-                        <br>
+ --}}
+                     
                         
 
                     </div>

@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Lesson;
 use App\Models\Result;
-use App\Models\Stage;
+use App\Models\Trainship;
 use App\Models\Group;
 use App\Models\StudentAttachment;
 class User extends Authenticatable
@@ -103,9 +103,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Result::class, 'user_id', 'id');
     }
-    public function Stages()
+    public function traiship()
     {
-        return $this->hasMany(Stage::class);
+        return $this->hasMany(Trainship::class);
     }
     public function studentAttachments()
     {

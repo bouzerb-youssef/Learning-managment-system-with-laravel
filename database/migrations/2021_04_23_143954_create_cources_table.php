@@ -17,16 +17,10 @@ class CreateCourcesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description')->nullable();
-         
-         
             $table->string('thumbnail')->nullable();
-           
-           
             $table->unsignedInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')
-
             ->onDelete('set null'); 
-          
             $table->timestamps();
         });
     }

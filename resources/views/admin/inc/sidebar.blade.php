@@ -11,7 +11,7 @@
     </div>
     <div class="page-menu-inner" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="left: 0px; bottom: -17px;"><div class="simplebar-content" style="padding: 0px; height: 100%; overflow: scroll hidden;">
             <ul class="mt-0">
-                <br><br>
+              
                     <li><a href="/admin"><i class="uil-home-alt"></i> <span>Dashboard</span></a> </li>
                     @php
                     use App\Models\Category;
@@ -19,7 +19,9 @@
                     
                 @endphp
               @if (isset($category))
-              <ul data-submenu-title="Cource Managment" class='sidebar-submenu-title'>
+           
+          {{--  <ul data-submenu-title="Cource Managment"    class='sidebar-submenu-title' > --}}
+                
                 <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-layers"></i><span>Categories</span> </a> </li> 
 
                     @else
@@ -59,8 +61,8 @@
                         <li><a href="{{route("admin.podcast.add")}}" class='sidebardropdown'> Add Podcast </a></li>
                     </ul>
                     </li> 
-                </ul>
-                <ul data-submenu-title="Student Managment" class='sidebar-submenu-title'>
+               {{--  </ul> --}}
+            {{--     <ul data-submenu-title="Student Managment" class='sidebar-submenu-title'> --}}
 
                     <li class="#"><a href="#""><i class="uil-layers"></i> <span> Students
                     </span></a>
@@ -73,13 +75,13 @@
                       
                     </ul>
                     </li>
-                </ul>
+              {{--   </ul> --}}
                 <li class="#"><a href="#""><i class="uil-layers"></i> <span> Traineeship
                 </span></a>
                 <ul>
-                    <li><a href="{{route("admin.podcasts")}}" class='sidebardropdown'>All Traineeship</a>
+                    <li><a href="{{route("admin.trainships")}}" class='sidebardropdown'>All Traineeship</a>
                     </li>
-                    <li><a href="{{route("admin.podcast.add")}}" class='sidebardropdown'> Add Traineeship </a></li>
+                    <li><a href="{{route("admin.addtrainship")}}" class='sidebardropdown'> Add Traineeship </a></li>
                 </ul>
                 </li> 
               
