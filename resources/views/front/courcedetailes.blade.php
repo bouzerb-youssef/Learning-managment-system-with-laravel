@@ -13,7 +13,7 @@
                    
    
                         @if (!$cource->thumbnail==null)
-                        <img src="{{$cource->imagePath}}" alt="">
+                        <img src="{{asset('cources/'.$cource->thumbnail)}}"  width="500" height="400" alt="">
                         @else
                         <img src="../assets/images/course/2.png">                       
                         @endif
@@ -279,7 +279,7 @@
                             <div class="course-card">
                                 <div class="course-card-thumbnail ">
                                             @if (!$cource->thumbnail==null)
-                                            <img src="{{$cource->imagePath}}" alt="">
+                                            <img src="{{asset('cources/'.$cource->thumbnail)}}" alt="">
                                             @else
                                             <img src="../assets/images/course/2.png" >                       
                                             @endif

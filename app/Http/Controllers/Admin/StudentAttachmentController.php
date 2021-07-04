@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\File;
 
 class StudentAttachmentController extends Controller
 {
-    public function studentAttachments($id){
-        $student= User::with('studentAttachments')->findorfail($id);
+    public function studentAttachments(){
+        $studentAttachments= StudentAttachment::with('student')->paginate(12);
       // dd($student);
-         return view('admin.studentAttachment.studentAttachments',compact('student'));
+         return view('admin.studentAttachment.studentAttachments',compact('studentAttachments'));
     }
-    public function addstudentAttachment($id){
+    public function addstudentAttachment(){
     
      
-        $student= User::findorfail($id);
+        $students= User::all();
         // dd($student);
-      return view('admin.studentAttachment.addstudentAttachment',compact('student'));
+      return view('admin.studentAttachment.addstudentAttachment',compact('students'));
  }
 
  public function storestudentAttachment(Request $request)
@@ -35,18 +35,18 @@ class StudentAttachmentController extends Controller
          'user_id' => 'required',
      ]);
      try {  
-        $name = Str::random().'-'.request('file')->getClientOriginalName();
 
-        $studentAttachment =request('file');
         $student=User::findorfail(request('user_id'));
-        $storestudentAttachement=Storage::disk('studentAttachement')->put($student->name, $studentAttachment);
-
+       
+        $fileName = time().'.'.$request->file->extension();  
+   
+        $request->file->move(public_path('student-attachment').'/'. $student->name, $fileName);
    //dd( $studentAttachment);
         $createdstudentAttachment = studentAttachment::create([
     
           "genre"=> request('genre'),
           
-          'file' =>  $storestudentAttachement ,
+          'file' =>  $fileName ,
          
           'user_id' =>  request('user_id'),
           ]);
@@ -86,8 +86,8 @@ class StudentAttachmentController extends Controller
      {
         
          $studentAttachment = studentAttachment::findorfail($id);
-        
-            return view("admin.studentAttachment.editstudentAttachment",compact("studentAttachment"));
+         $students= User::all();
+            return view("admin.studentAttachment.editstudentAttachment",compact("studentAttachment","students"));
            
      }
      
@@ -95,32 +95,33 @@ class StudentAttachmentController extends Controller
         public function updatestudentAttachment($id,Request $request){
          $request->validate([
             'genre' => 'required',
-            'file' => 'required',
+            //'file' => 'required',
            
-           // 'user_id' => 'required',
+            'user_id' => 'required',
          ]);
   //  try {  
          $Attachement=StudentAttachment::with('student')->findorfail($id);
+         $path = public_path()."/student-attachment/".$Attachement->file;
+         unlink($path);
+         $fileName = time().'.'.$request->file->extension();  
+   
+        $request->file->move(public_path('student-attachment').'/'. $Attachement->student->name, $fileName);
         
-        Storage::disk('studentAttachement')->delete($Attachement->file);
-         $studentAttachmentfile =request('file');
-         $storestudentAttachement=Storage::disk('studentAttachement')->put($Attachement->student->name, $studentAttachmentfile);
- 
             $updatestudentAttachment = studentAttachment::findorfail($id)->update([
             
               
                 "genre"=> request('genre'),
                 
-                'file' =>  $storestudentAttachement ,
+                'file' => $fileName ,
 
-                'user_id' =>  $Attachement->student->id,
+                'user_id' =>request('user_id')  ,
 
                 ]);
               
         
                 toastr()->success('.لقد تم التعديل  بنجاح');
 
-            return redirect()->route('admin.studentAttachments',$Attachement->student->id);
+            return redirect()->route('admin.studentAttachments');
        // }
        // catch (\Exception $e){
         //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);

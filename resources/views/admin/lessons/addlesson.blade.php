@@ -53,8 +53,6 @@
                     </div>
                    
                     <div class="">
-                   
-
                                             <form  action="{{route("admin.lesson.store")}}" method="POST" enctype="multipart/form-data"  >
                                                             {{ csrf_field() }}
                                                     <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid=""> 
@@ -90,10 +88,16 @@
                                                 <div class="uk-flex-right .uk-child-width-1-5 p-2">
                                                     
                                                         <button  type="submit" class="btn btn-outline-dark">Save</button>
-                                                    </div>
-                                                    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-                                                    <h3 id="status"></h3>
-                                                    <p id="loaded_n_total"></p>
+                                                        <br><br>
+                                                     
+                                                           <progress id="progressBar"  value="0" max="100" ></progress>
+                                                          
+                                                       <div class="progress">
+                                                           <h3 id="status"></h3>
+                                                           <p id="loaded_n_total"></p>
+                                                       </div>
+                                                    <br><br>
+                                                </div>
                                                 
                                             </form>
                                             

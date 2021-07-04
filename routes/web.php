@@ -276,10 +276,10 @@ Route::get('/removepodcast/{id}', [App\Http\Controllers\Admin\PodcastController:
                  Route::get('/teacher/remove/{id}', [App\Http\Controllers\Admin\TeacherController::class, 'removeteacher'])->name('admin.teacher.remove');
 
                 /* studentattachment  */
-                Route::get('/studentattachments/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'studentAttachments'])->name('admin.studentAttachments');
-                Route::get('/addstudentattachment/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'addstudentAttachment'])->name('admin.addstudentAttachment');
+                Route::get('/studentattachments', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'studentAttachments'])->name('admin.studentAttachments');
+                Route::get('/addstudentattachment', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'addstudentAttachment'])->name('admin.studentAttachment.add');
                 Route::post('/addstudentattachment/store', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'storestudentAttachment'])->name('admin.studentAttachment.store');
-                Route::get('/editstudentattachment/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'editstudentAttachment'])->name('admin.editstudentAttachment');
+                Route::get('/editstudentattachment/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'editstudentAttachment'])->name('admin.studentAttachment.edit');
                 Route::get('/showstudentattachment/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'showstudentAttachment'])->name('admin.showstudentAttachment');
 
                 Route::post('/updatestudentattachment/update/{id}', [App\Http\Controllers\Admin\StudentAttachmentController::class, 'updatestudentAttachment'])->name('admin.studentAttachment.update');

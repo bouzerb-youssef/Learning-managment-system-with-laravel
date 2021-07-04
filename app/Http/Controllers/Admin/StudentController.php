@@ -12,17 +12,15 @@ use App\Models\Group;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
-    public function index(){
-            $users = User::with('enrolls')->paginate(10);
-        return view('admin.students.studentlist',compact("users"));
-    }
+  
     
     public function students(){
-        $students= User::with("group")->where("role","0")->get();
+        $students= User::with("group")->where("role","0")->paginate(12);
         return view('admin.student.students',compact('students'));
     }
 
@@ -46,16 +44,14 @@ class StudentController extends Controller
         'childrenNmb' => 'required',
         'educationLevel' => 'required',
         'address' => 'required',
-        'photo' => 'required', 
-
-       
+        'photo' => 'required|image|mimes:jpg,jpeg,png,svg,gif|max:2048', 
         'group_id' => 'required',
     ]);
    
     try {
      
-        $name  = Str::random() .'photo-student'.'jpg';
-      
+        $fileName = time().'.'.request('photo')->extension();  
+       
         $createdstudent = User::create([
             'name' => request('name'),
             'email' =>  request('email'),
@@ -69,12 +65,12 @@ class StudentController extends Controller
             'educationLevel' =>  request('educationLevel'),
             'address' =>  request('address'),
             "nots"=> request('nots'),
-            "photo"=> $name,
+            "photo"=> request('name').$fileName,
             'group_id' => request('group_id'),
         ]);
     
-        $img   = ImageManagerStatic::make($request->photo)/* ->resize(367,190) */->encode('jpg');
-        Storage::disk('student')->put($name, $img); 
+        $img = ImageManagerStatic::make($request->photo)->resize(110,110)->encode('jpg');
+        Storage::disk('student')->put(request('name').$fileName, $img); 
 
         toastr()->success('.لقد تم الاضافة  بنجاح');
         return redirect()->route('admin.students'); 
@@ -92,18 +88,23 @@ class StudentController extends Controller
      try {  
 
          $student = User::with('studentAttachments')->Find($id);    
- 
-        $studentAttachment = StudentAttachment::with('student')->Find($id);
+         if( $student){
+            Storage::disk('student')->delete($student->photo); 
+            $student->delete();
+         }
+       
+
+        //$studentAttachment = StudentAttachment::with('student')->Find($id);
 
         //  dd($studentAttachment->student->name);
 
-        if($studentAttachment){
+       // if($studentAttachment){
 
-            File::deleteDirectory(storage_path('app/public/studentAttachement/'.$studentAttachment->student->name));
+          //  File::deleteDirectory(storage_path('app/public/studentAttachement/'.$studentAttachment->student->name));
 
-            $studentAttachment->delete();
+          //  $studentAttachment->delete();
 
-         }
+        // }
         
 
          $student->delete();
@@ -124,9 +125,9 @@ class StudentController extends Controller
     {
         
         $student = User::findorfail($id);
-        $studentgroups = Group::get();
+        $groups = Group::get();
       
-            return view("admin.student.editstudent",compact("student","studentgroups"));
+            return view("admin.student.editstudent",compact("student","groups"));
         
     }
     public function showstudent($id)
@@ -140,6 +141,9 @@ class StudentController extends Controller
     
 
         public function updatestudent($id,Request $request){
+            //dd(request('photo'));
+
+            
         $request->validate([
          
             'name' => 'required',
@@ -153,35 +157,54 @@ class StudentController extends Controller
             'childrenNmb' => 'required',
             'educationLevel' => 'required',
             'address' => 'required',
-             'photo' => 'required', 
+            //'photo' => 'required|image|mimes:jpg,jpeg,png,svg,gif|max:2048', 
 
            
             'group_id' => 'required',
         ]);
-        try {  
-
-            $updatestudent = User::findorfail($id)->update([
-             
-    
-                'name' => request('name'),
-                'email' =>  request('email'),
-                'password' =>   Hash::make(request('password')),
-                'age' =>  request('age'),
-                'phone' =>  request('phone'),
-                'sex' =>  request('sex'),
-                "cin"=> request('cin'),
-                
-                'familySituation' => request('familySituation'),
-                'childrenNmb' =>  request('childrenNmb'),
-                'educationLevel' =>  request('educationLevel'),
-                'address' =>  request('address'),
-                "nots"=> request('nots'),
-
-                'group_id' => request('group_id'),
-                ]);
-              /*   $teacher= Student::findorfail($id);
-                Storage::disk("teacher")->delete($teacher->photo);
- */
+        try { 
+            $student= User::findorfail($id);
+                if($request->file('photo')){
+                    Storage::disk('student')->delete($student->photo); 
+                    $fileName = time().'.'.$request->file('photo')->extension();  
+                    $updatestudent = User::findorfail($id)->update([
+                     
+                        'name' => request('name'),
+                        'email' =>  request('email'),
+                        'password' =>  Hash::make(request('password')),
+                        'age' =>  request('age'),
+                        'phone' =>  request('phone'),
+                        'sex' =>  request('sex'),
+                        "cin"=> request('cin'), 
+                        'familySituation' => request('familySituation'),
+                        'childrenNmb' =>  request('childrenNmb'),
+                        'educationLevel' =>  request('educationLevel'),
+                        'address' =>  request('address'),
+                        "nots"=> request('nots'),
+                        "photo"=> request('name').$fileName,
+                        'group_id' => request('group_id'),
+                        ]);
+                      $img = ImageManagerStatic::make($request->file('photo'))->resize(110,110)->encode('jpg');
+                    Storage::disk('student')->put(request('name').$fileName, $img);         
+                    
+                }
+                $updatestudent = User::findorfail($id)->update([ 
+                    'name' => request('name'),
+                    'email' =>  request('email'),
+                    'password' =>  Hash::make(request('password')),
+                    'age' =>  request('age'),
+                    'phone' =>  request('phone'),
+                    'sex' =>  request('sex'),
+                    "cin"=> request('cin'), 
+                    'familySituation' => request('familySituation'),
+                    'childrenNmb' =>  request('childrenNmb'),
+                    'educationLevel' =>  request('educationLevel'),
+                    'address' =>  request('address'),
+                    "nots"=> request('nots'),
+                   // "photo"=> request('name').$fileName,
+                    'group_id' => request('group_id'),
+                    ]);
+           
 
                 toastr()->success('.لقد تم التعديل  بنجاح');
             return redirect()->route('admin.students');

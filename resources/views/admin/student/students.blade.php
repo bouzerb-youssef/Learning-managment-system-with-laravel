@@ -14,8 +14,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#">التلاميذ </a></li>
-                    <li>لائحة التلاميذ</li>
+                    <li><a href="#">Students </a></li>
+                    <li>All Students</li>
                 </ul>
             </nav>
         </div>
@@ -23,11 +23,11 @@
 
 
         <div class="d-flex justify-content-between mb-3">
-            <h3>عدد التلاميذ: {{$students->count()}} </h3>
+            <h5>Studunts Number: {{$students->count()}} </h5>
     
             <div>
                 <a href="{{route('admin.addstudent')}}" class="btn btn-outline-dark">
-                    <i class="uil-plus"> </i> اضافة تلميذ جديد
+                    <i class="uil-plus"> </i>Add New Student
                 </a>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <!-- Card header -->
             <div class="card-header actions-toolbar border-0">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="d-inline-block mb-0">التلاميذ</h4>
+                    <h4 class="d-inline-block mb-0">Students</h4>
                     <div class="d-flex">
                        
                         <a href="#" class="btn btn-icon btn-hover  btn-circle" uk-tooltip="Search product" title="" aria-expanded="false">
@@ -75,13 +75,14 @@
                 <table class="table align-items-center">
                     <thead>
                         <tr>
-                            <th scope="col">الاسم</th>
-                            <th scope="col">الهاتف</th>
-                            <th scope="col">الجنس </th>
-                            <th scope="col">رقم البطاقة </th>
-                            <th scope="col">الدورة</th>
-                            <th scope="col"> المجموعة</th>
-                            <th scope="col"> العمليات</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Sex </th>
+                            <th scope="col">CIN </th>
+                            <th scope="col">Formation</th>
+                            <th scope="col"> Group</th>
+                            <br>
+                            <th scope="col" style='padding-left: 100px;'> Oparations</th>
                         </tr>
                     </thead>
                     <tbody class="list">
@@ -94,21 +95,27 @@
                                         <div class="avatar-parent-child" style="width: max-content">
                                           
                                             @if (!$student->photo==null)
-                                            <img src="{{$student->imagePath}}" alt="" class="avatar  rounded-circle">
+                                            <img src="{{$student->imagePath}}" alt="" class="avatar  ">
                                             @else
-                                            <img alt="Image placeholder" src="../assets/images/avatars/avatar-2.jpg" class="avatar  rounded-circle">
+                                            <img alt="Image placeholder" src="../assets/images/avatars/avatar-2.jpg" class="avatar  ">
                                             @endif
-                                            <span class="avatar-child avatar-badge bg-success"></span>
-                                        </div>
+{{--                                             <span class="avatar-child avatar-badge bg-success"></span>
+ --}}                                        </div>
                                     </div>
-                                    <div class="media-body mr-4">
+                                    <div class="media-body mr-4" style='padding-left: 35px'>
                                         <a href="{{route("admin.showstudent",$student->id)}}" class="name h6 mb-0 text-sm">{{$student->name}}</a>
                                       
                                     </div>
                                 </div>
                             </th>
                             <td>{{$student->phone}}</td>
-                            <td> {{$student->sex}} </td>
+                            <td>
+                                 @if ($student->sex == 0)
+                                     Female
+                                 @else
+                                     male
+                                 @endif 
+                            </td>
                             <td> {{$student->cin}} </td>
                             <td>{{$student->group->title}}</td>
                             @if(isset($student->group ) && $student->group->count()>0 ) 
@@ -141,8 +148,12 @@
                     </tbody>
                 </table>
             </div>
+         
+             
         </div>
-
+        <ul class="uk-pagination my-5 uk-flex-center" uk-margin="">
+            {{ $students->links() }}
+         </ul>
 
 
     </div>

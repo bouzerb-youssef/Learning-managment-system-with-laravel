@@ -13,6 +13,68 @@
             <ul class="mt-0">
                 <br><br>
                     <li><a href="/admin"><i class="uil-home-alt"></i> <span>Dashboard</span></a> </li>
+                    @php
+                    use App\Models\Category;
+                    $category=Category::first();
+                    
+                @endphp
+              @if (isset($category))
+              <ul data-submenu-title="Cource Managment" class='sidebar-submenu-title'>
+                <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-layers"></i><span>Categories</span> </a> </li> 
+
+                    @else
+                <li><a href="{{route("admin.categorylist")}}"><i class="uil-layers"></i>><span>Categories</span> </a> </li>
+
+                    @endif 
+            
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Cources
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.index")}}" class='sidebardropdown'>All Cources</a>
+                        </li>
+                        <li><a href="{{route("admin.addcource")}}" class='sidebardropdown'> Add Cource </a></li>
+                    </ul>
+                    </li>
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Videos
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.lessons")}}" class='sidebardropdown'>All Videos</a>
+                        </li>
+                        <li><a href="{{route("admin.lesson.add")}}" class='sidebardropdown'> Add Video </a></li>
+                    </ul>
+                    </li>
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Materials
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.materials")}}" class='sidebardropdown'>All Material</a>
+                        </li>
+                        <li><a href="{{route("admin.material.add")}}" class='sidebardropdown'> Add Material </a></li>
+                    </ul>
+                    </li>  
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Podcasts
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.podcasts")}}" class='sidebardropdown'>All Podcast</a>
+                        </li>
+                        <li><a href="{{route("admin.podcast.add")}}" class='sidebardropdown'> Add Podcast </a></li>
+                    </ul>
+                    </li> 
+                </ul>
+                <ul data-submenu-title="Student Managment" class='sidebar-submenu-title'>
+
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Students
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.students")}}" class='sidebardropdown'>All Students</a>
+                        </li>
+                        <li><a href="{{route("admin.addstudent")}}" class='sidebardropdown'> Add Student </a></li>
+                        <li><a href="{{route("admin.studentAttachments")}}" class='sidebardropdown'>Student Attachments</a>
+                        </li>
+                      
+                    </ul>
+                    </li>
+                </ul>
+              
                     <li><a href="{{route("admin.years")}}" > <i class="uil-layers"> </i><span>Years</span></a>
                     </li>
                     <li><a href="{{route("admin.centres")}}" ><i class="uil-layers"></i>  <span>Centres </span></a></li>
@@ -21,51 +83,6 @@
                     <li><a href="{{route("admin.teacher")}}"><i class="uil-layers"></i> <span> Teachers</span></a> </li>                    
                     <li><a href="{{route("admin.students")}}"><i class="uil-layers"></i> <span> Students</span></a> </li>
                   <!-- <ul data-submenu-title="Lessons Managment">-->
-                    @php
-                        use App\Models\Category;
-                        $category=Category::first();
-                        
-                    @endphp
-                  @if (isset($category))
-                   <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-layers"></i><span>Categories</span> </a> </li> 
-
-                     @else
-                   <li><a href="{{route("admin.categorylist")}}"><i class="uil-layers"></i>><span>Categories</span> </a> </li>
-
-                    @endif 
-              
-                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Cources
-                    </span></a>
-                    <ul>
-                        <li><a href="{{route("admin.index")}}">All Cources</a>
-                        </li>
-                        <li><a href="{{route("admin.addcource")}}"> Add Cource </a></li>
-                    </ul>
-                    </li>
-                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Videos
-                    </span></a>
-                    <ul>
-                        <li><a href="{{route("admin.lessons")}}">All Videos</a>
-                        </li>
-                        <li><a href="{{route("admin.lesson.add")}}"> Add Video </a></li>
-                    </ul>
-                    </li>
-                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Materials
-                    </span></a>
-                    <ul>
-                        <li><a href="{{route("admin.materials")}}">All Material</a>
-                        </li>
-                        <li><a href="{{route("admin.material.add")}}"> Add Material </a></li>
-                    </ul>
-                    </li>  
-                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Podcasts
-                    </span></a>
-                    <ul>
-                        <li><a href="{{route("admin.podcasts")}}">All Podcast</a>
-                        </li>
-                        <li><a href="{{route("admin.podcast.add")}}"> Add Podcast </a></li>
-                    </ul>
-                    </li> 
                   
 
                 </ul>
@@ -73,7 +90,7 @@
                  <!-- </ul>-->
         
 
-        <ul data-submenu-title="logout">
+        <ul data-submenu-title="logout" class='sidebar-submenu-title'>
         
             <li><a href="/login"><i class="uil-sign-out-alt"></i> <span><form method="POST" action="{{ route('logout') }}">
                 @csrf

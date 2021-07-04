@@ -48,24 +48,10 @@ class MaterialController extends Controller
        public function store(Request $request)
        
        {
-                   
-  
-      
-         
            $request->validate([
-               'material' => 'required',
-             
+               'material' => 'required', 
                'materialname' => 'required',
-        
-               
-             
-             
-    
            ]);
-          
-
-        
-            
         $fileName = time().'.'.$request->material->extension();  
    
         $request->material->move(public_path('materials'), $fileName);

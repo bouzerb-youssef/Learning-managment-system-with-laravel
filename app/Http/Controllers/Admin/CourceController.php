@@ -191,28 +191,27 @@ class CourceController extends Controller
         $request->validate([
           'title' => 'required',
           'description' => 'required',
-         // 'description' => 'required',
-        
-         // 'level' => 'required', 
+   
           'thumbnail' => 'required', 
          
-          //'detail' => 'required', 
          'category_id' => 'required',
      ]);
 
-     $thumbnail=request('thumbnail');
+     //$thumbnail=request('thumbnail');
+     $fileName = time().'.'.request('thumbnail')->extension();  
 
-     $img   = ImageManagerStatic::make($request->thumbnail)->resize(367,190)->encode('jpg');
+
+    // $img   = ImageManagerStatic::make($request->thumbnail)->resize(367,190)->encode('jpg');
     
-    $name  = Str::random() .'cource'.'jpg';
-  
-    Storage::disk('cources')->put($name, $img);
+    $request->thumbnail->move(public_path('cources'), $fileName);
+
+    //Storage::disk('cources')->put($name, $img);
 
       $createdCource = Cource::create([
 
        "title"=> request('title'),
        "description"=>request('description'),
-       "thumbnail"=> $name,
+       "thumbnail"=> $fileName,
        "category_id"=> request('category_id'),
       ]); 
     

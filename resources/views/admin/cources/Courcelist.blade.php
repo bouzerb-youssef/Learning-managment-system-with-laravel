@@ -29,7 +29,7 @@
             <a href="#">
                 </a><div class="card animate-this uk-inline-clip"><a href="#">
                     @if (!$cource->thumbnail== null)
-                    <img src="{{$cource->imagePath}}" alt="">
+                    <img src="{{asset('cources/'.$cource->thumbnail)}}" alt="">
                     @else
                     <img src="../assets/images/course/2.png" alt="">
                     @endif
