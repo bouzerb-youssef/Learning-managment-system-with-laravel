@@ -1,0 +1,90 @@
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+php artisan view:clear
+
+
+
+
+[5:15 PM, 3/15/2021] Anass Dev: | Domain: cooperativemogador.com
+| Ip: 192.249.119.79 (n)
+| HasCgi: y
+| UserName: cooperativemogad
+| PassWord: [B*xkSe,N2HN
+| CpanelMod: paper_lantern
+| HomeRoot: /home
+| Quota: 2 GB
+| NameServer1: ns1.21digitalpromot.com
+| NameServer2: ns2.21digitalpromot.com
+| NameServer3: ns3.21digitalpromot.com
+| NameServer4: 
+| Contact Email: anassmouatik@gmail.com
+| Package: n1digi6_NGOs
+| Feature List: default
+| Language: en
++===================================+
+...Done
+[5:16 PM, 3/15/2021] Anass Dev: 5y&J7L$$R&
+<ifModule mod.rewrite.c>
+Rewriteengine On
+RewriteRule ^(.*)$ public/$1  [L]
+</ifModule>
+youssefbouzerb
+bouzerb90@gmail.com
+B*x-kSfe,N2kg5HN
+
+
+
+cooperativemogad_mog
+
+cooperativemogad_laravel	
+,;..!bqEM?zq
+
+
+
+;extention:gd php.ini
+
+delete storage folder from public and run this cammand :php artisan storage:link
+
+ try {  
+           
+    }
+  
+    catch (\Exception $e){
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+DB::beginTransaction();
+
+try {
+    DB::insert(...);
+    DB::insert(...);
+    DB::insert(...);
+
+    DB::commit();
+    // all good
+} catch (\Exception $e) {
+    DB::rollback();
+    // something went wrong
+}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+@foreach ($users as $user)
+    @if ($loop->first)
+        This is the first iteration.
+    @endif
+
+    @if ($loop->last)
+        This is the last iteration.
+    @endif
+
+    <p>This is user {{ $user->id }}</p>
+@endforeach
+
+php artisan queue:work --tries=3
+
+php artisan queue:restart
+
+php artisan queue:work --daemon &
+
+

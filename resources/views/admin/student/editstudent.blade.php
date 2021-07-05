@@ -9,7 +9,7 @@
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
                     <li><a href="#"> Students </a></li>
-                    <li>Edit Student</li>
+                    <li>Edit  Student</li>
                 </ul>
             </nav>
         </div>
@@ -28,28 +28,31 @@
         <div uk-grid="" class="uk-grid">
           
 
-            <div class="uk-width-2-4@m">
+            <div class="uk-width-2-4@m ">
 
                 <div class="card rounded">
                     <div class="p-3">
-                        <h5 class="mb-0"> Add Student</h5>
+                        <h5 class="mb-0"> Edit Student </h5>
                     </div>
-                    <hr class="m-0">
-                    <form  action="{{route("admin.student.update",$student->id)}}" method="POST" enctype="multipart/form-data" class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
+                    <hr class="m-0" style='border-top: ridge ;'>
+                    <form  action="{{route("admin.student.update",$student->id)}}" method="POST" enctype="multipart/form-data" >
                                     {{ csrf_field() }}
+                        <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">          
                                 <div class="uk-first-column">
                                     <h5 class="uk-text-bold mb-2">Name</h5>
-                                    <input type="text" class="uk-input" value="{{$student->name}}" name="name" placeholder="name">
+                                    <input type="text" class="uk-input"  name="name" value='{{$student->name}}' placeholder="name">
+                                </div>
+                                <div class="uk-grid-margin uk-first-column">
+                                    <h5 class="uk-text-bold mb-2">Profile Photo</h5>
+                                    <div class="uk-margin"> 
+                                        <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
+                                            <input type="file" name='photo'>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select Photo" disabled="">
+                                        </div>
+                                    </div> 
                                 </div>
                                
-                                <div class="uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> Email</h5>
-                                    <input type="text" class="uk-input"  value="{{$student->email}}" name="email" placeholder="email">
-                                </div>
-                                <div class="uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> Password</h5>
-                                    <input type="text" class="uk-input"  name="password" placeholder="Password">
-                                </div> 
+                        
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> Sex </h5>
                                     <select  name="sex"  class="uk-select">
@@ -59,15 +62,15 @@
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> CIN</h5>
-                                    <input type="text" class="uk-input"  value="{{$student->cin}}"  name="cin" placeholder="cin">
+                                    <input type="text" class="uk-input"  value='{{$student->cin}}' name="cin" placeholder="cin">
                                 </div>
                                 <div class="uk-grid-margin">
                                     <h5 class="uk-text-bold mb-2">phone </h5>
-                                    <input type="text" class="uk-input"  value="{{$student->phone}}"  name="phone" placeholder="phone">
+                                    <input type="text" class="uk-input"   value='{{$student->phone}}'  name="phone" placeholder="phone">
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> Age</h5>
-                                    <input type="text" class="uk-input" placeholder="Age" value="{{$student->age}}"   name="age">
+                                    <input type="text" class="uk-input" placeholder="Age"  value='{{$student->age}}'   name="age">
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> Family Situation </h5>
@@ -79,29 +82,23 @@
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2">Children Number</h5>
-                                    <input type="text" class="uk-input" name="childrenNmb"  value="{{$student->childrenNmb}}" placeholder="Children Number">
+                                    <input type="text" class="uk-input" name="childrenNmb" value='{{$student->childrenNmb}}'   placeholder="Children Number">
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> Education Level</h5>
-                                    <input type="text" class="uk-input" name="educationLevel" value="{{$student->educationLevel}}" placeholder="Education Level">
+                                    <input type="text" class="uk-input" name="educationLevel" value='{{$student->educationLevel}}'   placeholder="Education Level">
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> Address</h5>
-                                    <textarea  name="address" placeholder="Address" {{-- class="mytextarea"  --}} class="form-control">{{$student->address}}</textarea>
+                                    <textarea  name="address" placeholder="Address" {{-- class="mytextarea"  --}} class="form-control">{{$student->address}} </textarea>
                                 </div>
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> Nots</h5>
-                                    <textarea  name="nots" {{-- class="mytextarea" --}}  placeholder="Nots"   class="form-control">{{$student->nots}}</textarea>
+                                    <textarea  name="nots" {{-- class="mytextarea" --}}  placeholder="Nots"   class="form-control">{{$student->nots}}  </textarea>
                                 </div>
-                                <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2">Profile Photo</h5>
-                                    <div class="uk-margin"> 
-                                        <div uk-form-custom> 
-                                            <input type="file" name="photo"> 
-                                            <button class="uk-uk-button uk-button-default" type="button" tabindex="-1">Select a Photo</button> 
-                                        </div> 
-                                    </div> 
-                                </div>
+                            
+                                
+                             
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2">Select Group </h5>
                                     <select name="group_id" class="uk-select">
@@ -116,15 +113,65 @@
                                 <div class="uk-grid-margin uk-first-column">
                                     <h5 class="uk-text-bold mb-2"> </h5>
                                 </div>
+                              
                                 <div class="d-flex justify-content-between mb-3">
 
                                     <h3>  </h3>
                             
-                                    <div>
-                                        <button type="submit" class="btn btn-outline-dark">Save</button>
-                            
-                                    </div>
+                                   
                         </div>
+                      
+                    </div> 
+                    <hr class="m-0" style='border-top: ridge ;' >
+                    <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
+                        <div class="uk-grid-margin uk-first-column">
+                            <h5 class="uk-text-bold mb-2">act de naissance</h5>
+                            <div class="uk-margin"> 
+                                <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
+                                    <input type="file" name='actdenaissance'>
+                                    <input class="uk-input uk-form-width-medium"   type="text" placeholder="Select Photo" disabled="">
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="uk-grid-margin uk-first-column">
+                            <h5 class="uk-text-bold mb-2">cin copie</h5>
+                            <div class="uk-margin"> 
+                                <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
+                                    <input type="file" name='cincopie'>
+                                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Select Photo" disabled="">
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="uk-grid-margin uk-first-column">
+                            <h5 class="uk-text-bold mb-2">ramid</h5>
+                            <div class="uk-margin"> 
+                                <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
+                                    <input type="file" name='ramid'>
+                                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Select Photo" disabled="">
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+               
+                    <hr class="m-0" style='border-top: ridge ;' >
+                    <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
+                        <div class="uk-first-column">
+                            <h5 class="uk-text-bold mb-2"> Email</h5>
+                            <input type="text" class="uk-input"   name="email" value='{{$student->email}}'   placeholder="email">
+                        </div>
+                        <div class="uk-first-column">
+                            <h5 class="uk-text-bold mb-2"> Password</h5>
+                            <input type="text" class="uk-input"  name="password" value='{{$student->password}}'   placeholder="Password">
+                        </div> 
+                    </div>
+                    <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="" >
+                        <div class="uk-first-column">
+                            <button type="submit" class="btn btn-outline-dark">Save</button>
+                        </div>
+                       
+
+                   </div>
                      </form>
                
                 </div>
@@ -145,7 +192,7 @@
 <script>
 tinymce.init({
   selector: '.mytextarea',
-  language: 'ar'
+  language: 'en'
 });
 </script>
 

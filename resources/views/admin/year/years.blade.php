@@ -4,6 +4,8 @@
 <br><br>
 <br><br><br>
 @if(session()->has('message'))
+<div class="page-content">
+
 <div class="container">
     <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
         <p> {{ session()->get('message') }}</p> 

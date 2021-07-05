@@ -133,7 +133,7 @@
                                         <a href=" {{route("admin.editstudent",$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل المعلومات" title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>    
-                                        <a href="{{route('admin.studentAttachments',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
+                                        <a href="{{route('admin.studentattachment',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="اضافة الوثائق" title="" aria-expanded="false">
                                                 <i class="icon-material-outline-attach-file"></i> 
                                         </a> 
                                         <a href="{{route('admin.stage.add',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="عمل أو تدريب" title="" aria-expanded="false">

@@ -3,6 +3,7 @@
 
 
 <br><br><br>
+<div class="page-content">
     <div class="page-content-inner">
 
         <div class="d-flex">

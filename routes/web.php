@@ -254,6 +254,7 @@ Route::get('/removepodcast/{id}', [App\Http\Controllers\Admin\PodcastController:
 
  /* student  */
                 Route::get('/students', [App\Http\Controllers\Admin\studentController::class, 'students'])->name('admin.students');
+                Route::get('/studentattachment/{id}', [App\Http\Controllers\Admin\studentController::class, 'studentattachment'])->name('admin.studentattachment');
 
                 Route::get('/addstudent', [App\Http\Controllers\Admin\StudentController::class, 'addstudent'])->name('admin.addstudent');
                 Route::post('/addstudent/store', [App\Http\Controllers\Admin\StudentController::class, 'storestudent'])->name('admin.student.store');

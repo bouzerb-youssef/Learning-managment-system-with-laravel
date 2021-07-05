@@ -25,7 +25,7 @@
                 <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-layers"></i><span>Categories</span> </a> </li> 
 
                     @else
-                <li><a href="{{route("admin.categorylist")}}"><i class="uil-layers"></i>><span>Categories</span> </a> </li>
+                <li><a href="{{route("admin.categorylist")}}"><i class="uil-layers"></i><span>Categories</span> </a> </li>
 
                     @endif 
             

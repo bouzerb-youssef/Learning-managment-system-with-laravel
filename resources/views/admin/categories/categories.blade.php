@@ -3,6 +3,8 @@
 @section('content')
 <br><br><br>
 @if(session()->has('message'))
+
+
 <div class="container">
     <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
         <p> {{ session()->get('message') }}</p> 
@@ -10,6 +12,7 @@
 </div>
     
 @endif
+<div class="page-content">
 <div class="page-content-inner">
 
     <div class="d-flex">

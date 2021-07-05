@@ -34,7 +34,7 @@
                     <div class="p-3">
                         <h5 class="mb-0"> Add Student </h5>
                     </div>
-                    <hr class="m-0" style='border: solid;'>
+                    <hr class="m-0" style='border-top: ridge ;'>
                     <form  action="{{route("admin.student.store")}}" method="POST" enctype="multipart/form-data" >
                                     {{ csrf_field() }}
                         <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">          
@@ -122,47 +122,39 @@
                         </div>
                       
                     </div> 
-                    <hr class="m-0" style='border: solid;' >
+                    <hr class="m-0" style='border-top: ridge ;' >
                     <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
                         <div class="uk-grid-margin uk-first-column">
-                            <h5 class="uk-text-bold mb-2">Profile Photo</h5>
+                            <h5 class="uk-text-bold mb-2">act de naissance</h5>
                             <div class="uk-margin"> 
                                 <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
-                                    <input type="file" name='photo'>
+                                    <input type="file" name='actdenaissance'>
                                     <input class="uk-input uk-form-width-medium" type="text" placeholder="Select Photo" disabled="">
                                 </div>
                             </div> 
                         </div>
                         <div class="uk-grid-margin uk-first-column">
-                            <h5 class="uk-text-bold mb-2">Profile Photo</h5>
+                            <h5 class="uk-text-bold mb-2">cin copie</h5>
                             <div class="uk-margin"> 
                                 <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
-                                    <input type="file" name='photo'>
+                                    <input type="file" name='cincopie'>
                                     <input class="uk-input uk-form-width-medium" type="text" placeholder="Select Photo" disabled="">
                                 </div>
                             </div> 
                         </div>
                         <div class="uk-grid-margin uk-first-column">
-                            <h5 class="uk-text-bold mb-2">Profile Photo</h5>
+                            <h5 class="uk-text-bold mb-2">ramid</h5>
                             <div class="uk-margin"> 
                                 <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
-                                    <input type="file" name='photo'>
+                                    <input type="file" name='ramid'>
                                     <input class="uk-input uk-form-width-medium" type="text" placeholder="Select Photo" disabled="">
                                 </div>
                             </div> 
                         </div>
-                        <div class="uk-grid-margin uk-first-column">
-                            <h5 class="uk-text-bold mb-2">Profile Photo</h5>
-                            <div class="uk-margin"> 
-                                <div uk-form-custom="target: true" class="uk-form-custom uk-first-column">
-                                    <input type="file" name='photo'>
-                                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Select Photo" disabled="">
-                                </div>
-                            </div> 
-                        </div>
+
                     </div>
                
-                    <hr class="m-0" style='border: solid;' >
+                    <hr class="m-0" style='border-top: ridge ;' >
                     <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
                         <div class="uk-first-column">
                             <h5 class="uk-text-bold mb-2"> Email</h5>
@@ -200,7 +192,7 @@
 <script>
 tinymce.init({
   selector: '.mytextarea',
-  language: 'ar'
+  language: 'en'
 });
 </script>
 

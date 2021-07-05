@@ -43,6 +43,9 @@ class User extends Authenticatable
         'nots',
         "group_id",
         "photo",
+        'actdenaissance',
+        "cincopie",
+        "ramid",
     ];
 
     /**

@@ -36,6 +36,12 @@ class CreateUsersTable extends Migration
             $table->text('nots')->nullable();
             $table->string('photo')->nullable();
             $table->unsignedInteger('group_id')->nullable();
+
+            $table->string('actdenaissance')->nullable();
+            $table->string('cincopie')->nullable();
+            $table->string('ramid')->nullable();
+           
+
             $table->timestamps();
         });
     }
