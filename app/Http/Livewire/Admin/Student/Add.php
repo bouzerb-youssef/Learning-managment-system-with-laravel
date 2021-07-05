@@ -19,24 +19,6 @@ class Add extends Component
 {
     public $createAccountError;
     use WithFileUploads;
-    public $currentPage = 1;
-
-    public $pages = [
-        1 => [
-            'heading' => 'معلومات التلميد',
-            
-        ],
-        2 => [
-            'heading' => 'الوثائق',
-           
-        ],
-        3 => [
-            'heading' => 'الانتهاء',
-          
-        ],
-    ];
-
-
     public function goToNextPage()
     {
         $this->validate($this->validationRules[$this->currentPage]);

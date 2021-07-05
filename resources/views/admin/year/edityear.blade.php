@@ -2,10 +2,7 @@
 @section('content')
 
 
-<br>
-<br>
-<br>
-<br>
+<div class="page-content">
     <div class="page-content-inner">
 
         <div class="d-flex">
@@ -13,8 +10,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> السنوات </a></li>
-                    <li>اضافة سنة جديدة</li>
+                    <li><a href="#">  academic years </a></li>
+                    <li> Edit academic years</li>
                 </ul>
             </nav>
         </div>
@@ -35,11 +32,7 @@
             
 
 
-            <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                <li class="uk-active"><a href="#" aria-expanded="true">  اضافة سنة دراسية</a></li>
-                
           
-            </ul>
 
             <div class="card-body">
 
@@ -54,14 +47,14 @@
                             {{ csrf_field() }}
                             <br>
                                 <div class="form-group row mb-3">
-                                    <label class="col-md-3 col-form-label" for="course_title"> السنة الدراسية<span class="required"> *</span></label>
+                                    <label class="col-md-3 col-form-label" for="course_title">  academic year<span class="required"> *</span></label>
                                     <div class="col-md-9">
                                         <input type="text" name="year" class="form-control" id="course_title" value="{{$year->year}}"  name="title"  placeholder="" >
                                         <div class="d-flex justify-content-between mb-3">
                                             <h3>  </h3>
                                     
                                             <div>
-                                                <button type="submit" class="btn btn-outline-dark">تعديل</button>
+                                                <button type="submit" class="btn btn-outline-dark">Edit</button>
                                     
                                             </div>
                                         </div

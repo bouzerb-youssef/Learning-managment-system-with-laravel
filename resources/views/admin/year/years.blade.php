@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<br><br>
-<br><br><br>
+
+
 @if(session()->has('message'))
-<div class="page-content">
+
 
 <div class="container">
     <div class="uk-alert-success" uk-alert> <a class="uk-alert-close" uk-close></a> 
@@ -20,19 +20,19 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> السنوات الدراسية </a></li>
-                    <li>لائحة السنوات</li>
+                    <li><a href="#"> academic years</a></li>
+                    <li>academic year List</li>
                 </ul>
             </nav>
         </div>
     <br>
 
         <div class="d-flex justify-content-between mb-3">
-            <h5> عدد السنوات الدراسية : {{$years->count()}} </h5>
+            <h5> academic year  : {{$years->count()}} </h5>
 
             <div>
                 <a  href="{{route('admin.addyear')}}"  uk-toggle="target: #modal-close-default" class="btn btn-outline-dark">
-                    <i class="uil-plus"> </i> اضافة سنة دراسية جديد
+                    <i class="uil-plus"> </i>  Add academic year 
                 </a>
         
 
@@ -43,7 +43,7 @@
             <!-- Card header -->
             <div class="card-header actions-toolbar border-0">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="d-inline-block mb-0">السنوات الدراسية</h4>
+                    <h4 class="d-inline-block mb-0">academic years </h4>
                     <div class="d-flex">
                     </div>
                 </div>
@@ -54,9 +54,9 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">##</th>
-                            <th scope="col"> السنة الدراسية </th>
-                            <th scope="col"> العمليات </th>
+                            <th scope="col"></th>
+                            <th scope="col"> academic year </th>
+                            <th scope="col"> Operations </th>
                     
                         </tr>
                     </thead>
@@ -125,14 +125,14 @@
                                         <form action="{{route("admin.year.store")}}" method="POST">
                                                 {{ csrf_field() }}
                                             <div class="uk-grid-margin uk-first-column">
-                                            <h5 class="uk-text-bold mb-2">  السنة الدراسية :</h5>
+                                            <h5 class="uk-text-bold mb-2">  academic years  :</h5>
                                                 <input type="text"  class="uk-input" name="year" placeholder="السنة الدراسية">
                                             </div>
                                             <div class="d-flex justify-content-between mb-3">
                                                 <h3>  </h3>
                                         
                                                 <div>
-                                                    <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                                                    <button type="submit" class="btn btn-outline-dark">save</button>
                                         
                                                 </div>
                                             </div

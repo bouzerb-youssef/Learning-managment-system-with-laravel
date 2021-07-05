@@ -1,8 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<br><br>
-<br><br><br>
+
 @if(session()->has('message'))
 
 <div class="container">
@@ -20,19 +19,19 @@
         <nav id="breadcrumbs" class="mb-3">
             <ul>
                 <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                <li><a href="#"> الدورات </a></li>
-                <li>لائحة الدورات</li>
+                <li><a href="#"> Formations </a></li>
+                <li>All Formations</li>
             </ul>
         </nav>
     </div>
 
 
     <div class="d-flex justify-content-between mb-3">
-        <h3>عدد الدورات: {{$formations->count()}} </h3>
+        <h3>Formations: {{$formations->count()}} </h3>
 
         <div>
             <a href="{{route('admin.addformation')}}" class="btn btn-outline-dark">
-                <i class="uil-plus"> </i> اضافة دورة جديد
+                <i class="uil-plus"> </i>Add New Formation
             </a>
         </div>
     </div>
@@ -41,7 +40,7 @@
         <!-- Card header -->
         <div class="card-header actions-toolbar border-0">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="d-inline-block mb-0">الدورات</h4>
+                <h4 class="d-inline-block mb-0">Formation</h4>
                 <div class="d-flex">
 
                   
@@ -57,13 +56,13 @@
                 <thead>
                     <tr>
                         
-                        <th scope="col">##</th>
-                        <th scope="col"> العنوان </th>
-                        <th scope="col"> التعريف </th>
-                        <th scope="col"> تاريخ البداية </th>
-                        <th scope="col"> تاريخ الانتهاء </th>
-                        <th scope="col"> السنة الدراسية </th>
-                        <th scope="col"> العمليات </th>
+                        <th scope="col"></th>
+                        <th scope="col"> title </th>
+                        <th scope="col"> Description </th>
+                        <th scope="col"> begun Date</th>
+                        <th scope="col"> End Date </th>
+                        <th scope="col"> Academic year </th>
+                        <th scope="col"> Operations </th>
                     </tr>
                 </thead>
                 <tbody class="list">
@@ -80,7 +79,12 @@
                             <td>{!!$formation->description!!}</td>
                             <td>{{$formation->datebegun}}</td>
                             <td>{{$formation->dateend}}</td>
+                            @if($formation->year)
                             <td>{{$formation->year->year}}</td>
+                            @else
+                            <td> no academy year yet</td>
+                            @endif
+                            
                             <td class="text-right">
                                 <!-- Actions -->
                                

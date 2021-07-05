@@ -18,16 +18,16 @@
                     $category=Category::first();
                     
                 @endphp
-              @if (isset($category))
+             {{--  @if (isset($category)) --}}
            
           {{--  <ul data-submenu-title="Cource Managment"    class='sidebar-submenu-title' > --}}
                 
-                <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-layers"></i><span>Categories</span> </a> </li> 
-
-                    @else
+{{--                 <li><a href="{{route("admin.categories",$category->id)}}"><i class="uil-layers"></i><span>Categories</span> </a> </li> 
+ --}}
+                  {{--   @else --}}
                 <li><a href="{{route("admin.categorylist")}}"><i class="uil-layers"></i><span>Categories</span> </a> </li>
 
-                    @endif 
+                 {{--    @endif  --}}
             
                     <li class="#"><a href="#""><i class="uil-layers"></i> <span> Cources
                     </span></a>
@@ -85,7 +85,7 @@
                 </ul>
                 </li> 
               
-                    <li><a href="{{route("admin.years")}}" > <i class="uil-layers"> </i><span>Years</span></a>
+                    <li><a href="{{route("admin.years")}}" > <i class="uil-layers"> </i><span>academic year</span></a>
                     </li>
                     <li><a href="{{route("admin.centres")}}" ><i class="uil-layers"></i>  <span>Centres </span></a></li>
                     <li><a href="{{route("admin.formations")}}" > <i class="uil-layers"></i> <span>Formations </span></a></li>

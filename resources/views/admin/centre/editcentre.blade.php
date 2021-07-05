@@ -2,7 +2,7 @@
 @section('content')
 
 
-<br><br><br>
+
 <div class="page-content">
     <div class="page-content-inner">
 
@@ -10,8 +10,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> المعاهد </a></li>
-                    <li>اضافة معهد جديد</li>
+                    <li><a href="#"> Centres </a></li>
+                    <li>Add New CEntre</li>
                 </ul>
             </nav>
         </div>
@@ -31,11 +31,7 @@
            
 
 
-            <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                <li class="uk-active"><a href="#" aria-expanded="true">  اضافة  معهد</a></li>
-                
-          
-            </ul>
+           
 
             <div class="card-body">
 
@@ -50,7 +46,7 @@
                             {{ csrf_field() }}
                             <br>
                                 <div class="form-group row mb-3">
-                                    <label class="col-md-3 col-form-label" for="course_title"> المعهد<span class="required"> *</span></label>
+                                    <label class="col-md-3 col-form-label" for="course_title"> Centre<span class="required"> *</span></label>
                                     <div class="col-md-9">
                                         <input type="text" name="centre" class="form-control" id="course_title" value="{{$centre->centre}}"  name="title"  placeholder="" >
                                         <div class="d-flex justify-content-between mb-3">
@@ -58,7 +54,7 @@
                                             <h3>  </h3>
                                     
                                             <div>
-                                                <button type="submit" class="btn btn-outline-dark">تعديل</button>
+                                                <button type="submit" class="btn btn-outline-dark">Edit</button>
                                     
                                             </div>
                                         </div

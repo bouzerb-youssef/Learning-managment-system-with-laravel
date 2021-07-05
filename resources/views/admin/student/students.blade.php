@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<br><br>
+
 
 
 

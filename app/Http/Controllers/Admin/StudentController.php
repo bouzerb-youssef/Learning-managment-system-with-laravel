@@ -176,7 +176,7 @@ class StudentController extends Controller
         try { 
             $student= User::findorfail($id);
              
-               
+            
                    
                     if ($request->file('actdenaissance')){
                         

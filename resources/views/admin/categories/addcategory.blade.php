@@ -17,8 +17,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> الاصناف </a></li>
-                    <li>لائحة الاصناف</li>
+                    <li><a href="#"> Category </a></li>
+                    <li>Add New Category</li>
                 </ul>
             </nav>
         </div>
@@ -40,7 +40,7 @@
 
             <br> <br> 
             <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                <li class="uk-active"><a href="#" aria-expanded="true"> ادارة الاصناف</a></li>
+                <li class="uk-active"><a href="#" aria-expanded="true"> Category</a></li>
                 
           
             </ul>
@@ -52,7 +52,7 @@
                                 <li class="uk-active">
 
                                    
-                                   <h5>اضافة صنف:<h5>
+                                   <h5>Add Category:<h5>
                                    
                                     <form action="{{route("admin.addcategory.store")}}" method="POST" >
                                         {{ csrf_field() }}

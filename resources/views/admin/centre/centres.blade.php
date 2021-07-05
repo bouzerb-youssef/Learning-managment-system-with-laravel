@@ -1,8 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<br><br>
-<br><br><br>
+ 
 @if(session()->has('message'))
 
 
@@ -20,16 +19,16 @@
         <nav id="breadcrumbs" class="mb-3">
             <ul>
                 <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                <li><a href="#"> المعاهد </a></li>
-                <li>لائحة المعاهد</li>
+                <li><a href="#"> Centres </a></li>
+                <li>All Centres</li>
             </ul>
         </nav>
     </div>
     <div class="d-flex justify-content-between mb-3">
-        <h3> عدد المعاهد : {{$centres->count()}} </h3>
+        <h3> Centres: {{$centres->count()}} </h3>
         <div>
             <a href="{{route('admin.addcentre')}}" class="btn btn-outline-dark" uk-toggle="target: #modal-close-default">
-                <i class="uil-plus"> </i> اضافة معهد جديد
+                <i class="uil-plus"> </i> Add New Centre
             </a>
         </div>
     </div>
@@ -37,7 +36,7 @@
         <!-- Card header -->
         <div class="card-header actions-toolbar border-0">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="d-inline-block mb-0">المعاهد</h4>
+                <h4 class="d-inline-block mb-0">Centres</h4>
                 <div class="d-flex">
                 </div>
             </div>
@@ -48,9 +47,9 @@
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <th scope="col">##</th>
-                        <th scope="col"> المعهد </th>
-                        <th scope="col"> العمليات </th>
+                        <th scope="col"></th>
+                        <th scope="col"> Centre </th>
+                        <th scope="col"> Operations </th>
                    
                     </tr>
                 </thead>
@@ -110,15 +109,15 @@
                                     <form action="{{route("admin.centre.store")}}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="uk-grid-margin uk-first-column">
-                                         <h5 class="uk-text-bold mb-2"> المعهد : </h5>
-                                         <input type="text"  class="uk-input"  name="centre"  placeholder="المعهد">
+                                         <h5 class="uk-text-bold mb-2"> Centre : </h5>
+                                         <input type="text"  class="uk-input"  name="centre"  placeholder="Centre">
                                         </div>
                                         <div class="d-flex justify-content-between mb-3">
 
                                             <h3>  </h3>
                                     
                                             <div>
-                                                <button type="submit" class="btn btn-outline-dark">حفظ</button>
+                                                <button type="submit" class="btn btn-outline-dark">Save</button>
                                     
                                             </div>
                                         </div

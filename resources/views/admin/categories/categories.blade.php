@@ -19,19 +19,19 @@
         <nav id="breadcrumbs" class="mb-3">
             <ul>
                 <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                <li><a href="#"> الاصناف </a></li>
-                <li>لائحة الاصناف</li>
+                <li><a href="#"> Categories </a></li>
+                <li>ALL Categories</li>
             </ul>
         </nav>
     </div>
 
 
     <div class="d-flex justify-content-between mb-3">
-        <h3> عدد الاصناف :{{$categories->count()}} </h3>
+        <h3>Categories :{{$categories->count()}} </h3>
 
         <div>
             <a href="{{route('admin.addcategory')}}" class="btn btn-default">
-                <i class="uil-plus"> </i> اضافة صنف جديد
+                <i class="uil-plus"> </i>Add New Category
             </a>
         </div>
     </div>
@@ -40,7 +40,7 @@
         <!-- Card header -->
         <div class="card-header actions-toolbar border-0">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="d-inline-block mb-0">الاصناف</h4>
+                <h4 class="d-inline-block mb-0">Categories</h4>
                 <div class="d-flex">
 
                   
@@ -55,9 +55,9 @@
             <table class="table align-items-center">
                 <thead>
                     <tr>
-                        <th scope="col">##</th>
-                        <th scope="col">الاسم</th>
-                        <th scope="col">العمليات</th>
+                        <th scope="col"></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Operations</th>
                     </tr>
                 </thead>
                 <tbody class="list">

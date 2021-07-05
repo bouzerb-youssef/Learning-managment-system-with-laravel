@@ -1,15 +1,15 @@
 @extends('admin.layouts.app')
 @section('content')
 
-
+<div class="page-content">
     <div class="page-content-inner">
 
         <div class="d-flex">
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#"> السنوات </a></li>
-                    <li>انشاء سنة دراسية جديدة</li>
+                    <li><a href="#"> academic years </a></li>
+                    <li> Add academic years</li>
                 </ul>
             </nav>
         </div>
@@ -32,7 +32,7 @@
 
 
             <ul class="uk-child-width-expand uk-tab" uk-switcher="connect: #course-edit-tab ; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
-                <li class="uk-active"><a href="#" aria-expanded="true">  اضافة سنة دراسية</a></li>
+                <li class="uk-active"><a href="#" aria-expanded="true">  Add academic years</a></li>
                 
           
             </ul>
@@ -50,10 +50,10 @@
                             {{ csrf_field() }}
                             <br>
                                 <div class="form-group row mb-3">
-                                    <label class="col-md-3 col-form-label" for="course_title"> السنة الدراسية<span > *</span></label>
+                                    <label class="col-md-3 col-form-label" for="course_title">  academic year<span > *</span></label>
                                     <div class="col-md-9">
                                         <input type="text" name="year" class="form-control" id="course_title"  name="title"  placeholder="" >
-                                        <button type="submit" class="btn btn-default" >حفظ</button>
+                                        <button type="submit" class="btn btn-outline-dark" >save</button>
                                     </div>
                                 </div>
                            

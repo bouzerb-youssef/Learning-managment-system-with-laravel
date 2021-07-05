@@ -57,7 +57,7 @@
                 <thead>
                     <tr>
                         
-                        <th scope="col">##</th>
+                        <th scope="col"></th>
                         <th scope="col"> العنوان </th>
                         <th scope="col"> التعريف </th>
                
@@ -83,7 +83,12 @@
                             @else
                             <td>لم تحدد الدورة</td>
                             @endif
+                            @if ($studentgroup->formation)
                             <td>{{$studentgroup->formation->title}}</td>
+
+                            @else
+                            <td>no formation detected</td>  
+                            @endif
                             <td class="text-right">
                                 <!-- Actions -->
                                         <a href=" {{route("admin.studentgroup.remove",$studentgroup->id)}} " class="btn  delete-confirm btn-icon btn-hover btn-lg btn-circle"  uk-tooltip=" حذف" title="" aria-expanded="false">
