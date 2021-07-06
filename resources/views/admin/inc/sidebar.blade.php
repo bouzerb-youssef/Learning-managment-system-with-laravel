@@ -66,15 +66,23 @@
 
                     <li class="#"><a href="#""><i class="uil-layers"></i> <span> Students
                     </span></a>
-                    <ul>
-                        <li><a href="{{route("admin.students")}}" class='sidebardropdown'>All Students</a>
-                        </li>
-                        <li><a href="{{route("admin.addstudent")}}" class='sidebardropdown'> Add Student </a></li>
-                        <li><a href="{{route("admin.studentAttachments")}}" class='sidebardropdown'>Student Attachments</a>
-                        </li>
-                      
-                    </ul>
+                        <ul>
+                            <li><a href="{{route("admin.students")}}" class='sidebardropdown'>All Students</a>
+                            </li>
+                            <li><a href="{{route("admin.addstudent")}}" class='sidebardropdown'> Add Student </a></li>
+                            </li>
+                        
+                        </ul>
                     </li>
+                    <li class="#"><a href="#""><i class="uil-layers"></i> <span> Teachers
+                    </span></a>
+                    <ul>
+                        <li><a href="{{route("admin.teacher")}}" class='sidebardropdown'>All Teachers</a>
+                        </li>
+                        <li><a href="{{route("admin.addteacher")}}" class='sidebardropdown'> Add Teachers </a></li>
+                    </ul>
+                    </li> 
+
               {{--   </ul> --}}
                 <li class="#"><a href="#""><i class="uil-layers"></i> <span> Traineeship
                 </span></a>
@@ -90,8 +98,6 @@
                     <li><a href="{{route("admin.centres")}}" ><i class="uil-layers"></i>  <span>Centres </span></a></li>
                     <li><a href="{{route("admin.formations")}}" > <i class="uil-layers"></i> <span>Formations </span></a></li>
                     <li><a href="{{route("admin.studentgroups")}}" ><i class="uil-layers"> </i><span> Groups</span> </a></li>
-                    <li><a href="{{route("admin.teacher")}}"><i class="uil-layers"></i> <span> Teachers</span></a> </li>                    
-                    <li><a href="{{route("admin.students")}}"><i class="uil-layers"></i> <span> Students</span></a> </li>
                   <!-- <ul data-submenu-title="Lessons Managment">-->
                   
 

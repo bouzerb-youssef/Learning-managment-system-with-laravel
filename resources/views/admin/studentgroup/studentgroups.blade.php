@@ -1,8 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<br><br>
-<br><br><br>
+
 
 <div class="page-content">
 
@@ -12,8 +11,8 @@
         <nav id="breadcrumbs" class="mb-3">
             <ul>
                 <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                <li><a href="#"> المجموعات </a></li>
-                <li>لائحة المجموعات</li>
+                <li><a href="#"> Groups </a></li>
+                <li>All Groups</li>
             </ul>
         </nav>
     </div>
@@ -27,12 +26,12 @@
     @endif
 
     <div class="d-flex justify-content-between mb-3">
-        <h3 style=" font-family: Muli, Poppins, Helvetica;">عدد المجموعات: {{$studentgroups->count()}} </h3>
+        <h3 style=" font-family: Muli, Poppins, Helvetica;">Groups: {{$studentgroups->count()}} </h3>
 
         <div>
             <a href="{{route('admin.addstudentgroup')}}" class="
             btn btn-outline-dark" style=" font-family: Muli, Poppins, Helvetica;">
-                <i class="uil-plus" > </i>اضافة مجموعة جديدة
+                <i class="uil-plus" > </i>Add New Group
             </a>
         </div>
     </div>
@@ -41,7 +40,7 @@
         <!-- Card header -->
         <div class="card-header actions-toolbar border-0">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="d-inline-block mb-0" style=" font-family: Muli, Poppins, Helvetica;">المجموعات</h4>
+                <h4 class="d-inline-block mb-0" style=" font-family: Muli, Poppins, Helvetica;">Groups</h4>
                 <div class="d-flex">
 
                   
@@ -58,12 +57,12 @@
                     <tr>
                         
                         <th scope="col"></th>
-                        <th scope="col"> العنوان </th>
-                        <th scope="col"> التعريف </th>
+                        <th scope="col"> Title </th>
+                        <th scope="col"> Description </th>
                
-                        <th scope="col">الدورة </th>
-                        <th scope="col">المعهد </th>
-                        <th scope="col"> العمليات </th>
+                        <th scope="col">Formation </th>
+                        <th scope="col">Centre </th>
+                        <th scope="col"> Operations </th>
                     </tr>
                 </thead>
                 <tbody class="list">
@@ -81,7 +80,7 @@
                             @if(isset($studentgroup->centre ) && $studentgroup->centre->count()>0 )
                             <td>{{$studentgroup->centre->centre}}</td>
                             @else
-                            <td>لم تحدد الدورة</td>
+                            <td>no Centre detected</td>
                             @endif
                             @if ($studentgroup->formation)
                             <td>{{$studentgroup->formation->title}}</td>

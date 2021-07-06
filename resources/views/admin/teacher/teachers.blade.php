@@ -1,10 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<br><br>
-
-
-
 <div class="page-content">
     <div class="page-content-inner">
 
@@ -12,8 +8,8 @@
             <nav id="breadcrumbs" class="mb-3">
                 <ul>
                     <li><a href="#"> <i class="uil-home-alt"></i> </a></li>
-                    <li><a href="#">الأساثذة </a></li>
-                    <li>لائحة الأساثذة</li>
+                    <li><a href="#">Teachers </a></li>
+                    <li>All Teachers</li>
                 </ul>
             </nav>
         </div>
@@ -38,11 +34,11 @@
         @endif
 
         <div class="d-flex justify-content-between mb-3">
-            <h3>عدد الأساثذة: {{$teachers->count()}} </h3>
+            <h3>Teachers: {{$teachers->count()}} </h3>
     
             <div>
                 <a href="{{route('admin.addteacher')}}" class="btn btn-outline-dark">
-                    <i class="uil-plus"> </i> اضافة استاذ جديد
+                    <i class="uil-plus"> </i> Add New Teacher
                 </a>
             </div>
         </div>
@@ -50,14 +46,8 @@
             <!-- Card header -->
             <div class="card-header actions-toolbar border-0">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="d-inline-block mb-0">الأساثذة</h4>
+                    <h4 class="d-inline-block mb-0">Teachers</h4>
                     <div class="d-flex">
-                    
-
-
-                   
-
-
                     </div>
                 </div>
             </div>
@@ -67,15 +57,15 @@
                     <thead>
                         <tr>
                            
-                            <th scope="col">الاسم</th>
-                            <th scope="col">الهاتف</th>
-                            <th scope="col">الجنس </th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Gender </th>
                            
-                            <th scope="col">الدورة</th>
-                            <th scope="col"> المجموعة</th>
-                            <th scope="col"> المعهد</th>
+                        {{--   <th scope="col">Formation</th> --}}
+                            <th scope="col"> Group</th>
+                            <th scope="col"> Centre</th>
                            
-                            <th scope="col"> العمليات</th>
+                            <th scope="col"> Operations</th>
                         </tr>
                     </thead>
                     <tbody class="list">
@@ -88,31 +78,37 @@
                                         <div class="avatar-parent-child" style="width: max-content">
                                           
                                             @if (!$teacher->photo==null)
-                                            <img src="{{$teacher->imagePath}}" alt="" class="avatar  rounded-circle">
+                                            <img src="{{$teacher->imagePath}}" alt="" class="avatar ">
                                             @else
-                                            <img alt="Image placeholder" src="../assets/images/avatars/avatar-2.jpg" class="avatar  rounded-circle">
+                                            <img alt="Image placeholder" src="../assets/images/avatars/avatar-2.jpg" class="avatar ">
                                             @endif
-                                            <span class="avatar-child avatar-badge bg-success"></span>
+                                            
                                         </div>
                                     </div>
                                     <div class="media-body mr-4">
-                                        <a href="{{route("admin.showteacher",$teacher->id)}}" class="name h6 mb-0 text-sm">{{$teacher->name}}</a>
+                                        <a href="{{route("admin.showteacher",$teacher->id)}}"  style='padding-left: 10px;' class="name h6 mb-0 text-sm">{{$teacher->name}}</a>
                                       
                                     </div>
                                 </div>
                             </th>
                             <td>{{$teacher->phone}}</td>
                             <td> {{$teacher->sex}} </td>
-                            @if(isset($teacher->group ) && $teacher->group->count()>0 ) 
-                            <td>{{$teacher->group->formation->title}} </td>  
+                         {{--    @if(isset($teacher->formation ) && $teacher->formation->count()>0 ) 
+                            <td>{{$teacher->formation->title}} </td>  
                             @else
-                            <td>لا يوجد </td>  
+                            <td> No Formation detected</td>  
+                            @endif --}}
+                            @if(isset($teacher->group ) && $teacher->group->count()>0 ) 
+                            <td>{{$teacher->group->title}} </td>  
+                            @else
+                            <td> No Group detected</td>  
                             @endif 
-                            <td>{{$teacher->group->title}}</td>
+                           
                            
                             @if(isset($teacher->center ) && $teacher->center->count()>0 ) 
                             <td>{{$teacher->center->centre}} </td>  
-                        
+                            @else
+                            <td> No centre detected</td>  
                             @endif 
                         
                             <td class="text-right">
@@ -136,14 +132,8 @@
                 </table>
             </div>
         </div>
-
-
-
     </div>
-
 </div>
-
-
 <br><br><br>
 @endsection
 @section('scripts')

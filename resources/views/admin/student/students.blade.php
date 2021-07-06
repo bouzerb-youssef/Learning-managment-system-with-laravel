@@ -119,7 +119,7 @@
                             <td> {{$student->cin}} </td>
                             <td>{{$student->group->title}}</td>
                             @if(isset($student->group ) && $student->group->count()>0 ) 
-                            <td>{{$student->group->formation->title}} </td>  
+                            <td>{{$student->group->title}} </td>  
                             @else
                             <td>لا يوجد </td>  
                             @endif 
@@ -129,7 +129,6 @@
                                         <a href=" {{route("admin.student.remove",$student->id)}} " class="btn btn-icon btn-hover btn-lg btn-circle delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="مسح التلميد" title="" aria-expanded="false">
                                             <i class="uil-trash-alt text-danger" ></i> 
                                         </a>
-                    
                                         <a href=" {{route("admin.editstudent",$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle" uk-tooltip="تعديل المعلومات" title="" aria-expanded="false">
                                             <i class="uil-pen "></i> 
                                         </a>    
@@ -138,7 +137,7 @@
                                         </a> 
                                         <a href="{{route('admin.stage.add',$student->id)}}" class="btn btn-icon btn-hover btn-lg btn-circle"  uk-tooltip="عمل أو تدريب" title="" aria-expanded="false">
                                             <i class=" icon-line-awesome-inbox"></i> 
-                                    </a> 
+                                        </a> 
                                        
                             </td>
                         </tr>

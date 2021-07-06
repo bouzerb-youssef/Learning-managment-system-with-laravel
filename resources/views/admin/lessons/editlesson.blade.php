@@ -38,10 +38,7 @@
                    
                     <div class="">
                      
-                        <div class="progress">
-                            <div class="bar"></div >
-                            <div class="percent">0%</div >
-                        </div>
+                     
                         
                         <div id="status"></div>
                         
@@ -57,26 +54,25 @@
                                                             <select name="cource_id" class="uk-select">
                                                                 @if (isset($cources) && $cources->count()>0)
                                                                 @foreach ($cources as $cource)
-                                                                <option  value="{{$cource->id}}" >{{$cource->title}}</option>
+                                                                <option  value="{{$cource->id}}" @if ($cource->cource_id==$cource->id)
+                                                                    selected
+                                                                @endif >{{$cource->title}}</option>
                         
                                                                 @endforeach
                                                                 @endif
                                                             </select>
                                                         </div>
+                                                        <div class="uk-grid-margin uk-first-column">
+                                                            <h5 class="uk-text-bold mb-2">Select Video </h5>
+                                                              <div class="uk-margin"> 
+                                                             <div class="uk-margin" uk-margin> <div uk-form-custom="target: true"> <input type="file" name='video'> <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled> </div>  
+                                                            </div>
+                                                        </div>  
+                                                        </div> 
                                               
                                                     </div>
                                                  
-                                                    <div  class='container' class="uk-grid-margin uk-first-column" >
-                                                        <div class="uk-grid-margin uk-first-column">
-                                                            <h5 class="uk-text-bold mb-2">Video </h5>
-                                                            <div class="uk-margin"> 
-                                                                <div uk-form-custom> 
-                                                                    <input type="file" name="video" > 
-                                                                    <button class="uk-uk-button uk-button-default" type="button" onclick="move()" tabindex="-1"> Select Video </button> 
-                                                                </div> 
-                                                            </div> 
-                                                        </div>   
-                                                    </div>                            
+                                                                         
                                                 <div class="uk-flex-right .uk-child-width-1-5 p-2">
                                                     
                                                     <button  type="submit" class="btn btn-outline-dark">Save</button>

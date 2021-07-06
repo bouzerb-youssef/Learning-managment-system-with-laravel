@@ -37,7 +37,7 @@
 
                         <ul>
                            
-                            <li> انشات في :{{$cource->created_at->format("d/m/y")}}<a href="#"> بواسطة أمل سونتر </a> </li>
+                            <li> انشات في :{{$cource->created_at->format("d/m/y")}}<a href="#"> By Amal Tadrib </a> </li>
                             
                         
                         </ul>
@@ -66,9 +66,9 @@
 
                 <ul class="uk-child-width-expand mb-0 uk-tab" uk-switcher="connect: #course-intro-tab ;animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium" uk-tab="">
                     <li class=""><a href="#" aria-expanded="false">الدروس </a></li>
-                    <li class=""><a href="#" aria-expanded="false">الوصف</a></li>
+                   
                   
-                  ّ
+                 
                     <li class=""><a href="#" aria-expanded="false">التعليقات</a></li>
                 </ul>
 
@@ -81,31 +81,7 @@
 
         <div class="uk-grid-large mt-4 uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-2-3@m uk-first-column" >
-               {{--  <ul id="course-intro-tab" class="uk-switcher" style="touch-action: pan-y pinch-zoom;">
-                    <!-- course Curriculum-->
-                    <li class="" style="background: white;
-                    padding: 24px;
-                    border-radius: 10px;">
-                        <h4> الدروس </h4>
-
-                        <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
-
-                          
-                                    <ul class="course-curriculum-list">
-                                    
-                                    @foreach ($cource->lessons as $lesson) 
-                                    <li>
-
-                                      <a href="{{route("cources.lessons.vedio",$lesson->id)}}">{{$lesson->name}} </a>
-                             
-                                    @endforeach  
-                                    </ul>
-
-                                
-                         
-                          
-
-                        </ul>--}}
+           
                         <ul id="course-intro-tab" class="uk-switcher mt-4" style="touch-action: pan-y pinch-zoom;">
 
 
@@ -147,16 +123,6 @@
 
                                         </div>
                                     </li>
-                                  
-
-                                       {{--  
-                                    <ul class="course-curriculum-list">
-                                             
-                                        @foreach ($cource->podcasts as $podcast)
-                                        <li>{{$podcast->name}} <span>{{$podcast->podcast}} </span></li>
-                                      
-                                        @endforeach
-                                    </ul> --}}
                                
 
                                     <li class="">
@@ -195,67 +161,6 @@
                                 </ul>
 
                             </li>
-
-                         
-
-                     
-
-
-                   
-
-                           <!-- course description -->
-                           <li class="course-description-content " style="    background: white  padding: 12px;border-radius: 10px;">
-
-                                <h4> الوصف </h4>
-                                <p>{!!$cource->desc!!} </p>
-
-
-                                <h4  style="    border-bottom: 2px solid;
-                                width: 39%;"> ماذا تحتاج من اجل البدأ في تعلم الكورس :</h4>
-                                <div class="uk-child-width-1-2@s uk-grid" uk-grid="">
-                                    <div class="uk-first-column">
-                                        <ul class="list-2">
-                                            @if ($cource->whatinthecoures && $cource->whatinthecoures->count()>0)
-                                            @foreach ($cource->whatinthecoures as $detail)
-                                        
-                                            <li>{{$detail->detail}}</li>
-                                            @endforeach
-                                                
-                                            @endif
-                                        
-                                        </ul>
-                                    </div>
-                            
-                                </div>
-                            </li>
-                         
-
-                   
-         
-                                <!-- course Announcement-->
-                                <li  style="">
-
-                                    <h4 class="my-4">مرفقات الفصول</h4>
-                                    <ul class="course-curriculum uk-accordion" uk-accordion="multiple: true">
-                                        @foreach ($cource->materials as $material)
-
-                                            <li class="uk-open">
-                                                <a class="uk-accordion-title" href="#"> {{$material->materialname}} </a>
-                                                <div class="uk-accordion-content" aria-hidden="true" hidden="">
-                                        
-                                                    <!-- course-video-list -->
-                                                    <ul class="course-curriculum-list">
-                                            
-                                                    </ul>
-                                        
-                                                </div>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                            
-            
-                                </li>
-                   
                                 <li class="" style="">
 
                                 

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<br><br><br><br>
+
 <div class="page-content">
 <div class="page-content-inner">
 
@@ -39,7 +39,7 @@
                         <h6 class=" mb-0"><a href="{{route('admin.editcource',$cource->id)}}">{{$cource->title}}</a> </h6>
                       
                         <div class="">
-                            <a href="#"   class="text-muted"> {{$cource->enrolls->count()}}Enroll </a>
+                          <h8><a href="#"   class="text-muted"> {{$cource->enrolls->count()}}  Enerolled</a></h8>
                         </div>
                         <br>
                         <div class="actions ml-3">

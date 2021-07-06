@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-<br><br><br>
+
 <div class="page-content">
     <div class="page-content-inner">
 
@@ -38,7 +38,7 @@
                     <form  action="{{route("admin.updatecource",$cource->id)}}" method="POST" enctype="multipart/form-data" >
                                     {{ csrf_field() }}
 
-                                    <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
+                            <div class="uk-child-width-1-2@s uk-grid-small p-4 uk-grid" uk-grid="">
                                         <div class="uk-first-column">
                                           <h5 class="uk-text-bold mb-2">Name</h5>
                                           <input type="text" class="uk-input" name="title" value='{{$cource->title}}' placeholder="Name">
@@ -48,36 +48,35 @@
                                           <select name="category_id" class="uk-select">
                                               @if (isset($categories) && $categories->count()>0)
                                               @foreach ($categories as $category)
-                                              <option  value="{{$category->id}}" >{{$category->title}}</option>
+                                              <option  value="{{$category->id}}" 
+                                                @if ($cource->category_id==$category->id)
+                                                  selected
+                                              @endif 
+                                              >{{$category->title}}</option>
       
                                               @endforeach
                                               @endif
                                           </select>
                                       </div>
-                                      <div class="uk-grid-margin uk-first-column"   >
-                                        <h5 class="uk-text-bold mb-2"> Description </h5>
-                                        <textarea  name="description" class="mytextarea"  placeholder="short description"   value='{{$cource->description}}' class="form-control"></textarea>
-                                    </div>
-                                    
-                               
-                                
-                               
-                                   
                                     <div class="uk-grid-margin uk-first-column">
                                         <h5 class="uk-text-bold mb-2">Image </h5>
                                           <div class="uk-margin"> 
                                          <div class="uk-margin" uk-margin> <div uk-form-custom="target: true"> <input type="file" name='thumbnail'> <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled> </div>  </div> 
-                                    </div> 
-                                    
-                               
-      
-                                  
-                                 
-                                    <div class="uk-flex uk-flex-right p-4">
-                                
-                                        <button  type="submit" class="btn btn-outline-dark">Save</button>
+                                    </div>     
                                     </div>
-                        </div>
+                                </div>
+                                         
+                            <div class="uk-child-width-2-6@s uk-grid-small p-4 uk-grid" uk-grid="">
+                                <div class="uk-grid-margin uk-first-column">
+                                    <h5 class="uk-text-bold mb-2"> Description </h5>
+                                    <textarea  name="description" {{-- class="mytextarea" --}}  placeholder="short description"   class="form-control">{{$cource->description}}</textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="uk-child-width-2-6@s uk-grid-small p-4 uk-grid" uk-grid="">
+                                <button type="submit" class="btn btn-outline-dark">Save</button>
+                    
+                            </div>
                      </form>
                
                 </div>

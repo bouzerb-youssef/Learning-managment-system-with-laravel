@@ -82,7 +82,7 @@
                         </th>
                       
                         <td class="text-right">
-                            <!-- Actions -->
+                         
                            
                                     <a href="{{route("admin.category.remove",$category->id)}}" class="button delete-confirm" class="btn btn-icon btn-hover btn-lg btn-circle" wire:click='remove({{$category->id}})' uk-tooltip="مسح الفصل" title="" aria-expanded="false">
                                         <i class="uil-trash-alt text-danger" ></i> 

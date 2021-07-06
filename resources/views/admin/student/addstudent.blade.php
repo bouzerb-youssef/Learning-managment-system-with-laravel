@@ -56,7 +56,7 @@
                                
                         
                                 <div class="uk-grid-margin uk-first-column">
-                                    <h5 class="uk-text-bold mb-2"> Sex </h5>
+                                    <h5 class="uk-text-bold mb-2"> Gender </h5>
                                     <select  name="sex"  class="uk-select">
                                         <option value="0" >femele</option>
                                         <option value="1">male</option>

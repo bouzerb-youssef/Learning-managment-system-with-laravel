@@ -22,7 +22,7 @@ class Cource extends Model
     protected $fillable = [
         'title',
         'short_description',
-        'desc',
+        'description',
         //'level',
         'thumbnail',
         //'visibility',

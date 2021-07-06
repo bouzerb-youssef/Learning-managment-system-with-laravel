@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 @section('content')
  <!-- Wrapper -->
- <div id="wrapper">
+
    <div class="page-content">
 
        <div class="page-content-inner">

@@ -47,7 +47,9 @@
                                             <select name="cource_id" class="uk-select">
                                                 @if (isset($cources) && $cources->count()>0)
                                                 @foreach ($cources as $cource)
-                                                <option  value="{{$cource->id}}" >{{$cource->title}}</option>
+                                                <option  value="{{$cource->id}}" @if ($cource->cource_id==$cource->id)
+                                                    selected
+                                                @endif  >{{$cource->title}}</option>
         
                                                 @endforeach
                                                 @endif
